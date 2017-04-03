@@ -1,0 +1,180 @@
+/* reset styles */
+html {
+   font-size: 16px;
+}
+a, article, body, figcaption, figure, div, footer, header, h1, h2, h3, nav, p {
+   border: 0;
+   padding: 0;
+   margin: 0;
+}
+/*img{width: auto;
+	height: auto;
+	max-width: 100%
+	commented out because it was interfereing with the html code for the cart image size has to be fixed from auto to regular values
+	This also affects all images. 
+}
+*/
+/* body */
+body {
+   margin: 0 auto;
+   font-family: Arial, Helvetica, sans-serif;
+}
+p {
+   font-size: 1.3em;
+   line-height: 1.6em;
+}
+a:link {
+   color: black;
+}
+a:visited {
+   color: light blue;
+}
+
+/* skip navigation link */
+p.skipnavigation a {
+   position: absolute;
+   left: -10000px;
+}
+p.skipnavigation a:focus {
+   color: ivory;
+   background-color: #34180f;
+   top: 0.4em;
+   left: auto;
+   right: 0.4em;
+   z-index: 2;
+}
+
+/* header section */
+header {
+
+   margin: 0 auto;
+
+   background-color: white;
+   overflow: auto;
+}
+
+
+header h1 {
+   width: 60%;
+
+   color: black;
+    font-family: Bitter, "Times New Roman", Times, serif;
+   font-weight: 700;
+   font-size: 1em;
+   line-height: 0.8em;
+   float: right;
+}
+.search{
+	float: center;
+}
+p.head{
+	background-color:black;
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 2px 50px;
+	font-size:1em;
+}
+/* site navigation bar */
+nav.sitenavigation {
+   color: #34180f;
+   text-align: center;
+   background-color: rgb(81, 112, 160);
+}
+nav.sitenavigation p {
+
+   margin: 0.4em 0.7em;
+   padding: 2px 50px;
+   display: inline-block;
+}
+nav.sitenavigation a:link {
+   text-decoration: none;
+   color: white;
+}
+nav.sitenavigation a:visited {
+   color: #744f42;
+}
+nav.sitenavigation a:hover, nav.sitenavigation a:focus {
+   color: ivory;
+}
+
+/* main content */
+article {
+   margin: 0 auto;
+   padding: 1.4em;
+   background: #7eccec;
+   background: url("images/lake.jpg");
+}
+article div {
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 0 3% 1em;
+   background-color: ivory;
+   overflow:auto;
+}
+h2 {
+   padding: 0.4em 0.4em 0;
+   text-align: center;
+   font-family: Bitter, "Times New Roman", Times, serif;
+   font-size: 2em;
+   font-weight: 700;
+}
+h3 {
+   margin-top: 1.4em;
+   font-size: 1.6em;
+   font-family: Bitter, "Times New Roman", Times, serif;
+   font-weight: 700;
+   clear: both;
+}
+article p {
+   padding-top: 1em;
+}
+article p.imagemap {
+	  text-align: center;
+}
+article p.imagemap img {
+	border: 1px solid black;
+	max-width: none;
+}
+article p.pullquote {
+   font-size: 1.7em;
+}
+article figure{
+	max-width:100%;
+	margin-left: 2em;
+	float: right;
+}
+ article figure.example {
+	   margin-top: 2em;
+ }
+    article figcaption{
+		text-align:center;
+	}
+
+/* footer section */
+footer {
+   padding: 0.6em;
+   background-color:rgb(81, 112, 160);
+   color: ivory;
+   text-align: center;
+}
+.accent {
+   font-weight: bold;
+}
+
+/* print styles */
+@media print {
+   body, h1, article, footer {
+      color: rgb(0,0,0);
+      background: rgb(255,255,255);
+   }
+   body {
+      max-width: 100%;
+   }
+   nav {
+      display: none;
+   }
+}
+@page {
+   margin: 0.75in;
+}
