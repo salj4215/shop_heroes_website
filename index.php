@@ -9,6 +9,8 @@ require ('header.html');
 
 if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
+elseif (isset($_GET['page']) && $_GET['page'] == 'home')
+    require ('HomeSH.html');
 else
     require ('HomeSH.html');
 
