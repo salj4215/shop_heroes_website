@@ -1,4 +1,4 @@
 *.bak
 *.old
 *.patch
-connect_db
+connect_db.php
