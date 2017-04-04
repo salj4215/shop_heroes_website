@@ -1,3 +1,4 @@
 *.bak
 *.old
 *.patch
+connect_db
