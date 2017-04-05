@@ -1,12 +1,11 @@
 <?php
 
 
-//TODO: get login credentials from DBA Silver
-
 require_once ('../connect_db.php');
 
+$con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
-$sql = "SELECT ProductName, UnitPrice, ProductUPC, ProductCategory from products";
+$sql = "SELECT ProductName, UnitPrice, ProductUPC, ProductCategory from PRODUCTS";
 
 $itemlist = mysqli_query($con,$sql);
 
