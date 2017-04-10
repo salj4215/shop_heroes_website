@@ -9,13 +9,13 @@
     require_once ('../connect_db.php'); //waiting for access to file
 
 $charset = 'utf8';
-$dsn = "mysql:host=".DB_HOST.";dbname=".DB_NAME.";charset=$charset"; //we do not know name of variables in connect_db file, placeholders are inserted for time being
+$dsn = "mysql:host=".HOST.";dbname=".DB.";charset=$charset";
 $opt =
     [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
-$pdo = new PDO($dsn, DB_USER, DB_PASS, $opt); //create pdo object
+$pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
 ?>
 
