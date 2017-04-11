@@ -3,9 +3,9 @@ $user = $_POST['Username'];
 $pass = $_POST['Password'];
 
 $sql = "SELECT * FROM USERS WHERE Username='$user' AND Password='$pass'";
-		
-		 
-require_once('connect_db.php');
+
+
+require_once ('../connect_db.php');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
 

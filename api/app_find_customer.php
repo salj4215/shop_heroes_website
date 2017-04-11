@@ -4,11 +4,11 @@
 //Called from ActivityMain on app start,
 //after login to check for missing customer info
 $user_id = $_POST['userID'];
-echo $user_id;
+
 
 $sql = "SELECT * FROM CUSTOMERS WHERE UserID='$user_id'";
-				 
-require_once('connect_db.php');
+
+require_once ('../connect_db.php');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
 
