@@ -11,8 +11,8 @@ $cust_phone=$_POST['CustPhone'];
 
 
 $sql = "SELECT * FROM CUSTOMERS WHERE UserID = '$user_id'";
-				 
-require('connect_db.php');
+
+require_once ('../connect_db.php');
 $con = mysqli_connect(HOST,USER,PASS,DB);// or die('Unable to Connect');
 
 $cust_exists = (mysqli_num_rows(mysqli_query($con,$sql)));

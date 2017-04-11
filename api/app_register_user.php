@@ -6,9 +6,9 @@ $pass = $_POST['Password'];
 //It returns the new auto-generated UserID if successful
 
 $sql = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
-		
-		 
-require_once('connect_db.php');
+
+
+require_once ('../connect_db.php');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
 
