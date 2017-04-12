@@ -1,6 +1,4 @@
 <?php
-
-<?php
 /**
  * @file
  * This file API configuration information.
