@@ -1,9 +1,12 @@
-﻿<?php	 
+﻿<?php
 $user = $_POST['Username'];
 $pass = $_POST['Password'];
 
 //Script to register a new User
 //It returns the new auto-generated UserID if successful
+
+//Encrypt the password using SHA512.
+$pass = hash("SHA512", $pass, false);
 
 $sql = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
 
