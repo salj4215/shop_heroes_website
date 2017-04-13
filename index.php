@@ -24,6 +24,10 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php');
+elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
+    require ('createAccount.html');
+elseif (isset($_GET['page']) && $_GET['page'] == 'login')
+    require ('main_login.html');
 else
     require ('HomeSH.html');
 
