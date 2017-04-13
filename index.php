@@ -5,7 +5,7 @@
  * Date: 4/3/2017
  * Time: 9:11 PM
  */
-require_once (connect_db.php);
+require_once("connect_db.php");
 
 $charset = 'utf8';
 $dsn = "mysql:host=".HOST.";dbname=".DB.";charset=$charset";
@@ -23,7 +23,7 @@ if(isset($_GET['page']) && $_GET['page'] == 'contact')
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
-    require ('Order.php');
+    require ('order.php');
 else
     require ('HomeSH.html');
 
