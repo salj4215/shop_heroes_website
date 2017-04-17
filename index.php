@@ -22,6 +22,8 @@ if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
     require ('aboutus.html'); //about us page
 else if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
+else if(isset($_GET['page']) && $_GET['page'] == 'giftcards')
+    require ('giftcards.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
