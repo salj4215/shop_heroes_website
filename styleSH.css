@@ -87,7 +87,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 299px;
+	width: 223px;
 	height: 40px;
 	background-color:  rgb(81, 112, 160);
 	margin: auto;
@@ -95,7 +95,7 @@ ul li{
 	line-height: 40px;
 	text-align: center;
 	opacity: .8;
-	border: 3px solid black;
+	border: 2px solid black;
 	
 }
 ul li a:hover{
