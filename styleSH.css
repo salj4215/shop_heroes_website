@@ -30,20 +30,19 @@ a:visited {
    color: light blue;
 }
 
-/* skip navigation link */
+/* skip navigation link 
 p.skipnavigation a {
    position: absolute;
    left: -10000px;
 }
 p.skipnavigation a:focus {
-   color: ivory;
    background-color: #34180f;
    top: 0.4em;
    left: auto;
    right: 0.4em;
    z-index: 2;
 }
-
+*/
 /* header section */
 header {
 
@@ -101,6 +100,7 @@ ul li{
 }
 ul li a:hover{
 	background-color: #4078a5;
+	color: ivory;
 }
 
 ul li ul li {
