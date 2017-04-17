@@ -18,12 +18,12 @@ $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
 require ('header.html');
 
-if(isset($_GET['page']) && $_GET['page'] == 'contact')
+if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
+    require ('aboutus.html'); //about us page
+else if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html');
-elseif (isset($_GET['page']) && $_GET['page'] == 'aboutus')
-    require ('aboutus.html'); //about us page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php');
 elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
