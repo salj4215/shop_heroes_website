@@ -22,10 +22,10 @@ if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html');
-elseif (isset($_GET['page']) && $_GET['page'] == 'order')
-    require ('order.php');
 elseif (isset($_GET['page']) && $_GET['page'] == 'aboutus')
     require ('aboutus.html'); //about us page
+elseif (isset($_GET['page']) && $_GET['page'] == 'order')
+    require ('order.php');
 elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
     require ('createAccount.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
