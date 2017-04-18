@@ -54,11 +54,11 @@ if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
 else if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
 else if(isset($_GET['page']) && $_GET['page'] == 'myaccount')
-    require ('myaccount.html');
+    require ('myaccount.html'); //my account page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
-    require ('HomeSH.html');
+    require ('HomeSH.html'); //home page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
-    require ('order.php');
+    require ('order.php'); //order page
 elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
     require ('createAccount.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
