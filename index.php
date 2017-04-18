@@ -39,7 +39,9 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
             echo $row['Username'];
             $error = true;
             break;
+            
         }
+        die;
     }
     if($error == false) {
         $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
