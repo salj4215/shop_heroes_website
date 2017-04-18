@@ -61,12 +61,12 @@ else
 	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE;
 
 	//display variable for output information
-	echo "</br>storeWHERE == '" . $storeWHERE . "'";
+	echo "==============================================================================================</br>storeWHERE == '" . $storeWHERE . "'";
     echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
     echo "</br>qry: == '" . $qry . "'";
     echo "</br>store: == '" . $store . "'";
     print "</br>category: == '" . $category . "'";
-    print "</br></br>";
+    print "</br></br>============================================================================================<br>";
 
 //call quuery
 	$stmt = $pdo -> query( $qry );

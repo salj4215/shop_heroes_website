@@ -18,6 +18,37 @@ $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
 require ('header.html');
 
+session_status();
+$error = false;
+//SIGN UP NEW USER
+if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
+{
+    $user = $_POST['myusername'];
+    $pass = $_POST['mypassword'];
+    // VALIDATE DATA
+
+//encrpt
+    $pass = hash("SHA512", $pass, false);
+
+    $qry = "Select Username from `USERS`";
+    $stmt = $pdo -> query( $qry );
+    while($row = $stmt->fetch())
+    {   //vaildate if user already has an account
+        if($user == $row['Username']) {
+            $error = true;
+            break;
+        }
+    }
+    if($error == false) {
+        $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
+        $stmt = $pdo->prepare($qry);
+        echo "CREATED USER: " . $user ;
+    }
+    if($error == true) {
+        echo "That username already has an account";
+    }
+}
+    
 if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
     require ('aboutus.html'); //about us page
 else if(isset($_GET['page']) && $_GET['page'] == 'contact')
