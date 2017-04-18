@@ -16,9 +16,8 @@ else
             <a href="index.php?page=order&store=Kroger&category=<?php print $category;?>">Kroger</a>
             <a href="index.php?page=order&store=Meijer&category=<?php print $category;?>"">Meijer</a>
         </div>
-    </div>
     <!--category filter -->
-    <div class="dropdown"> <!-- drop-down button -->
+    <!-- drop-down button -->
         <button class="productbtn">Products</button>
         <div class="dropdown-content">
             <a href="index.php?page=order&store=/<?php print $store;?>&category=produce">Produce</a>
