@@ -23,6 +23,7 @@ $error = false;
 //SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 {
+    var_dump($_POST ); die;
     $user = $_POST['myusername'];
     $pass = $_POST['mypassword'];
     // VALIDATE DATA
