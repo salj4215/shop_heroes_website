@@ -1,33 +1,54 @@
-<?php
-    /**
-     * Created by Salleh Jahaf
-     * Description: Shop Heroes Order page where customer places items into shopping cart.
-     * Date: 4/6/2017
-     * Time: 9:46 PM
-     */
-
-    require_once ('../connect_db.php'); //waiting for access to file
-
-$charset = 'utf8';
-$dsn = "mysql:host=".HOST.";dbname=".DB.";charset=$charset";
-$opt =
-    [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ];
-$pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
-
-?>
-
 <div id="prod_navigation">
     <div class="dropdown"> <!-- drop-down button -->
         <button class="productbtn">Products</button>
         <div class="dropdown-content">
-            <a href="#">Category 1</a>
-            <a href="#">Category 2</a>
-            <a href="#">Category 3</a>
-            <a href="#">Category 4</a>
+            <a href="index.php?page=order&category=produce">Produce</a>
+            <a href="index.php?page=order&category=snacks"">Snacks</a>
+            <a href="index.php?page=order&category=cereal"">Cereal</a>
+            <a href="index.php?page=order&category=chips"">Chips</a>
+			<a href="index.php?page=order&category=dairy"">Dairy</a>
+
+
         </div>
     </div>
     <button class="chkoutbtn">Check-Out</button>
 </div>
+
+<?php
+//to redirect the qry with category seelction
+if(isset($_GET['category']) && $_GET['category'] == 'produce')
+    $category="WHERE ProductCategory = 'Produce'";
+elseif(isset($_GET['category']) && $_GET['category'] == 'snacks')
+    $category="WHERE ProductCategory = 'Snacks'";
+elseif(isset($_GET['category']) && $_GET['category'] == 'cereal')
+    $category="WHERE ProductCategory = 'Cereal'";
+elseif(isset($_GET['category']) && $_GET['category'] == 'chips')
+    $category="WHERE ProductCategory = 'Chips'";
+elseif(isset($_GET['category']) && $_GET['category'] == 'dairy')
+    $category="WHERE ProductCategory = 'Dairy'";
+else
+    $category="";
+//replace category string to hold the attribute WHERE search, or blank.
+
+
+//ALSO will need to add another attribute to where STOREID matches, so that they wont fill a cart
+//from multiple stores. That once they pick one item, or maybe select a store, that it will only
+//display those items?
+
+
+	$qry = 'Select * from `PRODUCTS` ' . $category;
+	
+	$stmt = $pdo -> query( $qry );
+	
+	while($row = $stmt->fetch())
+	{
+		echo "ProductID: " . $row['ProductID'] . "<br>";
+		echo "StoreID: " . $row['StoreID'] . "<br>";;
+		echo "ProductName: " . $row['ProductName'] . "<br>";;
+		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";;
+		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";;
+		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";;
+		echo "Description: " . $row['Description'] . "<br>";;
+		echo "Quantity: " . $row['Quantity'] . "<br>";;	
+		echo "</div></br>";
+	}	
