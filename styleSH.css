@@ -175,6 +175,51 @@ footer {
    font-weight: bold;
 }
 
+/* small screen styles */
+@media screen and (min-width: 200px)
+{
+	/*article
+	{
+		margin: 2% 25% 2% 2%;
+	}*/
+	nav.sitenavigation li 
+	{
+		left: auto;
+		right: 0;
+}
+
+@media screen and (min-width: 1060px)
+{
+	article div 
+	{
+		width: 1260px; /* 1400x90% */
+	}
+}
+/* Small Screen styles */
+@media screen and (max-width: 460px) 
+{
+
+	nav.sitenavigation li , article,body, table , form
+	{
+	left: auto;
+	right: 0;
+	}
+
+div.img {
+	display:none;
+}
+/*.form1 {
+	Position:relative;
+	left:auto;
+	right: 0;
+}
+.form2 {
+	Position:relative;
+	left:auto;
+	right: 0;
+}
+*/
+
 /* print styles */
 @media print {
    body, h1, article, footer {
