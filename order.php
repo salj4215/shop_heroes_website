@@ -13,8 +13,8 @@ else
     <div class="dropdown"> <!-- drop-down button -->
         <button class="productbtn">STORES</button>
         <div class="dropdown-content">
-            <a href="index.php?page=order&store=Kroger&category=<?php$category;?>">Kroger</a>
-            <a href="index.php?page=order&store=Meijer&category=<?php$category;?>"">Meijer</a>
+            <a href="index.php?page=order&store=Kroger&category=<?php print $category;?>">Kroger</a>
+            <a href="index.php?page=order&store=Meijer&category=<?php print $category;?>"">Meijer</a>
         </div>
     </div>
     //category filter
@@ -51,43 +51,25 @@ else
     elseif(isset($_GET['category']) && $_GET['category'] == 'chips')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Chips'";
     elseif(isset($_GET['category']) && $_GET['category'] == 'dairy')
-        $categoryWHERE=" AND ProductCategory = 'Dairy'";
+        $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Dairy'";
     else
         $categoryWHERE="";
 
 
-    $qry = "Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID  WHERE STORES.StoreID = '1' AND PRODUCTS.ProductCategory = 'Produce'";
-
-    $stmt = $pdo -> query( $qry );
-
-    while($row = $stmt->fetch())
-    {
-        echo "ProductID: " . $row['ProductID'] . "<br>";
-        echo "StoreID: " . $row['StoreID'] . "<br>";;
-        echo "ProductName: " . $row['ProductName'] . "<br>";;
-        echo "ProductUPC: " . $row['ProductUPC'] . "<br>";;
-        echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";;
-        echo "ProductCategory: " . $row['ProductCategory'] . "<br>";;
-        echo "Description: " . $row['Description'] . "<br>";;
-        echo "Quantity: " . $row['Quantity'] . "<br>";;
-        echo "</div></br>";
-    }
 //replace category string to hold the attribute WHERE search, or blank.
 
 	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE;
-echo "</br>storeWHERE: ";
-   var_dump($storeWHERE);
-echo "</br>categoryWHERE: ";
-var_dump($categoryWHERE);
-echo "</br>qry: ";
-var_dump($qry);
-echo "</br>store: ";
-print $store;
-print "</br>category: ";
-var_dump($category);
 
+	//display variable for output information
+	echo "</br>storeWHERE == '" . $storeWHERE . "'";
+    echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
+    echo "</br>qry: == '" . $qry . "'";
+    echo "</br>store: == '" . $store . "'";
+    print "</br>category: == '" . $category . "'";
+    print "</br></br>";
+
+//call quuery
 	$stmt = $pdo -> query( $qry );
-	
 	while($row = $stmt->fetch())
 	{
 		echo "ProductID: " . $row['ProductID'] . "<br>";
