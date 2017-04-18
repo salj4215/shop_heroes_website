@@ -178,11 +178,11 @@ footer {
 /* small screen styles */
 @media screen and (min-width: 200px)
 {
-	/*article
+	article
 	{
 		margin: 2% 25% 2% 2%;
-	}*/
-	nav.sitenavigation li 
+	}
+	nav.sitenavigation li , ul 
 	{
 		left: auto;
 		right: 0;
@@ -199,7 +199,7 @@ footer {
 @media screen and (max-width: 460px) 
 {
 
-	nav.sitenavigation li , article,body, table , form
+	nav.sitenavigation li , article,body, table , form, ul 
 	{
 	left: auto;
 	right: 0;
