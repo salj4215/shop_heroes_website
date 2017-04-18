@@ -23,7 +23,7 @@ $error = false;
 //SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 {
-    var_dump($_POST ); die;
+
     $user = $_POST['myusername'];
     $pass = $_POST['mypassword'];
     // VALIDATE DATA
@@ -36,6 +36,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     while($row = $stmt->fetch())
     {   //vaildate if user already has an account
         if($user == $row['Username']) {
+            echo $row['Username'];
             $error = true;
             break;
         }
