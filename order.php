@@ -9,7 +9,7 @@ else
     $category = $_GET['category'];
 ?>
 <div id="prod_navigation">
-    //store filter
+    <!--store filter -->
     <div class="dropdown"> <!-- drop-down button -->
         <button class="productbtn">STORES</button>
         <div class="dropdown-content">
@@ -17,7 +17,7 @@ else
             <a href="index.php?page=order&store=Meijer&category=<?php print $category;?>"">Meijer</a>
         </div>
     </div>
-    //category filter
+    <!--category filter -->
     <div class="dropdown"> <!-- drop-down button -->
         <button class="productbtn">Products</button>
         <div class="dropdown-content">
