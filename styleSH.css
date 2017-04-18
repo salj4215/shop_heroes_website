@@ -87,8 +87,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	/*width: 220px;*/
-	width:auto;
+	width: 210px;
 	height: 40px;
 	background-color:  rgb(81, 112, 160);
 	margin: auto;
