@@ -11,6 +11,8 @@ else
     $category = $_GET['category'];
 $_SESSION["store"] = $store;
 $_SESSION["category"] = $category;
+var_dump($_SESSION["store"]);
+var_dump($_SESSION["category"]);
 ?>
 <div id="prod_navigation">
     <!--store filter -->
