@@ -16,8 +16,8 @@ else if((isset($_SESSION['messages'])) && (count($_SESSION['messages']) > 1 )){
     $_SESSION['announcements'] += 1;
 //count amount of times messages were declared
     if ($_SESSION['announcements'] > 1) {
-        session_unset('messages');
-        session_unset('announcements');
+        unset($_SESSION['messages']);
+        unset($_SESSION['announcements']);
     }
 }
 $charset = 'utf8';
@@ -65,39 +65,43 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
         //echo "That Username already has an account";
         array_push($_SESSION['messages'],"That Username already has an account");
     }
+
 }
 //log in
-if( isset( $_POST['action'] ) && $_POST['action'] == 'login')
-{
-    $user = $_POST['userEmail'];
+if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
+    $user = $_POST['myusername'];
     $pass = $_POST['mypassword'];
     // VALIDATE DATA
 
 //encrpt
     $pass = hash("SHA512", $pass, false);
 
-    $qry =  "SELECT * FROM USERS WHERE Username='$user'";
-    $stmt = $pdo -> query( $qry );
-    while($row = $stmt->fetch())
-    {
-        if($pass == $row['Password'])
-        {
+    $qry = "SELECT * FROM USERS WHERE Username='$user'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {
+        print $row['Username'] . "<br>";
+        if ($pass == $row['Password']) {
             //correct password in found username
-            echo "Welcome " . $row['Password'];
-            $_SESSION["activeUser"]= $row['Username'];
-            header('Location: index.php?page=home');
-        }
-        else
-        {
+            array_push($_SESSION['messages'], "Welcome $user");
+            $_SESSION["activeUser"] = $row['Username'];
+        } else {
             //password did not match
             //echo "Incorrect Password Try again";
-            array_push($_SESSION['messages'],"Incorrect Password Try again");
+            array_push($_SESSION['messages'], "Incorrect Password, Try again");
             header('Location: index.php?page=login');
+        }
+        if ($user == $row['Username']) {
+            array_push($_SESSION['messages'], "No such Acount Exists");
         }
     }
 }
-
 require ('header.php');
+//test vairables
+if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
+var_dump($_POST['myusername']);
+var_dump($_POST['mypassword']);
+//worked
+}
 print "|||||||||||||||";
 print_r($_SESSION);
 print "|||||||||||||||";
@@ -127,7 +131,7 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'login')
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     session_unset();
     header('Location: index.php?page=home');
-}
+}   //logout link
 else
     require ('HomeSH.html');
 
