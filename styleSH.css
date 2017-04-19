@@ -1,80 +1,58 @@
-/* reset styles */
 html {
-   font-size: 16px;
+   font-size:16px;
 }
-a, article, body, figcaption, figure, div, footer, header, h1, h2, h3, nav, p {
-   border: 0;
-   padding: 0;
-   margin: 0;
+/*  resizes nav bar and all borders */
+* {
+    box-sizing: border-box;
 }
-/*img{width: auto;
-	height: auto;
-	max-width: 100%
-	commented out because it was interfereing with the html code for the cart image size has to be fixed from auto to regular values
-	This also affects all images. 
+/* login and sign up buttons */
+ul.signup li
+{
+
+position:absolute;
+top:30px;
+right:120px;
+background-color:#595959;	
+	width: 100px;
+	height: 25px;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
 }
-*/
-/* body */
-body {
-   margin: 0 auto;
-   font-family: Arial, Helvetica, sans-serif;
+ul.login li
+{
+position:absolute;
+top:30px;
+right:20px;
+background-color:#595959;	
+	width: 100px;
+	height: 25px;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
 }
-p {
-   font-size: 1.3em;
-   line-height: 1.6em;
-}
-a:link {
+/* search bar */
+table.search {
+	position:absolute;
+ left:500px;
+ top:20px;
    color: black;
-}
-a:visited {
-   color: light blue;
-}
-
-/* skip navigation link 
-p.skipnavigation a {
-   position: absolute;
-   left: -10000px;
-}
-p.skipnavigation a:focus {
-   background-color: #34180f;
-   top: 0.4em;
-   left: auto;
-   right: 0.4em;
-   z-index: 2;
-}
-*/
-/* header section */
-header {
-
-   margin: 0 auto;
-
-   background-color: white;
-   overflow: auto;
-}
-
-
-header h1 {
-   width: 60%;
-
-   color: black;
-    font-family: Bitter, "Times New Roman", Times, serif;
+   font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
    font-size: 1em;
-   line-height: 0.8em;
-   float: right;
+   overflow:auto;
+
 }
-.search{
-	float: center;
-}
+/* Header */
 p.head{
-	background-color:black;
+	background-color:#00264d;
 	color:white;
 	text-align: center;
 	margin: 0.4em 0.7em;
 	padding: 2px 50px;
 	font-size:1em;
 }
-/* site navigation bar */
+/* Nav Bar */
 ul {
 	margin: 0px;
 	padding: 0px;
@@ -87,12 +65,12 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 185px;
-	height: 40px;
-	background-color:  rgb(81, 112, 160);
+	width: 220px;
+	height: 25px;
+	background-color:  #00264d; 
 	margin: auto;
-	font-size:20px;
-	line-height: 40px;
+		font-size:16px;
+	line-height: 25px;
 	text-align: center;
 	opacity: .8;
 	border: 2px solid black;
@@ -111,208 +89,51 @@ ul li:hover ul li{
 	display:block;
 }
 
-/* main content */
-article {
-   margin: 0 auto;
-   padding: 1.4em;
-   background: #7eccec;
-   background: url("images/lake.jpg");
-}
-article div {
-   max-width: 800px;
-   margin: 0 auto;
-   padding: 0 3% 1em;
-   background-color: ivory;
-   overflow:auto;
-}
-h2 {
-   padding: 0.4em 0.4em 0;
-   text-align: center;
-   font-family: Bitter, "Times New Roman", Times, serif;
-   font-size: 2em;
-   font-weight: 700;
-}
-h3 {
-   margin-top: 1.4em;
-   font-size: 1.6em;
-   font-family: Bitter, "Times New Roman", Times, serif;
-   font-weight: 700;
-   clear: both;
-}
-article p {
-   padding-top: 1em;
-}
-article p.imagemap {
-	  text-align: center;
-}
-article p.imagemap img {
-	border: 1px solid black;
-	max-width: none;
-}
-article p.pullquote {
-   font-size: 1.7em;
-}
-article figure{
-	max-width:100%;
-	margin-left: 2em;
-	float: right;
-}
- article figure.example {
-	   margin-top: 2em;
- }
-    article figcaption{
-		text-align:center;
+/* Body footer and article stuff goes below here */
+
+
+
+/* Ending of file goes below here with the other stuffs Define how you want the page to look below */
+
+/************************************** Below here is all responsive design and print screen stuff. *******************************/
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+	table.search {
+		left:auto;
+		right:0;
+		top:300px;
 	}
-
-/* footer section */
-footer {
-   padding: 0.6em;
-   background-color:rgb(81, 112, 160);
-   color: ivory;
-   text-align: center;
-}
-.accent {
-   font-weight: bold;
-}
-
-/* small screen styles */
-@media screen and (min-width: 200px)
+	ul.signup li
 {
-	article
-	{
-		margin: 2% 25% 2% 2%;
+			left:45px;
+		right:1px;
+		top:400px;
+}
+		ul.login li
+{
+			left:0;
+		right:150px;
+		top:400px;
+}
+
+}
+@media only screen and (max-width: 600px) {
+    /* For tablets: */
+		table.search {
+		left:auto;
+		right:0;
+		top:300px;
 	}
-	nav.sitenavigation li , ul 
-	{
-		left: auto;
-		right: 0;
-}
-
-@media screen and (min-width: 1060px)
+	ul.signup li
 {
-	article div 
-	{
-		width: 1260px; /* 1400x90% */
-	}
+			left:45px;
+		right:1px;
+		top:400px;
 }
-/* Small Screen styles */
-@media screen and (max-width: 460px) 
+		ul.login li
 {
-
-	nav.sitenavigation li , article,body, table , form, ul 
-	{
-	left: auto;
-	right: 0;
-	}
-
-div.img {
-	display:none;
+			left:0;
+		right:150px;
+		top:400px;
 }
-/*.form1 {
-	Position:relative;
-	left:auto;
-	right: 0;
-}
-.form2 {
-	Position:relative;
-	left:auto;
-	right: 0;
-}
-*/
-
-/* print styles */
-@media print {
-   body, h1, article, footer {
-      color: rgb(0,0,0);
-      background: rgb(255,255,255);
-   }
-   body {
-      max-width: 100%;
-   }
-   nav {
-      display: none;
-   }
-}
-@page {
-   margin: 0.75in;
-}
-
-#prod_navigation
-{
-   margin:             0 auto;
-   width:              75%;
-   background-color:   #000000;
-}
-
-/* Dropdown button */
-.productbtn
-{
-   background-color:   #000000;
-   color:              #ffffff;
-   padding:            16px 32px;
-   font-size:          16px;
-   border:             none;
-   cursor:             pointer;
-}
-/* Container for dropdown */
-.dropdown
-{
-   position:           relative;
-   display:            inline-block;
-}
-/* Dropdown content - hidden */
-.dropdown-content
-{
-   display:            none;
-   position:           absolute;
-   background-color:   #f9f9f9;
-   min-width:          160px;
-   box-shadow:         0px 8px 16px 0px rgba(0,0,0,0.2);
-   z-index:            1;
-}
-/* Links in dropdown */
-.dropdown-content a
-{
-   color:              #000000;
-   padding:            12px 16px;
-   text-decoration:    none;
-   display:            block;
-}
-/* Change color of links on hover */
-.dropdown-content a:hover
-{
-   background-color:   #f1f1f1;
-}
-/*Show dropdown on hover */
-.dropdown:hover .dropdown-content
-{
-   display:            block;
-}
-/*Change color of button during dropdown */
-.dropdown:hover .productbtn
-{
-   background-color:   #f1f1f1;
-   color:              #000000;
-}
-/* site navigation bar */
-nav.sitenavigation {
-   color: #34180f;
-   text-align: center;
-   background-color: rgb(81, 112, 160);
-}
-nav.sitenavigation p {
-
-   margin: 0.4em 0.7em;
-   padding: 2px 50px;
-   display: inline-block;
-}
-nav.sitenavigation a:link {
-   text-decoration: none;
-   color: white;
-}
-nav.sitenavigation a:visited {
-   color: #744f42;
-}
-nav.sitenavigation a:hover, nav.sitenavigation a:focus {
-   color: ivory;
 }
