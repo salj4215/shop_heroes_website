@@ -44,7 +44,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
         }
     }
     if($errorRepeat == false) {
-       // $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
+        $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
         $stmt = $pdo->prepare($qry);
         echo "CREATED USER... HELLO " . $user ;
         //add session sign in
