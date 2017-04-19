@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Created by PhpStorm.
  * User: Sal
@@ -16,15 +17,14 @@ $opt =
     ];
 $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
-require ('header.html');
+require ('header.php');
 
-session_status();
-$error = false;
+
+$errorRepeat = false;
 //SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 {
-
-    $user = $_POST['myusername'];
+    $user = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
     // VALIDATE DATA
 
@@ -35,24 +35,56 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     $stmt = $pdo -> query( $qry );
     while($row = $stmt->fetch())
     {   //vaildate if user already has an account
-        if($user == $row['Username']) {
-            echo $row['Username'];
-            $error = true;
+//        echo $row['Username'];
+//        echo "<br>";
+        if($user == $row['Username'])
+        {
+            $errorRepeat = true;
             break;
-            
         }
-        die;
     }
-    if($error == false) {
-        $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
+    if($errorRepeat == false) {
+       // $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
         $stmt = $pdo->prepare($qry);
-        echo "CREATED USER: " . $user ;
+        echo "CREATED USER... HELLO " . $user ;
+        //add session sign in
+        $_SESSION["activeUser"]= $user;
+        header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
     }
-    if($error == true) {
-        echo "That username already has an account";
+    if($errorRepeat == true) {
+        echo "That Username already has an account";
     }
 }
-    
+//log in
+if( isset( $_POST['action'] ) && $_POST['action'] == 'login')
+{
+    $user = $_POST['userEmail'];
+    $pass = $_POST['mypassword'];
+    // VALIDATE DATA
+
+//encrpt
+    $pass = hash("SHA512", $pass, false);
+
+    $qry =  "SELECT * FROM USERS WHERE Username='$user'";
+    $stmt = $pdo -> query( $qry );
+    while($row = $stmt->fetch())
+    {
+        if($pass == $row['Password'])
+        {
+            //correct password in found username
+            echo "Welcome " . $row['Password'];
+            $_SESSION["activeUser"]= $row['Username'];
+            header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
+        }
+        else
+        {
+            //password did not match
+            echo "Incorrect Password Try again";
+            header('Location: https://beta.cis220.hfcc.edu/index.php?page=login');
+        }
+    }
+}
+
 if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
     require ('aboutus.html'); //about us page
 else if(isset($_GET['page']) && $_GET['page'] == 'contact')
@@ -67,6 +99,10 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
     require ('createAccount.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
     require ('main_login.html');
+elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
+    session_unset();
+    header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
+}
 else
     require ('HomeSH.html');
 
