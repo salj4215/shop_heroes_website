@@ -108,6 +108,70 @@ footer {
 /* Ending of file goes below here with the other stuffs Define how you want the page to look below */
 
 /************************************** Below here is all responsive design and print screen stuff. *******************************/
+
+/* small screen styles */
+@media screen and (min-width: 200px)
+{
+	article
+	{
+		margin: 2% 25% 2% 2%;
+	}
+	table.search {
+		left:auto;
+		right:0;
+		top:10;
+	}
+	ul.signup li
+{
+			left:45px;
+		right:1px;
+		top:10;
+}
+		ul.login li
+{
+			left:0;
+		right:150px;
+		top:10;
+}
+}
+
+@media screen and (min-width: 1060px)
+{
+		table.search {
+		left:auto;
+		right:0;
+		top:300px;
+	}
+	ul.signup li
+{
+		left:45px;
+		right:1px;
+		top:400px;
+}
+		ul.login li
+{
+			left:0;
+		right:150px;
+		top:400px;
+}
+	/*article div 
+	{
+		width: 1260px; /* 1400x90% 
+	}*/
+}
+/* Small Screen styles */
+@media screen and (max-width: 460px) 
+{
+
+	nav.sitenavigation li , article,body, table , form, ul 
+	{
+	left: auto;
+	right: 0;
+	}
+
+div.img {
+	display:none;
+}
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
 	table.search {
@@ -138,13 +202,13 @@ footer {
 	}
 	ul.signup li
 {
-			left:45px;
+		left:45px;
 		right:1px;
 		top:400px;
 }
 		ul.login li
 {
-			left:0;
+		left:0;
 		right:150px;
 		top:400px;
 }
