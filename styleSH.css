@@ -34,8 +34,8 @@ background-color:#595959;
 /* search bar */
 table.search {
 	position:absolute;
- left:500px;
- top:20px;
+ left:400px;
+ top:10px;
    color: black;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
@@ -65,8 +65,8 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 220px;
-	height: 25px;
+	width: 210px;
+	height: 30px;
 	background-color:  #00264d; 
 	margin: auto;
 		font-size:16px;
