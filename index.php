@@ -7,7 +7,19 @@ session_start();
  * Time: 9:11 PM
  */
 require_once("connect_db.php");
-
+//check if there are messages if, not declare
+if(!(isset($_SESSION['messages']))){
+$_SESSION['messages'] = array('');
+$_SESSION['announcements'] = 0;
+}
+else if((isset($_SESSION['messages'])) && (count($_SESSION['messages']) > 1 )){
+    $_SESSION['announcements'] += 1;
+//count amount of times messages were declared
+    if ($_SESSION['announcements'] > 1) {
+        session_unset('messages');
+        session_unset('announcements');
+    }
+}
 $charset = 'utf8';
 $dsn = "mysql:host=".HOST.";dbname=".DB.";charset=$charset";
 $opt =
@@ -16,9 +28,6 @@ $opt =
         PDO::ATTR_EMULATE_PREPARES => false,
     ];
 $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
-
-require ('header.php');
-
 
 $errorRepeat = false;
 //SIGN UP NEW USER
@@ -46,13 +55,15 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     if($errorRepeat == false) {
         $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
         $stmt = $pdo->prepare($qry);
-        echo "CREATED USER... HELLO " . $user ;
+        //echo "CREATED USER... HELLO " . $user ;
+        array_push($_SESSION['messages'], "Created new User....", "Hello $user");
         //add session sign in
         $_SESSION["activeUser"]= $user;
-        header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
+        header('Location: index.php?page=home');
     }
     if($errorRepeat == true) {
-        echo "That Username already has an account";
+        //echo "That Username already has an account";
+        array_push($_SESSION['messages'],"That Username already has an account");
     }
 }
 //log in
@@ -74,14 +85,28 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login')
             //correct password in found username
             echo "Welcome " . $row['Password'];
             $_SESSION["activeUser"]= $row['Username'];
-            header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
+            header('Location: index.php?page=home');
         }
         else
         {
             //password did not match
-            echo "Incorrect Password Try again";
-            header('Location: https://beta.cis220.hfcc.edu/index.php?page=login');
+            //echo "Incorrect Password Try again";
+            array_push($_SESSION['messages'],"Incorrect Password Try again");
+            header('Location: index.php?page=login');
         }
+    }
+}
+
+require ('header.php');
+print "|||||||||||||||";
+print_r($_SESSION);
+print "|||||||||||||||";
+//print_r($_SESSION['messages']);
+//var_dump($_SESSION['messages']);
+//if statement1 global for all pages and all messages to be printed
+if( isset( $_SESSION['messages']) && (count($_SESSION['messages']) > 1 )) {
+    foreach ($_SESSION['messages'] as $message) {
+        echo $message . "<br>";
     }
 }
 
@@ -101,7 +126,7 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'login')
     require ('main_login.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     session_unset();
-    header('Location: https://beta.cis220.hfcc.edu/index.php?page=home');
+    header('Location: index.php?page=home');
 }
 else
     require ('HomeSH.html');
