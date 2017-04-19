@@ -1,4 +1,6 @@
-<?php//set store to blank
+<?php
+session_start();
+//set store to blank
 if(! isset($_GET['store']))
     $store = "";
 else
@@ -7,6 +9,8 @@ if(! isset($_GET['category']))
     $category = "";
 else
     $category = $_GET['category'];
+$_SESSION["store"] = $store;
+$_SESSION["category"] = $category;
 ?>
 <div id="prod_navigation">
     <!--store filter -->
@@ -32,24 +36,24 @@ else
 
     <?php
     //to select store choice.
-    if(isset($_GET['store']) && $_GET['store'] == 'Kroger')
+    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
         $storeWHERE=" WHERE STORES.StoreID = '1'";
-    elseif(isset($_GET['store']) && $_GET['store'] == 'Meijer')
+    elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
         $storeWHERE=" WHERE STORES.StoreID = '2'";
     else
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
 
     //to redirect the qry with category seelction
-    if(isset($_GET['category']) && $_GET['category'] == 'produce')
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Produce'";
-    elseif(isset($_GET['category']) && $_GET['category'] == 'snacks')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"]] == 'snacks')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Snacks'";
-    elseif(isset($_GET['category']) && $_GET['category'] == 'cereal')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'cereal')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Cereal'";
-    elseif(isset($_GET['category']) && $_GET['category'] == 'chips')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'chips')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Chips'";
-    elseif(isset($_GET['category']) && $_GET['category'] == 'dairy')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"]] == 'dairy')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Dairy'";
     else
         $categoryWHERE="";
