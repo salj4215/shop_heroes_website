@@ -1,6 +1,7 @@
 html {
    font-size:16px;
 }
+
 /*  resizes nav bar and all borders */
 * {
     box-sizing: border-box;
@@ -66,7 +67,7 @@ ul li a{
 ul li{
 	float: left;
 	width: 220px;
-	height: 25px;
+	height: 35px;
 	background-color:  #00264d; 
 	margin: auto;
 		font-size:16px;
@@ -90,8 +91,20 @@ ul li:hover ul li{
 }
 
 /* Body footer and article stuff goes below here */
-
-
+body,h1,h2,h3,p {
+   
+   font-family: Bitter, "Times New Roman", Times, serif;
+}
+/* footer section */
+footer {
+   padding: 0.6em;
+   background-color:rgb(81, 112, 160);
+   color: ivory;
+   text-align: center;
+}
+.accent {
+   font-weight: bold;
+}
 
 /* Ending of file goes below here with the other stuffs Define how you want the page to look below */
 
@@ -136,4 +149,62 @@ ul li:hover ul li{
 		right:150px;
 		top:400px;
 }
+}
+
+#prod_navigation
+{
+   margin:             0 auto;
+   width:              75%;
+   background-color:   #000000;
+}
+
+/* Dropdown button */
+.productbtn
+{
+   background-color:   #000000;
+   color:              #ffffff;
+   padding:            16px 32px;
+   font-size:          16px;
+   border:             none;
+   cursor:             pointer;
+}
+/* Container for dropdown */
+.dropdown
+{
+   position:           relative;
+   display:            inline-block;
+}
+/* Dropdown content - hidden */
+.dropdown-content
+{
+   display:            none;
+   position:           absolute;
+   background-color:   #f9f9f9;
+   min-width:          160px;
+   box-shadow:         0px 8px 16px 0px rgba(0,0,0,0.2);
+   z-index:            1;
+}
+/* Links in dropdown */
+.dropdown-content a
+{
+   color:              #000000;
+   padding:            12px 16px;
+   text-decoration:    none;
+   display:            block;
+}
+/* Change color of links on hover */
+.dropdown-content a:hover
+{
+   background-color:   #f1f1f1;
+}
+/*Show dropdown on hover */
+.dropdown:hover .dropdown-content
+{
+   display:            block;
+}
+/*Change color of button during dropdown */
+.dropdown:hover .productbtn
+{
+   background-color:   #f1f1f1;
+   color:              #000000;
 }
