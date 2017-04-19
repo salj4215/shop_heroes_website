@@ -95,7 +95,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         }
     }
 }
-require ('header.html');
+require ('header.phtml');
 //test vairables
 if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
 var_dump($_POST['myusername']);
