@@ -54,7 +54,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 //encrpt
     $pass = hash("SHA512", $pass, false);
 
-    $qry = "Select * from `USERS`";
+    $qry = "Select Username from `USERS`";
     $stmt = $pdo -> query( $qry );
     while($row = $stmt->fetch())
     {   //vaildate if user already has an account
@@ -68,9 +68,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     }
     if($errorRepeat == false && $vaildationError == false) {
         $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
-        $sql = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
+
         print "<br>" . $qry;
         $stmt = $pdo->prepare($qry);
+        $stmt -> execute( $stmt );
         //echo "CREATED USER... HELLO " . $user ;
         array_push($_SESSION['messages'], "Created new User....", "Hello $user");
         //add session sign in
