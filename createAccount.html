@@ -6,48 +6,13 @@
 		<meta name="description" content="Sign up Form">
 			<title>Create Account</title>
 			
-			<script>
-				function validateForm() 
-				{
-//					var inputUser  = document.forms["signUp"]["myusername"].value;
-					var inputEmail  = document.forms["signUp"]["userEmail"].value;
-					var inputPass  = document.forms["signUp"]["mypassword"].value;
-					var inputPass2 = documents.forms["signUp"]["checkpassword"].value;
-				
-					if (inputUser == "") 
-					{
-						alert("Name must be filled out");
-					}
-					return false;
-				
-					if (inputEmail == "")
-					{
-						alert("Need a valid email");
-					}
-					return false;
-					
-					if(inputPass.length < 8 )
-					{
-						alert("Password must be at least 8 characters");
-					}
-					return false;
-					
-					if(checkpassword != inputPass)
-					{
-						alert("Passwords do not match");
-					}
-					return false;
-				}
-			</script>
-
-
-
+			
 	</head>
 
 	<body>
 		<table width="325" border="3" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 			<tr>
-				<form name="signUp" action="index.php"	method="POST">
+				<form name="signUp" action="/action_page_post.php"	onsubmit="return validateForm()" method="post">
 					<td>
 			
 						<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
@@ -55,13 +20,13 @@
 								<td colspan="3"><strong>Create account</strong> </td> 
 							</tr>
 				
-							<!--<tr> -->
-								<!--<td width="78">Username</td><td width="6">:</td> -->
-								<!--<td width="294"><input name="myusername" type="text" id="myusername"></td> -->
-							<!--</tr>-->
-				<!---->
+							<tr> 
+								<td width="78">Username</td><td width="6">:</td> 
+								<td width="294"><input name="myusername" type="text" id="myusername"></td> 
+							</tr>
+				
 							<tr>
-								<td width="78">Email</td><td witdh=6:>:</td>
+								<td width"78">Email</td><td width="6">:</td>
 								<td width="294"><input name="userEmail" type="text" id="userEmail"></td>
 							</tr>
 					
@@ -72,10 +37,28 @@
 							<tr>
 								<td>Confirm Password</td><td>:</td><td><input name="checkpassword" type="text" id="checkpassword"></td>
 							</tr>
+							<tr>
+								<td>First Name</td><td>:</td><td><input name="firstname" type="text" id="firstname"></td>
+							</tr>
+							<tr>
+								<td>Last Name</td><td>:</td><td><input name="lastname" type="text" id="lastname"></td>
+							</tr>
+							<tr>
+								<td>Street Address</td><td>:</td><td><input name="myaddress" type="text" id="myaddress"></td>
+							</tr>
+							<tr>
+								<td>City</td><td>:</td><td><input name="mycity" type="text" id="mycity"></td>
+							</tr>
+							<tr>
+								<td>Zip Code</td><td>:</td><td><input name="myzip" type="text" id="myzip"></td>
+							</tr>
+							<tr>
+								<td>Phone Number</td><td>:</td><td><input name="phonenumber" type="text" id="phonenumber"></td>
+							</tr>
 						</table>
 						<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 							<tr>
-								<input type="hidden" name="action" value="signup">
+									<input type="hidden" name="action" value="signup">
 								<td><input type="submit" style= "text-align:center;" value="Create Account"></td>
 								<td><a href="index.php?page=login">Have an account?</a></td>
 							</tr>
