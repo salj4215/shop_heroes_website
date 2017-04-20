@@ -29,10 +29,11 @@ $opt =
     ];
 $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
-$errorRepeat = false;
-$vaildationError = false;
-//SIGN UP NEW USER OR UPDATE USER
+
+//SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
+    $errorRepeat = false;
+    $vaildationError = false;
     $userEmail = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
     $cpass = $_POST['checkpassword'];
@@ -126,7 +127,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
             $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
             $_SESSION['activeCustLastN'] = $pulledCustLastN;
             $CapsName = strtoupper($pulledCustFirstN);
-            array_push($_SESSION['messages'], "Created new User.... $userEmail", "HELLO $CapsName");
+            array_push($_SESSION['messages'], "Created new User.... $userEmail", "HELLO  $CapsName");
             //header('Location: index.php?page=home');
     }
     if ($errorRepeat) {
@@ -145,10 +146,9 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $userEmail = $_POST['myusername'];
     $pass = $_POST['mypassword'];
 
-    // VALIDATE DATA
-
 //encrpt
     $pass = hash("SHA512", $pass, false);
+
     $emailMatch = false;
     $pulledUser = "false99999999999999";    //set default for error of fetching
     $pulledPass = "false99999999999999";
@@ -173,7 +173,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
         $_SESSION['activeCustLastN'] = $pulledCustLastN;
         $CapsName = strtoupper($pulledCustFirstN);
-        array_push($_SESSION['messages'], "<strong>WELCOME $CapsName!</strong>");
+        array_push($_SESSION['messages'], "<strong>Welcome  $CapsName!</strong>");
     }
     if( $pass != $pulledPass && ($emailMatch))
     {
@@ -190,12 +190,121 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
          header('Location: index.php?page=login');
      }
 }
+
+//UPDATE USER
+if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
+    $errorRepeat = false;
+    $vaildationError = false;
+    $activeUserID = $_SESSION['activeUserID'];
+    $userEmail = $_POST['userEmail'];
+    $pass = $_POST['mypassword'];
+    $cpass = $_POST['checkpassword'];
+    $fname = $_POST['firstname'];
+    $lname = $_POST['lastname'];
+    $addr = $_POST['myaddress'];
+    $city = $_POST['mycity'];
+    $zip = $_POST['myzip'];
+    $phone = $_POST['phonenumber'];
+    // VALIDATE DATA
+    //if password less than 8
+    if (strlen($pass) < 8) {
+        array_push($_SESSION['messages'], "Password must have at least 8 characters!");
+        $vaildationError = true;
+    }
+    if($cpass != $pass)
+    {
+        array_push($_SESSION['messages'], "Confirm Password does not match password");
+        $vaildationError = true;
+    }
+    if (strlen($zip) < 5) {
+        array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
+        $vaildationError = true;
+    }
+    if (strlen($phone) < 9) {
+        array_push($_SESSION['messages'], "Please enter a full 9 or 10 digit phone number with no extra characters.");
+        $vaildationError = true;
+    }
+    if (empty($fname) || empty($lname) || empty($pass) || empty($cpass) || empty($userEmail) || empty($zip) || empty($city) || empty($phone)) {
+        echo "Please make sure no fields are left blank.";
+    }
+    //if username is NOT vaild email
+    if (!(filter_var($userEmail, FILTER_VALIDATE_EMAIL))) {
+        //Email is bad
+        array_push($_SESSION['messages'], "Username must be a vaild Email!");
+        $vaildationError = true;
+    }
+//encrpt
+    $pass = hash("SHA512", $pass, false);
+//query to pull all usernames to check
+    $qry = "Select Username FROM `USERS` WHERE UserID NOT LIKE '$activeUserID'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {   //vaildate if user already has an account
+        if ($userEmail == $row['Username']) {
+            $errorRepeat = true;
+            break;
+        }
+    }
+    if ($errorRepeat == false && $vaildationError == false) {
+        //////////////////now update customer portion
+        $qry = "UPDATE CUSTOMERS SET `CustFirstN`= :cfn, `CustLastN`=:cln, `CustAddress`=:ca, `CustCity`=:cc, `CustZip`=:cz, `CustPhone`=:cp WHERE UserID='$activeUserID' ";
+        $stmt = $pdo->prepare($qry);
+        $params = array
+        (
+            ':cfn' => $fname,':cln' =>$lname,':ca' =>$addr,':cc' =>$city,':cz' => $zip,':cp' => $phone
+        );
+        $stmt->execute($params);
+        //////now update the User portion
+        $qry = "UPDATE USERS SET `Username`= :us, `Password`=:pss WHERE UserID='$activeUserID' ";
+        $stmt = $pdo->prepare($qry);
+        $params = array
+        (
+            ':us' => $userEmail, ':pss' => $pass
+        );
+        $stmt->execute($params);
+        ///////////////now linked customer to user, through UserID
+        //add session sign in
+        $_SESSION["activeUser"] = $userEmail;
+///// pull all new data for session.
+        $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE Username='$userEmail'";
+        $stmt = $pdo->query($qry);
+        while ($row = $stmt->fetch()) {
+            $emailMatch = true;
+            $pulledUser= $row['Username'];
+            $pulledPass= $row['Password'];
+            $pulledUserID = $row['UserID'];
+            $pulledCustID = $row['CustID'];
+            $pulledCustFirstN = $row['CustFirstN'];
+            $pulledCustLastN = $row['CustLastN'];
+        }
+        //correct password in found username
+        $_SESSION['activeUser'] = $pulledUser;
+        $_SESSION['activeUserID'] = $pulledUserID;
+        $_SESSION['activeCustID'] = $pulledCustID;
+        $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
+        $_SESSION['activeCustLastN'] = $pulledCustLastN;
+        $CapsName = strtoupper($pulledCustFirstN);
+        array_push($_SESSION['messages'], "Updated User.... $pulledUserID", "<strong>Hello  $CapsName!</strong>");
+        //header('Location: index.php?page=home');
+    }
+    if ($errorRepeat) {
+        //echo "That Username already has an account";
+        array_push($_SESSION['messages'], "That UserEmail is already in use.");
+        $_SESSION['announcements'] = -1;
+        header('Location: index.php?page=signup');
+    }
+    if ($vaildationError) {//there was an input error
+        $_SESSION['announcements'] = -1;
+        header('Location: index.php?page=signup');
+    }
+}
+
 //HEADER OF PAGES
 require ('header.phtml');
 
-print "|||||||||||||||";
-print_r($_SESSION);
-print "|||||||||||||||";
+//print "|||||||||||||||";
+//print_r($_SESSION);
+//print "|||||||||||||||";
+
 //print_r($_SESSION['messages']);
 //var_dump($_SESSION['messages']);
 //if statement1 global for all pages and all messages to be printed
@@ -219,6 +328,8 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
     require ('createAccount.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
     require ('main_login.html');
+elseif (isset($_GET['page']) && $_GET['page'] == 'updateUserInfo')
+    require ('updateUserInfo.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     session_unset();
     header('Location: index.php?page=home');
