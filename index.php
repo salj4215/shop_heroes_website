@@ -30,12 +30,26 @@ $opt =
 $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
 $errorRepeat = false;
+$vaildationError = false;
 //SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 {
     $user = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
     // VALIDATE DATA
+    //if password less than 8
+    if(strlen($pass) < 8) {
+        array_push($_SESSION['messages'], "Password must have at least 8 characters!");
+        $vaildationError = true;
+    }
+    //if username is NOT vaild email
+    if(!(filter_var($user, FILTER_VALIDATE_EMAIL))){
+        //Email is bad
+        array_push($_SESSION['messages'], "Username must be a vaild Email!");
+        $vaildationError = true;
+    }
+
+
 
 //encrpt
     $pass = hash("SHA512", $pass, false);
@@ -44,22 +58,23 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     $stmt = $pdo -> query( $qry );
     while($row = $stmt->fetch())
     {   //vaildate if user already has an account
-//        echo $row['Username'];
-//        echo "<br>";
+       echo $row['Username'];
+        echo "<br>";
         if($user == $row['Username'])
         {
             $errorRepeat = true;
             break;
         }
     }
-    if($errorRepeat == false) {
+    if($errorRepeat == false && $vaildationError == false) {
         $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
+        print "<br>" . $qry;
         $stmt = $pdo->prepare($qry);
         //echo "CREATED USER... HELLO " . $user ;
         array_push($_SESSION['messages'], "Created new User....", "Hello $user");
         //add session sign in
         $_SESSION["activeUser"]= $user;
-        header('Location: index.php?page=home');
+        //header('Location: index.php?page=home');
     }
     if($errorRepeat == true) {
         //echo "That Username already has an account";
