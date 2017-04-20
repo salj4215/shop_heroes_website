@@ -49,13 +49,13 @@ var_dump($_SESSION["category"]);
     //to redirect the qry with category seelction
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Produce'";
-    elseif(isset($_SESSION["category"]) && $_SESSION["category"]] == 'snacks')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Snacks'";
     elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'cereal')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Cereal'";
     elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'chips')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Chips'";
-    elseif(isset($_SESSION["category"]) && $_SESSION["category"]] == 'dairy')
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'dairy')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Dairy'";
     else
         $categoryWHERE="";
