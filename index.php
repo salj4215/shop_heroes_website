@@ -31,7 +31,7 @@ $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 
 $errorRepeat = false;
 $vaildationError = false;
-//SIGN UP NEW USER
+//SIGN UP NEW USER OR UPDATE USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
     $userEmail = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
@@ -72,7 +72,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
     }
 //encrpt
     $pass = hash("SHA512", $pass, false);
-
+//query to pull all usernames to check
     $qry = "Select Username FROM `USERS`";
     $stmt = $pdo->query($qry);
     while ($row = $stmt->fetch()) {   //vaildate if user already has an account
@@ -105,10 +105,29 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
         );
         $stmt->execute($params);
         ///////////////now linked customer to user, through UserID
-        array_push($_SESSION['messages'], "Created new User....", "Hello $userEmail");
         //add session sign in
         $_SESSION["activeUser"] = $userEmail;
-        //header('Location: index.php?page=home');
+///// pull all new data for session.
+        $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE Username='$userEmail'";
+        $stmt = $pdo->query($qry);
+        while ($row = $stmt->fetch()) {
+            $emailMatch = true;
+            $pulledUser= $row['Username'];
+            $pulledPass= $row['Password'];
+            $pulledUserID = $row['UserID'];
+            $pulledCustID = $row['CustID'];
+            $pulledCustFirstN = $row['CustFirstN'];
+            $pulledCustLastN = $row['CustLastN'];
+        }
+            //correct password in found username
+            $_SESSION['activeUser'] = $pulledUser;
+            $_SESSION['activeUserID'] = $pulledUserID;
+            $_SESSION['activeCustID'] = $pulledCustID;
+            $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
+            $_SESSION['activeCustLastN'] = $pulledCustLastN;
+            $CapsName = strtoupper($pulledCustFirstN);
+            array_push($_SESSION['messages'], "Created new User.... $userEmail", "HELLO $CapsName");
+            //header('Location: index.php?page=home');
     }
     if ($errorRepeat) {
         //echo "That Username already has an account";
