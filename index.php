@@ -48,6 +48,11 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
         array_push($_SESSION['messages'], "Password must have at least 8 characters!");
         $vaildationError = true;
     }
+    if($cpass != $pass)
+    {
+        array_push($_SESSION['messages'], "Confirm Password does not match password");
+        $vaildationError = true;
+    }
     if (strlen($zip) < 5) {
         array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
         $vaildationError = true;
@@ -68,7 +73,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
 //encrpt
     $pass = hash("SHA512", $pass, false);
 
-    $qry = "Select Username from `USERS`";
+    $qry = "Select Username FROM `USERS`";
     $stmt = $pdo->query($qry);
     while ($row = $stmt->fetch()) {   //vaildate if user already has an account
         if ($userEmail == $row['Username']) {
@@ -81,12 +86,25 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
         $stmt = $pdo->prepare($qry);
         $params = array
         (
-            ':em' => $userEmail, ':pw' => $pass,
+            ':em' => $userEmail,':pw' => $pass
         );
         $stmt->execute($params);
-        //$uid = $pdo -> lastInsertId(  );
-        /////////////////////////////////////////////////////////////////////////
-        //echo "CREATED USER... HELLO " . $userEmail ;
+        //check new assinged userID
+        $qry = "Select * FROM `USERS` WHERE `Username` = '$userEmail'";
+        $stmt = $pdo->query($qry);
+        while ($row = $stmt->fetch()) {   //vaildate if user already has an account
+            $pulledUserID= $row['UserID'];
+        }
+        ///////////////////////now use userID to link to customerID
+        $qry = "INSERT INTO `CUSTOMERS`(`UserId`, `CustFirstN`, `CustLastN`, `CustAddress`, `CustCity`, `CustZip`, `CustPhone`)
+              VALUES (:ui,:cfn,:cln,:ca,:cc,:cz,:cp)";
+        $stmt = $pdo->prepare($qry);
+        $params = array
+        (
+            ':ui' => $pulledUserID,':cfn' => $fname,':cln' =>$lname,':ca' =>$addr,':cc' =>$city,':cz' => $zip,':cp' => $phone
+        );
+        $stmt->execute($params);
+        ///////////////now linked customer to user, through UserID
         array_push($_SESSION['messages'], "Created new User....", "Hello $userEmail");
         //add session sign in
         $_SESSION["activeUser"] = $userEmail;
@@ -95,11 +113,11 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
     if ($errorRepeat) {
         //echo "That Username already has an account";
         array_push($_SESSION['messages'], "That Username already has an account");
-        $_SESSION['announcements'] = 0;
+        $_SESSION['announcements'] = -1;
         header('Location: index.php?page=signup');
     }
     if ($vaildationError) {//there was an input error
-        $_SESSION['announcements'] = 0;
+        $_SESSION['announcements'] = -1;
         header('Location: index.php?page=signup');
     }
 }
@@ -107,6 +125,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
 if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $userEmail = $_POST['myusername'];
     $pass = $_POST['mypassword'];
+
     // VALIDATE DATA
 
 //encrpt
@@ -114,30 +133,41 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $emailMatch = false;
     $pulledUser = "false99999999999999";    //set default for error of fetching
     $pulledPass = "false99999999999999";
-    $qry = "SELECT * FROM USERS WHERE Username='$userEmail'";
+    $pulledUserID = "false9999999999999";
+//    $qry = "SELECT * FROM USERS WHERE Username='$userEmail'";
+    $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE Username='$userEmail'";
     $stmt = $pdo->query($qry);
     while ($row = $stmt->fetch()) {
         $emailMatch = true;
         $pulledUser= $row['Username'];
         $pulledPass= $row['Password'];
+        $pulledUserID = $row['UserID'];
+        $pulledCustID = $row['CustID'];
+        $pulledCustFirstN = $row['CustFirstN'];
+        $pulledCustLastN = $row['CustLastN'];
     }
     if ($pass == $pulledPass && ($emailMatch)) {
        //correct password in found username
-        array_push($_SESSION['messages'], "Welcome $userEmail");
-        $_SESSION["activeUser"] = $pulledUser;
+        $_SESSION['activeUser'] = $pulledUser;
+        $_SESSION['activeUserID'] = $pulledUserID;
+        $_SESSION['activeCustID'] = $pulledCustID;
+        $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
+        $_SESSION['activeCustLastN'] = $pulledCustLastN;
+        $CapsName = strtoupper($pulledCustFirstN);
+        array_push($_SESSION['messages'], "<strong>WELCOME $CapsName!</strong>");
     }
     if( $pass != $pulledPass && ($emailMatch))
     {
          //password did not match
         //echo "Incorrect Password Try again";
         array_push($_SESSION['messages'], "Incorrect Password, Try again");
-        $_SESSION['announcements'] = 0;
+        $_SESSION['announcements'] = -1;
         header('Location: index.php?page=login');
      }
      if(!$emailMatch)
      {
          array_push($_SESSION['messages'], "No such Account Exists");
-         $_SESSION['announcements'] = 0;
+         $_SESSION['announcements'] = -1;
          header('Location: index.php?page=login');
      }
 }
