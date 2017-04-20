@@ -19,8 +19,11 @@ var_dump($_SESSION["category"]);
     <div class="dropdown"> <!-- drop-down button -->
         <button class="productbtn">STORES</button>
         <div class="dropdown-content">
-            <a href="index.php?page=order&store=Kroger&category=<?php print $category;?>">Kroger</a>
+            <a href="index.php?page=order&store=Kroger&category=<?php print $category;?>">Kroger</a> 
+			<input type="radio" name="stores"  href="index.php?page=order&store=Kroger&category=<?php print $category;?>>
+			<input type="radio" name="stores" >
             <a href="index.php?page=order&store=Meijer&category=<?php print $category;?>">Meijer</a>
+
         </div>
     <!--category filter -->
     <!-- drop-down button -->

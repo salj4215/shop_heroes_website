@@ -6,7 +6,7 @@
 		<meta name="description" content="Sign up Form">
 			<title>Create Account</title>
 			
-			
+
 	</head>
 
 	<body>
@@ -50,17 +50,17 @@
 								<td>City</td><td>:</td><td><input name="mycity" type="text" id="mycity"></td>
 							</tr>
 							<tr>
-								<td>Zip Code</td><td>:</td><td><input name="myzip" type="text" id="myzip"></td>
+								<td>Zip Code</td><td>:</td><td><input name="myzip" maxlength = "5" type="text" id="myzip"></td>
 							</tr>
 							<tr>
-								<td>Phone Number</td><td>:</td><td><input name="phonenumber" type="text" id="phonenumber"></td>
+								<td>Phone Number</td><td>:</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber"></td>
 							</tr>
 						</table>
 						<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 							<tr>
-									<input type="hidden" name="action" value="signup">
-								<td><input type="submit" style= "text-align:center;" value="Create Account"></td>
-								<td><a href="index.php?page=login">Have an account?</a></td>
+								<input type="hidden" name="action" value="signup">
+								<td><input type="submit" name="Submit" value="Create account"></td>
+								<td><a href="index.php?page=login">Have an account?</a></td>								
 							</tr>
 						</table>
 					</td>
