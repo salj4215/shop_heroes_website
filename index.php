@@ -34,16 +34,42 @@ $vaildationError = false;
 //SIGN UP NEW USER
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 {
-    $user = $_POST['userEmail'];
+	$user = $_POST['myusername'];
+    $email = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
+	$cpass = $_POST['checkpassword'];
+	$fname = $_POST['firstname'];
+	$lname = $_POST['lastname'];
+	$addr = $_POST['myaddress'];
+	$city = $_POST['mycity'];
+	$zip = $_POST['myzip'];
+	$phone = $_POST['phonenumber'];
     // VALIDATE DATA
     //if password less than 8
     if(strlen($pass) < 8) {
         array_push($_SESSION['messages'], "Password must have at least 8 characters!");
         $vaildationError = true;
+	
+        $vaildationError = true;
     }
+	if(strlen($zip) < 5) {
+        array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
+        $vaildationError = true;
+	
+        $vaildationError = true;
+    }
+	if(strlen($phone) < 9) {
+        array_push($_SESSION['messages'], "Please enter a full 9 or 10 digit phone number with no extra characters.");
+        $vaildationError = true;
+	
+        $vaildationError = true;
+    }
+	if(empty($fname) || empty($lname) || empty($user) || empty($pass) || empty($cpass) || empty($email) || empty($zip) || empty($city) || empty($phone))
+{
+    echo "Please make sure no fields are left blank.";
+}
     //if username is NOT vaild email
-    if(!(filter_var($user, FILTER_VALIDATE_EMAIL))){
+    if(!(filter_var($email, FILTER_VALIDATE_EMAIL))){
         //Email is bad
         array_push($_SESSION['messages'], "Username must be a vaild Email!");
         $vaildationError = true;
@@ -54,7 +80,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
 //encrpt
     $pass = hash("SHA512", $pass, false);
 
-    $qry = "Select * from `USERS`";
+    $qry = "Select Username from `USERS`";
     $stmt = $pdo -> query( $qry );
     while($row = $stmt->fetch())
     {   //vaildate if user already has an account
@@ -68,7 +94,6 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup')
     }
     if($errorRepeat == false && $vaildationError == false) {
         $qry = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
-        $sql = "INSERT INTO USERS (Username, Password)VALUES('$user','$pass')";
         print "<br>" . $qry;
         $stmt = $pdo->prepare($qry);
         //echo "CREATED USER... HELLO " . $user ;
