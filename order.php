@@ -1,7 +1,7 @@
 <?php
 session_start();
 //set store to blank
-if(! isset($_GET['store']) && !isset($_SESSION["store"])
+if(! isset($_GET['store']) && !isset($_SESSION["store"]))
     $store = "";
 else
     $store = $_GET['store'];
