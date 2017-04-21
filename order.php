@@ -1,44 +1,40 @@
 <?php
-session_start();
-//set store to blank
-if(! isset($_GET['store']) && !isset($_SESSION["store"]))
-    $store = "";
-else
-    $store = $_GET['store'];
-if(! isset($_GET['category']) && !isset($_SESSION["category"]))
-    $category = "";
-else
-    $category = $_GET['category'];
-$_SESSION["store"] = $store;
-$_SESSION["category"] = $category;
-var_dump($_SESSION["store"]);
-var_dump($_SESSION["category"]);
+//session_start();
+//if Get store  or if not set
+if(!isset($_SESSION['store']))
+    $_SESSION['store']= '';
+if(isset($_GET['store'])) {
+    $_SESSION['store'] = $_GET['store'];
+    $_SESSION['category']= '';
+}
+//if GET category or if not set,
+if(!isset($_SESSION['category']))
+    $_SESSION['category']= '';
+if(isset($_GET['category']))
+    $_SESSION['category']= $_GET['category'];
+
+//add to cart           as string
+if(isset($_GET['pid']) && $_GET['pid'] != "0") {
+$productIDtoBEaddedTOcart = $_GET['pid'];
+}
+
+//print "Store: " . var_dump($_SESSION["store"]);
+//print "Category: " . var_dump($_SESSION["category"]);
 ?>
-<div id="prod_navigation">
-    <!--store filter -->
-    <div class="dropdown"> <!-- drop-down button -->
-        <button class="productbtn">STORES</button>
-        <div class="dropdown-content">
-            <a href="index.php?page=order&store=Kroger&category=<?php print $category;?>">Kroger</a> 
-			<input type="radio" name="stores"  href="index.php?page=order&store=Kroger&category=<?php print $category;?>>
-			<input type="radio" name="stores" >
-            <a href="index.php?page=order&store=Meijer&category=<?php print $category;?>">Meijer</a>
-
-        </div>
-    <!--category filter -->
-    <!-- drop-down button -->
-        <button class="productbtn">Products</button>
-        <div class="dropdown-content">
-            <a href="index.php?page=order&store=/<?php print $store;?>&category=produce">Produce</a>
-            <a href="index.php?page=order&store=<?php print $store;?>&category=snacks"">Snacks</a>
-            <a href="index.php?page=order&store=<?php print $store;?>&category=cereal"">Cereal</a>
-            <a href="index.php?page=order&store=<?php print $store;?>&category=chips"">Chips</a>
-			<a href="index.php?page=order&store=<?php print $store;?>&category=dairy"">Dairy</a>
-        </div>
-    </div>
-    <button class="chkoutbtn">Check-Out</button>
-</div>
-
+<br>
+    <ol>
+        <a href="index.php?page=order&store=Kroger">Kroger</a>
+        <a href="index.php?page=order&store=Meijer">Meijer</a>
+        <p>-------------------------------------------------------</p>
+        <a href="index.php?page=order&category=produce">Produce</a>
+        <a href="index.php?page=order&category=snacks"">Snacks</a>
+        <a href="index.php?page=order&category=cereal"">Cereal</a>
+        <a href="index.php?page=order&category=chips"">Chips</a>
+        <a href="index.php?page=order&category=dairy"">Dairy</a>
+    </ol>
+<br>
+=======================================================================================================
+<br>
     <?php
     //to select store choice.
     if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
@@ -46,8 +42,7 @@ var_dump($_SESSION["category"]);
     elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
         $storeWHERE=" WHERE STORES.StoreID = '2'";
     else
-        $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
-
+        $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
 
     //to redirect the qry with category seelction
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
@@ -69,24 +64,34 @@ var_dump($_SESSION["category"]);
 	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE;
 
 	//display variable for output information
-	echo "==============================================================================================</br>storeWHERE == '" . $storeWHERE . "'";
-    echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
-    echo "</br>qry: == '" . $qry . "'";
-    echo "</br>store: == '" . $store . "'";
-    print "</br>category: == '" . $category . "'";
-    print "</br></br>============================================================================================<br>";
+//	echo "==============================================================================================</br>storeWHERE == '" . $storeWHERE . "'";
+//    echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
+//    echo "</br>qry: == '" . $qry . "'";
+//    echo "</br>store: == '" . $_SESSION['store'] . "'";
+//    print "</br>category: == '" . $_SESSION['category'] . "'";
+//    print "</br></br>============================================================================================<br>";
 
 //call quuery
 	$stmt = $pdo -> query( $qry );
+	echo "<table>";
 	while($row = $stmt->fetch())
-	{
-		echo "ProductID: " . $row['ProductID'] . "<br>";
-		echo "StoreID: " . $row['StoreID'] . "<br>";;
-		echo "ProductName: " . $row['ProductName'] . "<br>";;
-		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";;
-		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";;
-		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";;
-		echo "Description: " . $row['Description'] . "<br>";;
-		echo "Quantity: " . $row['Quantity'] . "<br>";;	
-		echo "</div></br>";
+	{   //new table row per product
+        var_dump($row['ProductID']);
+	    echo "<tr>";
+	    $productID = $row['ProductID'];
+		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
+		echo "<td>Description: " . $row['Description'] . "</td>";
+        echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "</td>";
+        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
+
+     //		echo "<form name='addToCart' action='index.php?page=order' method='POST'><input type='hidden' name='cart' value=$productID><td><input type='submit' name='addToCart' value='ADD TO CART'> </td></tr>";
+//		echo "StoreID: " . $row['StoreID'] . "<br>";
+//		echo "ProductName: " . $row['ProductName'] . "<br>";
+//		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
+//		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
+//		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
+//		echo "Description: " . $row['Description'] . "<br>";
+//		echo "Quantity: " . $row['Quantity'] . "<br>";
+//		echo "</div></br>";
 	}
+	echo "</table>";
