@@ -34,6 +34,7 @@ $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
     $errorRepeat = false;
     $vaildationError = false;
+    $_SESSION['lastPageData'] = $_POST;
     $userEmail = $_POST['userEmail'];
     $pass = $_POST['mypassword'];
     $cpass = $_POST['checkpassword'];
@@ -129,6 +130,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
             $CapsName = strtoupper($pulledCustFirstN);
             array_push($_SESSION['messages'], "Created new User.... $userEmail", "HELLO  $CapsName");
             //header('Location: index.php?page=home');
+            unset($_SESSION['lastPageData']);
     }
     if ($errorRepeat) {
         //echo "That Username already has an account";
@@ -325,7 +327,7 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'home')
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php'); //order page
 elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
-    require ('createAccount.html');
+    require ('createAccount.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
     require ('main_login.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'updateUserInfo')

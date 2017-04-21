@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Sign up Form">
+    <meta name="description" content="Sign up Form">
+    <title>Create Account</title>
+</head>
+<body>
+<table width="325" border="3" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+    <tr>
+        <form name="signUp" action="index.php"  method="POST">
+            <td>
+
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <td colspan="3"><strong>Create account</strong> </td>
+                    </tr>
+
+                    <tr>
+                        <td width="78">Username Email</td><td width="6">:</td>
+                        <td width="294"><input name="userEmail" type="text" id="userEmail" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['userEmail'];}?>"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Password</td><td>:</td><td><input name="mypassword" type="text" id="mypassword" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['mypassword'];}?>"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Confirm Password</td><td>:</td><td><input name="checkpassword" type="text" id="checkpassword"></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td><td>:</td><td><input name="firstname" type="text" id="firstname" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['firstname'];}?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td><td>:</td><td><input name="lastname" type="text" id="lastname" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['lastname'];}?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Street Address</td><td>:</td><td><input name="myaddress" type="text" id="myaddress" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['myaddress'];}?>"></td>
+                    </tr>
+                    <tr>
+                        <td>City</td><td>:</td><td><input name="mycity" type="text" id="mycity" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['mycity'];}?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Zip Code</td><td>:</td><td><input name="myzip" maxlength = "5" type="text" id="myzip" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['myzip'];}?>"></td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td><td>:</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['phonenumber'];}?>"></td>
+                    </tr>
+                </table>
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <input type="hidden" name="action" value="signup">
+                        <td><input type="submit" name="Submit" value="Create account"></td>
+                        <td><a href="index.php?page=login">Have an account?</a></td>
+                    </tr>
+                </table>
+            </td>
+        </form>
+    </tr>
+</table>
+
+</body>
+<?php if(isset($_SESSION['lastPageData'])){echo "$_SESSION[UserEmail]";}?>
+</html>
