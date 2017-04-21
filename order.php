@@ -95,3 +95,17 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
 //		echo "</div></br>";
 	}
 	echo "</table>";
+
+
+
+	echo "<br><br><br> this is the data of orderlineitems.";
+
+$qry ="Select * from `OrderLineItems`";
+
+$stmt = $pdo -> query( $qry );
+while($row = $stmt->fetch())
+{   //new table row per product
+    var_dump($row);
+    echo "<br>";
+}
+
