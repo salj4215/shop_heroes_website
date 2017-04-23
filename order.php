@@ -13,6 +13,13 @@ if(!isset($_SESSION['category']))
 if(isset($_GET['category']))
     $_SESSION['category']= $_GET['category'];
 
+//if GET category or if not set,
+if(isset($_POST['search'])) {
+    if(!isset($_SESSION['search']))
+        $_SESSION['search']= "";
+    $_SESSION['search'] = $_POST['search'];
+    $_POST['search'] = "";
+}
 //add to cart           as string
 if(isset($_GET['pid']) && $_GET['pid'] != "0") {
 $productIDtoBEaddedTOcart = $_GET['pid'];
@@ -33,6 +40,18 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
         <a href="index.php?page=order&category=dairy"">Dairy</a>
     </ol>
 <br>
+    <form name="signUp" action="index.php?page=order"  method="POST">
+        <td>
+    <table width="50%" border="1" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
+    <tr>
+        <td colspan="10">Search for an Item</td>
+        <td width="250"><input name="search" type="text" id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>"></td>
+        <input type="hidden" name="action" value="search">
+        <td><input type="submit" name="Submit" value="Search"></td>
+    </tr>
+    </table>
+    </td>
+    </form>
 =======================================================================================================
 <br>
     <?php
@@ -58,25 +77,36 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
     else
         $categoryWHERE="";
 
-
+    //serach bar where
+    if(isset($_SESSION['search']))
+    {
+        $searchWord = $_SESSION['search'];
+        $searchWHERE = " AND PRODUCTS.ProductName LIKE '%$searchWord%'";
+    }
+    else
+        $serachWHERE = "";
 //replace category string to hold the attribute WHERE search, or blank.
 
-	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE;
+	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE . $searchWHERE;
 
-	//display variable for output information
-//	echo "==============================================================================================</br>storeWHERE == '" . $storeWHERE . "'";
-//    echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
+//	//display variable for output information
+//	echo "==============================================================================================";
+//    echo "</br>storeWHERE: == '" . $storeWHERE . "'";
+//	echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
+//    echo "</br>searchWHERE: == '" . $searchWHERE . "'";
 //    echo "</br>qry: == '" . $qry . "'";
 //    echo "</br>store: == '" . $_SESSION['store'] . "'";
 //    print "</br>category: == '" . $_SESSION['category'] . "'";
+//    print "</br>searchWord = '" . $searchWord . "'    and searchWHERE == ". "'" . $searchWHERE . "'<br>";
 //    print "</br></br>============================================================================================<br>";
-
-//call quuery
+////call quuery
 	$stmt = $pdo -> query( $qry );
 	echo "<table>";
+	$numProductDisplayed = 0;
 	while($row = $stmt->fetch())
 	{   //new table row per product
-        var_dump($row['ProductID']);
+        $numProductDisplayed++;
+//        var_dump($row['ProductID']);
 	    echo "<tr>";
 	    $productID = $row['ProductID'];
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
@@ -95,10 +125,18 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
 //		echo "</div></br>";
 	}
 	echo "</table>";
+//If search brings back nothing
+	if($numProductDisplayed ==0) {
+        echo "<strong>Sorry no products were found matching the description '$searchWord'"; if($categoryWHERE != ""){ print " under " . $_SESSION['category'];} print " at " . $_SESSION['store'] . "</strong>";
+    }
+    $numProductDisplayed=0;
+//clear search
+//if(isset($_SESSION['search'])){
+//    $_SESSION['search'] = "";
+//    $searchWHERE = "";
+//    $searchWord = "";}
 
-
-
-	echo "<br><br><br> this is the data of orderlineitems.";
+echo "<br><br><br> this is the data of orderlineitems.";
 
 $qry ="Select * from `OrderLineItems`";
 
@@ -108,4 +146,5 @@ while($row = $stmt->fetch())
     var_dump($row);
     echo "<br>";
 }
+
 
