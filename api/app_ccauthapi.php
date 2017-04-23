@@ -3,7 +3,7 @@
 //rebienenstein
 //script for the app to access the CCAuthAPI
 
-/*
+
 if(isset($_POST['Amount'])){
     $amount = $_POST['Amount'];
 }else{
@@ -28,17 +28,10 @@ if(isset($_POST['Amount'])){
     $cvv = $_POST['CVV'];
 }else{
     exit;
-}*/
+}
 
 require_once(dirname(__FILE__) . '/../ccauthapi/CCAuthApi.php');
 
-//test case
-$amount = 50;
-$first_name = "Test";
-$last_name = "McUsersworth";
-$card_num = 1234432112344321;
-$card_exp = 1220;
-$cvv = 333;
 
 $values = [
     "transaction_type" => "sale",
