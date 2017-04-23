@@ -321,7 +321,7 @@ if (isset($_GET['page']) && $_GET['page'] == 'aboutus')
 else if(isset($_GET['page']) && $_GET['page'] == 'contact')
     require ('contact.html'); //contact page
 else if(isset($_GET['page']) && $_GET['page'] == 'myaccount')
-    require ('Myaccount.html'); //my account page
+    require ('myaccount.html'); //my account page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html'); //home page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
