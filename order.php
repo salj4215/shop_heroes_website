@@ -136,6 +136,9 @@ function AddToCart($pid)
 //    print "</br>searchWord = '" . $searchWord . "'    and searchWHERE == ". "'" . $searchWHERE . "'<br>";
 //    print "</br></br>============================================================================================<br>";
 ////call quuery
+	echo "<br />";
+	echo "<br />";
+	echo "<br />";
 	$stmt = $pdo -> query( $qry );
 	echo "<table>";
 	$numProductDisplayed = 0;
