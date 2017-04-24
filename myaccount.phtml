@@ -38,13 +38,8 @@ fieldset {
 		<td>
 	
 			<fieldset><legend align="center"> Account Summary :</legend>
- 
-				<h5> Email Address:&nbsp &nbsp <?php print $pulledUser;?></h5>
- 
-				<h5> Current Password: </h5>
- 
-				<!-- Display the current user's password as **** -->
-  
+				<h5> Email Address:&nbsp &nbsp &nbsp &nbsp<?php print $pulledUser;?></h5>
+				<h5> Current Password: &nbsp &nbsp &nbsp &nbsp<?php print $pulledPass;?></h5>
 			</fieldset>
 	
 		</td>
@@ -52,31 +47,14 @@ fieldset {
 		<td>
 			<fieldset><legend align="center">Contact Information and Address : </legend>
 			
-				<h5> First Name: </h5>
- 
-				<!-- Display the current user's first name -->
- 
-				<h5> Last Name: </h5>
- 
-				<!-- Display the current user's last name -->
- 
-				<h5> Street Address: </h5>
- 
-				<!-- Display the current user's address -->
- 
-				<h5> City: </h5>
- 
-				<!-- Display the current user's city -->
- 
-				<h5> Zip Code: </h5>
- 
-				<!-- Display the current user's zip -->
- 
-				<h5> Phone Number: </h5>
- 
-				<!-- Display the current user's phone -->
+				<h5> First Name: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustFirstN;?></h5>
+				<h5> Last Name: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustLastN;?></h5>
+				<h5> Street Address: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustAddress;?></h5>
+				<h5> City: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustCity;?></h5>
+				<h5> Zip Code: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustZip;?></h5>
+				<h5> Phone Number: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustPhone;?></h5>
 		</td>
 	</table>
 	<input type="submit" name="Change Account Details" value="Update Account">
-	
+	<li><a href='index.php?page=logout'>Logout</a></li>
 </section>
