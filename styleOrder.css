@@ -40,7 +40,7 @@
     display:            inline-block;
 }
 /*Dropdown content - hidden */
-.dropdown-productContent
+.dropdown-content
 {
     display:            none;
     position:           absolute;
@@ -49,57 +49,28 @@
     box-shadow:         0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index:            1;
 }
-.dropdown-storeContent
-{
-	display:            none;
-    position:           absolute;
-    background-color:   #0c7f70;
-    min-width:          160px;
-    box-shadow:         0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index:            1;
-}
 /*Links in dropdown */
-.dropdown-productContent a
+.dropdown-content a
 {
     color:              #ffffff;
     padding:            12px 16px;
     text-decoration:    none;
     display:            block;
 }
-.dropdown-storeContent a
-{
-	color:              #ffffff;
-    padding:            12px 16px;
-    text-decoration:    none;
-    display:            block;
-}
 /*Change color of links on hover */
-.dropdown-productContent a:hover
+.dropdown-content a:hover
 {
     background-color:   #52c5b6;
 }
-.dropdown-storeContent a:hover
-{
-	background-color:   #52c5b6;
-}
 /*Show dropdown on hover */
-.dropdown:hover .dropdown-productContent
+.dropdown:hover .dropdown-content
 {
     display:            block;
-}
-.dropdown:hover .dropdown-storeContent
-{
-	display:            block;
 }
 /*Change color of button during dropdown */
 .dropdown:hover .productbtn
 {
     background-color:   #52c5b6;
-    color:              #000000;
-}
-.dropdown:hover .storebtn
-{
-	background-color:   #52c5b6;
     color:              #000000;
 }
 li#sub ul {
