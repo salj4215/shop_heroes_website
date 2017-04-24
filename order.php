@@ -1,4 +1,11 @@
 <?php
+//stopping varrible crashing on start up
+if(!isset($searchWord) || (!isset($searchWHERE))){
+    $searchWHERE = "";
+    $searchWord = "";}
+//if cart is not set, then create it.
+//if(isset($_COOKIE['cart'])) {setcookie('cart',array('productID' => 'quantity'));}
+
 //session_start();
 //if Get store  or if not set
 if(!isset($_SESSION['store']))
@@ -20,10 +27,29 @@ if(isset($_POST['search'])) {
     $_SESSION['search'] = $_POST['search'];
     $_POST['search'] = "";
 }
+
 //add to cart           as string
-if(isset($_GET['pid']) && $_GET['pid'] != "0") {
-$productIDtoBEaddedTOcart = $_GET['pid'];
+if( isset( $_POST['action'] ) && $_POST['action'] == 'addToCart') {
+//if(isset($_POST['addToCart']) && $_POST['addToCart'] != "0") {
+    $productIDtoBEaddedTOcart = $_POST['cart'];
+    echo "<br> . $productIDtoBEaddedTOcart" . "*************************************";
 }
+function AddToCart($pid)
+{    // add new item on array
+    if(!isset($cart)){ $cart = array('productID' => 'quantity');}
+    //Search cart array for product id, if not there, than add new product, and quantiy
+    foreach ( $cart as $id => $quantity) {
+        if ($pid == $id) {
+            ($quantity + 1);
+        } else {
+            array_push($cart,$id,1);
+        }
+    }
+    $json = json_encode($cart);
+    setcookie('cart',$json);
+    echo "<br>Added $pid to cart" . " and the cookie is= " . var_dump($cart) . "<br>";
+}
+
 
 //print "Store: " . var_dump($_SESSION["store"]);
 //print "Category: " . var_dump($_SESSION["category"]);
@@ -85,7 +111,7 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
     }
     else
         $serachWHERE = "";
-//replace category string to hold the attribute WHERE search, or blank.
+        //replace category string to hold the attribute WHERE search, or blank.
 
 	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE . $searchWHERE;
 
@@ -112,9 +138,9 @@ $productIDtoBEaddedTOcart = $_GET['pid'];
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
 		echo "<td>Description: " . $row['Description'] . "</td>";
         echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "</td>";
-        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
-
-     //		echo "<form name='addToCart' action='index.php?page=order' method='POST'><input type='hidden' name='cart' value=$productID><td><input type='submit' name='addToCart' value='ADD TO CART'> </td></tr>";
+//        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
+        echo "<td><form name='addToCart' action='index.php?page=order' method='POST'><input type='hidden' name='productID' value='$productID'>";
+        echo "<input type='submit' name='cartBtn' value='ADD TO CART'></td></tr>";
 //		echo "StoreID: " . $row['StoreID'] . "<br>";
 //		echo "ProductName: " . $row['ProductName'] . "<br>";
 //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
