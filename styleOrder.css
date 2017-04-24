@@ -18,7 +18,7 @@
     border:             none;
     cursor:             pointer;
     font-family:		Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
-    position:           relative;
+    position:           absolute;
 }
 /*Container for dropdown */
 .dropdown
