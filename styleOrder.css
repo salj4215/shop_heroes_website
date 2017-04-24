@@ -24,7 +24,7 @@
 /*Container for dropdown */
 .dropdown
 {
-    position:           inherit;
+    position:           absolute;
     display:            inline-block;
 }
 /*Dropdown content - hidden */
