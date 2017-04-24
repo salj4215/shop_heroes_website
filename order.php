@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="styleOrder.css">
 <?php
 //stopping varrible crashing on start up
 if(!isset($searchWord) || (!isset($searchWHERE))){
@@ -54,18 +55,22 @@ function AddToCart($pid)
 //print "Store: " . var_dump($_SESSION["store"]);
 //print "Category: " . var_dump($_SESSION["category"]);
 ?>
-<br>
-    <ol>
-        <a href="index.php?page=order&store=Kroger">Kroger</a>
-        <a href="index.php?page=order&store=Meijer">Meijer</a>
-        <p>-------------------------------------------------------</p>
-        <a href="index.php?page=order&category=produce">Produce</a>
-        <a href="index.php?page=order&category=snacks"">Snacks</a>
-        <a href="index.php?page=order&category=cereal"">Cereal</a>
-        <a href="index.php?page=order&category=chips"">Chips</a>
-        <a href="index.php?page=order&category=dairy"">Dairy</a>
-    </ol>
-<br>
+    <!-- Products Navigation bar -->
+    <div id="prod_navigation">
+        <div class="dropdown">
+            <button class="productbtn">Groceries &#9660</button>
+            <div class="dropdown-content">
+                <!--<a href="index.php?page=order&store=Kroger">Kroger</a>
+                <a href="index.php?page=order&store=Meijer">Meijer</a>-->
+                <a href="index.php?page=order&category=all">All</a>
+                <a href="index.php?page=order&category=produce">Produce</a>
+                <a href="index.php?page=order&category=snacks">Snacks</a>
+                <a href="index.php?page=order&category=cereal">Cereal</a>
+                <a href="index.php?page=order&category=chips">Chips</a>
+                <a href="index.php?page=order&category=dairy">Dairy</a>
+            </div>
+        </div>
+    </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
         <td>
     <table width="50%" border="1" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
