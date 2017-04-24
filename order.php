@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="styleOrder.css">
 <?php
 //session_start();
 //if Get store  or if not set
