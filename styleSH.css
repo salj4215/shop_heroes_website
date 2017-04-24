@@ -45,12 +45,7 @@ table.search {
 }
 /* Header */
 header{
-	background: repeating-linear-gradient( 
-    rgb(81, 112, 160) 1%,
-    #465298 88%,
-    rgb(81, 112, 160) 1%
-  );
-   }
+	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 }
 p.head{
 	background-color:#00264d;
