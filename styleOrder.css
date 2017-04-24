@@ -19,14 +19,13 @@
     cursor:             pointer;
     font-family:		Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
     position:           relative;
-    right:              800px;
+    right:              400px;
 }
 /*Container for dropdown */
 .dropdown
 {
-    position:           relative;
+    position:           inherit;
     display:            inline-block;
-    right:              800px;
 }
 /*Dropdown content - hidden */
 .dropdown-content
