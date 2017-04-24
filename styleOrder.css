@@ -1,0 +1,70 @@
+
+#prod_navigation
+{
+    margin:             0 auto;
+    width:              75%;
+    background-color:   #4078a5;
+    position:           relative;
+    top:                80px;
+}
+
+/*Dropdown button */
+.productbtn
+{
+    background-color:   #4078a5;
+    color:              #ffffff;
+    padding:            16px 32px;
+    font-size:          16px;
+    border:             none;
+    cursor:             pointer;
+    font-family:		Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
+    /*position:           relative;*/
+    right:              800px;
+}
+/*Container for dropdown */
+.dropdown
+{
+    position:           relative;
+    display:            inline-block;
+}
+/*Dropdown content - hidden */
+.dropdown-content
+{
+    display:            none;
+    position:           absolute;
+    background-color:   #0c7f70;
+    min-width:          160px;
+    box-shadow:         0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index:            1;
+}
+/*Links in dropdown */
+.dropdown-content a
+{
+    color:              #ffffff;
+    padding:            12px 16px;
+    text-decoration:    none;
+    display:            block;
+}
+/*Change color of links on hover */
+.dropdown-content a:hover
+{
+    background-color:   #52c5b6;
+}
+/*Show dropdown on hover */
+.dropdown:hover .dropdown-content
+{
+    display:            block;
+}
+/*Change color of button during dropdown */
+.dropdown:hover .productbtn
+{
+    background-color:   #52c5b6;
+    color:              #000000;
+}
+li#sub ul {
+    display:none;
+    position: absolute; left: 100%; top:0;
+}
+li#sub:hover ul{
+    display: block;
+}
