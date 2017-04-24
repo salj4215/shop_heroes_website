@@ -74,7 +74,8 @@ function AddToCart($pid)
             <a href="index.php?page=order&category=chips">Chips</a>
             <a href="index.php?page=order&category=dairy">Dairy</a>
             </div>
-        </div>	
+        </div>
+		<input name="search" type="text" id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
         <td>
