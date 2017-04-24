@@ -44,6 +44,9 @@ table.search {
 
 }
 /* Header */
+header{
+	background-color: green;
+}
 p.head{
 	background-color:#00264d;
 	color:white;
