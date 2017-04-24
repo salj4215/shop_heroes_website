@@ -21,6 +21,18 @@
     /*position:           relative;*/
     right:              800px;
 }
+.storebtn
+{
+	background-color:   #4078a5;
+    color:              #ffffff;
+    padding:            16px 32px;
+    font-size:          16px;
+    border:             none;
+    cursor:             pointer;
+    font-family:		Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
+    /*position:           relative;*/
+    right:              800px;
+}
 /*Container for dropdown */
 .dropdown
 {

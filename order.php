@@ -58,7 +58,7 @@ function AddToCart($pid)
     <!-- Products Navigation bar -->
     <div id="prod_navigation">
         <div class="dropdown">
-            <button class="productbtn">Stores &#9660</button>
+            <button class="storebtn">Stores &#9660</button>
             <div class="dropdown-content">
                 <a href="index.php?page=order&store=Kroger">Kroger</a>
                 <a href="index.php?page=order&store=Meijer">Meijer</a>
