@@ -1,0 +1,84 @@
+<section>
+ 
+ <style media="screen" type="text/css">
+
+fieldset { 
+    display: block;
+    margin-left: 200px;
+    margin-right: 10px;
+    padding-top: 0.35em;
+    padding-bottom: 50px;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+	height: 275px;
+	width: 300px;
+}
+ <?php
+    $pulledUserID =$_SESSION['activeUserID'];
+    $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE USERS.UserID ='$pulledUserID'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {
+        $emailMatch = true;
+        $pulledUser= $row['Username'];
+        $pulledPass= $row['Password'];
+        $pulledUserID = $row['UserID'];
+        $pulledCustID = $row['CustID'];
+        $pulledCustFirstN = $row['CustFirstN'];
+        $pulledCustLastN = $row['CustLastN'];
+        $pulledCustAddress = $row['CustAddress'];
+        $pulledCustCity = $row['CustCity'];
+        $pulledCustZip = $row['CustZip'];
+        $pulledCustPhone = $row['CustPhone'];
+    }
+ ?>
+</style>
+	
+	<table>
+		<td>
+	
+			<fieldset><legend align="center"> Account Summary :</legend>
+ 
+				<h5> Email Address: </h5>
+ 
+				<?php print $pulledUser; ?>
+ 
+				<h5> Current Password: </h5>
+ 
+				<!-- Display the current user's password as **** -->
+  
+			</fieldset>
+	
+		</td>
+ 
+		<td>
+			<fieldset><legend align="center">Contact Information and Address : </legend>
+			
+				<h5> First Name: </h5>
+ 
+				<!-- Display the current user's first name -->
+ 
+				<h5> Last Name: </h5>
+ 
+				<!-- Display the current user's last name -->
+ 
+				<h5> Street Address: </h5>
+ 
+				<!-- Display the current user's address -->
+ 
+				<h5> City: </h5>
+ 
+				<!-- Display the current user's city -->
+ 
+				<h5> Zip Code: </h5>
+ 
+				<!-- Display the current user's zip -->
+ 
+				<h5> Phone Number: </h5>
+ 
+				<!-- Display the current user's phone -->
+		</td>
+	</table>
+	<input type="submit" name="Change Account Details" value="Update Account">
+	
+</section>
