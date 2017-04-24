@@ -97,7 +97,7 @@ function AddToCart($pid)
     elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
         $storeWHERE=" WHERE STORES.StoreID = '2'";
     else
-        $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
+        $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
     //to redirect the qry with category seelction
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
