@@ -68,7 +68,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 210px;
+	width: 20%; /*Was 210px */
 	height: 30px;
 	background-color:  #00264d; 
 	margin: auto;
