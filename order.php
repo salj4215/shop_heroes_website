@@ -93,11 +93,13 @@ function AddToCart($pid)
 <br>
     <?php
     //to select store choice.
-    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
+    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'All')
+        $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
+    elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
         $storeWHERE=" WHERE STORES.StoreID = '1'";
     elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
         $storeWHERE=" WHERE STORES.StoreID = '2'";
-    else
+    else    //default to all
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
     //to redirect the qry with category seelction
