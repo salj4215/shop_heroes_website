@@ -152,7 +152,7 @@ function AddToCart($pid)
 	    echo "<tr>";
 	    $productID = $row['ProductID'];
 
-        echo "<img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'>";
+        echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
 
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
 		echo "<td>Description: " . $row['Description'] . "</td>";
