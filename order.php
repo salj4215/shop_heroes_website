@@ -45,7 +45,7 @@ function AddToCart($pid)
         } else {
             array_push($cart,$id,1);
         }
-    }
+}
     $json = json_encode($cart);
     setcookie('cart',$json);
     echo "<br>Added $pid to cart" . " and the cookie is= " . var_dump($cart) . "<br>";
@@ -60,7 +60,8 @@ function AddToCart($pid)
 		<div class="dropdown">
 			<button class="productbtn">Stores &#9660</button>
 			<div class="dropdown-content">
-				<a href="index.php?page=order&store=Kroger">Kroger</a>
+                <a href="index.php?page=order&store=All">All Stores</a>
+                <a href="index.php?page=order&store=Kroger">Kroger</a>
 				<a href="index.php?page=order&store=Meijer">Meijer</a>
 			</div>
 		</div>
