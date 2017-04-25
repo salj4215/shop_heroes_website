@@ -332,6 +332,8 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'login')
     require ('main_login.html');
 elseif (isset($_GET['page']) && $_GET['page'] == 'updateUserInfo')
     require ('updateUserInfo.phtml');
+elseif (isset($_GET['page']) && $_GET['page'] == 'shoppingcart')
+    require ('shoppingCart.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     session_unset();
     header('Location: index.php?page=home');
