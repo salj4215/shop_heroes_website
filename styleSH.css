@@ -117,17 +117,17 @@ footer {
 
 /************************************** Below here is all responsive design and print screen stuff. *******************************/
 
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
 	table.search {
-		left:auto;
-		right:0;
+		position: center;
 		top:300px;
 	}
 	ul.signup li
 {
-			left:45px;
-		right:1px;
+		position: right;
 		top:400px;
 }
 		ul.login li
