@@ -151,9 +151,9 @@ function AddToCart($pid)
 //        var_dump($row['ProductID']);
 	    echo "<tr>";
 	    $productID = $row['ProductID'];
-	    ?>
-        <img src="images/products/128/_<?php echo $row['ProductUPC']; ?>.png" style="width:128px;height:128px;">
-        <?php
+
+        echo "<img src='images/products/128/_" . $row['ProductUPC'] . ".png style='width:128px;height:128px;'>";
+
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
 		echo "<td>Description: " . $row['Description'] . "</td>";
         echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
