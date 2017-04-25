@@ -53,12 +53,12 @@
             print "<li><a href='index.php?page=login'>Login</a></li>";
         print "</ul>";
         }
-        if(isset($_SESSION["activeUserID"]) && ($_SESSION["activeUserID"] != 0))
-        {
-            print "<ul class='signup'>";
-            print "<li><a href='index.php?page=updateUserInfo'>Update Account</a></li>";
-            print  "</ul>";
-        }
+//        if(isset($_SESSION["activeUserID"]) && ($_SESSION["activeUserID"] != 0))
+//        {
+//            print "<ul class='signup'>";
+//            print "<li><a href='index.php?page=updateUserInfo'>Update Account</a></li>";
+//            print  "</ul>";
+//        }
         if(isset($_SESSION["activeUserID"]) && ($_SESSION["activeUserID"] != 0))
         {
          print "<ul class='login'>";

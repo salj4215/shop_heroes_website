@@ -292,11 +292,11 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
         //echo "That Username already has an account";
         array_push($_SESSION['messages'], "That UserEmail is already in use.");
         $_SESSION['announcements'] = -1;
-        header('Location: index.php?page=signup');
+        header('Location: index.php?page=updateUserInfo');
     }
     if ($vaildationError) {//there was an input error
         $_SESSION['announcements'] = -1;
-        header('Location: index.php?page=signup');
+        header('Location: index.php?page=updateUserInfo');
     }
 }
 
