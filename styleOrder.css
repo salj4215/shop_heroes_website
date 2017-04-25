@@ -9,7 +9,7 @@
 	height:				50px;
 }
 /*order table*/
-table {
+table.products {
 	position:relative;
 	left:400px;
 	top:40px;

@@ -143,7 +143,7 @@ function AddToCart($pid)
 	echo "<br />";
 	echo "<br />";
 	$stmt = $pdo -> query( $qry );
-	echo "<table>";
+	echo "<table class='products'>";
 	$numProductDisplayed = 0;
 	while($row = $stmt->fetch())
 	{   //new table row per product
