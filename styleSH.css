@@ -36,8 +36,7 @@ top: 10px;
 }
 /* search bar */
 table.search {
-	position:absolute;
- left:400px;
+	position:center;
  top:40px;
    color: black;
    font-family: Bitter, "Times New Roman", Times, serif;
@@ -123,18 +122,18 @@ and (min-device-width : 320px)
 and (max-device-width : 480px) {
 	table.search {
 		position: center;
-		top:300px;
+		top:30px;
 	}
 	ul.signup li
 {
 		position: right;
-		top:400px;
+		top:40px;
 }
 		ul.login li
 {
 			left:0;
 		right:150px;
-		top:400px;
+		top:40px;
 }
 
 }
@@ -143,18 +142,18 @@ and (max-device-width : 480px) {
 		table.search {
 		left:auto;
 		right:0;
-		top:300px;
+		top:30px;
 	}
 	ul.signup li
 {
 		left:45px;
 		right:1px;
-		top:400px;
+		top:40px;
 }
 		ul.login li
 {
 		left:0;
 		right:150px;
-		top:400px;
+		top:40px;
 }
 }
