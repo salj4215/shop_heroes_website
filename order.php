@@ -147,7 +147,7 @@ function AddToCart($pid)
         $numProductDisplayed++;
 //        var_dump($row['ProductID']);
 	    echo "<tr>";
-		echo "<fieldset><legend align='center'> if($row['StoreID'] ==0){echo "ALL STORES";}else {echo "$_SESSION['store']";}</legend>";
+		echo "<fieldset><legend align='center'> if($row['StoreID'] ==0){echo 'ALL STORES';}else {echo " . $_SESSION['store'] . ";}</legend>";
 	    $productID = $row['ProductID'];
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
 		echo "<td>Description: " . $row['Description'] . "</td>";
