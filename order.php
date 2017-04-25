@@ -126,7 +126,8 @@ function AddToCart($pid)
         $serachWHERE = "";
         //replace category string to hold the attribute WHERE search, or blank.
 
-	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE . $searchWHERE;
+    $orderBY = "ORDER BY `ProductName`";
+	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE . $searchWHERE . $orderBY;
 
 //	//display variable for output information
 //	echo "==============================================================================================";
