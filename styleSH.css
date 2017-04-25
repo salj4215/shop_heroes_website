@@ -13,8 +13,7 @@ ul.signup li
 {
 
 position:relative;
-top:5px;
-right:120px;
+float: right;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
 	height: 25px;
@@ -25,8 +24,7 @@ right:120px;
 ul.login li
 {
 position:relative;
-top:5px;
-right:20px;
+float: right;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
 	height: 25px;
