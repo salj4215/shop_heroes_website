@@ -191,5 +191,5 @@ while($row = $stmt->fetch())
     var_dump($row);
     echo "<br>";
 }
-
+?>
 
