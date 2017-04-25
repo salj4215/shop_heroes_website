@@ -151,11 +151,10 @@ function AddToCart($pid)
 //        var_dump($row['ProductID']);
 	    echo "<tr>";
 	    $productID = $row['ProductID'];
-
+        //product pictures
         echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-
+        //product informations
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-		echo "<td>Description: " . $row['Description'] . "</td>";
         echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
 //        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
         echo "<td><form name='addToCart' action='index.php?page=order' method='POST'><input type='hidden' name='productID' value='$productID'>";
