@@ -12,7 +12,7 @@ div.img{
 ul.signup li
 {
 
-position:relative;
+position:absolute;
 float: right;
 top: 10%;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
@@ -24,7 +24,7 @@ top: 10%;
 }
 ul.login li
 {
-position:relative;
+position:absolute;
 float: right;
 top: 10px;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
