@@ -11,16 +11,17 @@
 /*order table*/
 table.products {
 	position:relative;
-	left:400px;
-	top:40px;
+	left:250px;
+	top:30px;
 	right:30px;
 	color: black;
    font-family: Bitter, "Times New Roman", Times, serif;
-   font-weight: 700;
+   font-weight: 500;
    font-size: 1em;
    overflow:auto;
    padding: 12px;
    padding-left:2px;
+   padding-right:2px;
    
 }
 
