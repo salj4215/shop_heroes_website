@@ -13,7 +13,7 @@ ul.signup li
 {
 
 position:absolute;
-top:30px;
+top:5px;
 right:120px;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
@@ -25,7 +25,7 @@ right:120px;
 ul.login li
 {
 position:absolute;
-top:30px;
+top:5px;
 right:20px;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
@@ -73,7 +73,7 @@ ul li{
 	float: left;
 	width: 20%; /*Was 210px */
 	height: 30px;
-	background-color:  #00264d; 
+background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	margin: auto;
 		font-size:16px;
 	line-height: 25px;
@@ -106,8 +106,7 @@ body,h1,h2,h3,p {
 /* footer section */
 footer {
    padding: 0.6em;
-   background-color:rgb(81, 112, 160);
-   color: ivory;
+   background: linear-gradient(rgb(42,157,142), rgb(38,70,83));   color: ivory;
    text-align: center;
 }
 .accent {
