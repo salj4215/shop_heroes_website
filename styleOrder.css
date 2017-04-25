@@ -10,7 +10,7 @@
 }
 /*order table*/
 table {
-	position:absolute;
+	position:relative;
 	left:400px;
 	top:40px;
 	right:30px;
@@ -21,8 +21,12 @@ table {
    overflow:auto;
    padding: 12px;
    padding-left:2px;
+   
 }
 
+table td{
+	padding-bottom: 30px;
+}
 /*Dropdown button */
 .productbtn
 {
