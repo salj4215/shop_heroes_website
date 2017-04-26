@@ -307,6 +307,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
 if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
 {   //copy productID
     $pid = $_POST['pid'];
+    $productIDtoBEaddedTOcart = $_POST['cart'];
+    echo "<br><br><<br><br><br> . $productIDtoBEaddedTOcart" . "**************" . $pid;
     //if $cart doesnt exsit, create
     if(!isset($cart)){ $cart = array('pid' => 0);}
     //Search cart array for product id, if not there, than add new product, and quantiy

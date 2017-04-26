@@ -29,28 +29,6 @@ if(isset($_POST['search'])) {
     $_POST['search'] = "";
 }
 
-//add to cart           as string
-if( isset( $_POST['action'] ) && $_POST['action'] == 'addToCart') {
-//if(isset($_POST['addToCart']) && $_POST['addToCart'] != "0") {
-    $productIDtoBEaddedTOcart = $_POST['cart'];
-    echo "<br><br><<br><br><br> . $productIDtoBEaddedTOcart" . "*************************************";
-}
-function AddToCart($pid)
-{    // add new item on array
-    if(!isset($cart)){ $cart = array('productID' => 'quantity');}
-    //Search cart array for product id, if not there, than add new product, and quantiy
-    foreach ( $cart as $id => $quantity) {
-        if ($pid == $id) {
-            ($quantity + 1);
-        } else {
-            array_push($cart,$id,1);
-        }
-}
-    $json = json_encode($cart);
-    setcookie('cart',$json);
-    echo "<br>Added $pid to cart" . " and the cookie is= " . var_dump($cart) . "<br>";
-}
-
 //print "Store: " . var_dump($_SESSION["store"]);
 //print "Category: " . var_dump($_SESSION["category"]);
 ?>
