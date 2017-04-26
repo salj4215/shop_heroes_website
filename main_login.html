@@ -6,8 +6,11 @@
 		<meta name="description" content="Login Form">
 			<title>Login</title>
 	</head>
-
-
+	<?php
+//first time, set activeUser to 0;
+if(!(isset($_SESSION['activeUser'])))
+$_SESSION['activeUser'] =0;
+?>
 
 
 	<body>

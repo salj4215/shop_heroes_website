@@ -150,7 +150,7 @@ function AddToCart($pid)
 	{   //new table row per product
         $numProductDisplayed++;
 //        var_dump($row['ProductID']);
-	    echo "<tr>";
+	    echo "<tr style='outline: thin solid'>";
 	    $productID = $row['ProductID'];
         //product pictures
         echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
@@ -158,8 +158,13 @@ function AddToCart($pid)
 		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
         echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
 //        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
-        echo "<td><form name='addToCart' action='index.php?page=order' method='POST'><input type='hidden' name='productID' value='$productID'>";
-        echo "<input type='submit' name='cartBtn' value='ADD TO CART'></td></tr>";
+        //form for placing ADD TO CART
+        echo "<td><form method='post' >";
+        echo"    <input type='hidden' name='pid' value=$productID>";
+        echo"    <input type='hidden' name='action' value='addcart' >";
+        echo"    <button>Add to Cart</button>";
+        echo"</form></td></tr>";
+
 //		echo "StoreID: " . $row['StoreID'] . "<br>";
 //		echo "ProductName: " . $row['ProductName'] . "<br>";
 //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";

@@ -6,6 +6,9 @@ session_start();
  * Date: 4/3/2017
  * Time: 9:11 PM
  */
+//first time, set activeUser to 0;
+if(!(isset($_SESSION['activeUser'])))
+    $_SESSION['activeUser'] =0;
 require_once("connect_db.php");
 //check if there are messages if, not declare
 if(!(isset($_SESSION['messages']))){
@@ -176,6 +179,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $_SESSION['activeCustLastN'] = $pulledCustLastN;
         $CapsName = strtoupper($pulledCustFirstN);
         array_push($_SESSION['messages'], "<strong>Welcome  $CapsName!</strong>");
+        $_SESSION["activeUser"] = $userEmail;
     }
     if( $pass != $pulledPass && ($emailMatch))
     {

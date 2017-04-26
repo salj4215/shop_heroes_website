@@ -1,7 +1,9 @@
 <section>
  
  <style media="screen" type="text/css">
-
+<?php
+if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
+{?>
 fieldset { 
     display: block;
     margin-left: 200px;
@@ -61,4 +63,12 @@ fieldset {
 	<form action="index.php?page=updateUserInfo'">
 		<input type="submit" value="Update Account">
 	</form>
-</section>
+    <?php
+echo "</section>";}
+else {
+    array_push($_SESSION['messages'], "You must be logged-in to view 'MyAccount'");
+    $_SESSION['announcements'] = -1;
+    header('Location: index.php?page=login');
+
+echo "</section>";
+}?>
