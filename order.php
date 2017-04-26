@@ -33,7 +33,7 @@ if(isset($_POST['search'])) {
 if( isset( $_POST['action'] ) && $_POST['action'] == 'addToCart') {
 //if(isset($_POST['addToCart']) && $_POST['addToCart'] != "0") {
     $productIDtoBEaddedTOcart = $_POST['cart'];
-    echo "<br> . $productIDtoBEaddedTOcart" . "*************************************";
+    echo "<br><br><<br><br><br> . $productIDtoBEaddedTOcart" . "*************************************";
 }
 function AddToCart($pid)
 {    // add new item on array
@@ -50,7 +50,6 @@ function AddToCart($pid)
     setcookie('cart',$json);
     echo "<br>Added $pid to cart" . " and the cookie is= " . var_dump($cart) . "<br>";
 }
-
 
 //print "Store: " . var_dump($_SESSION["store"]);
 //print "Category: " . var_dump($_SESSION["category"]);

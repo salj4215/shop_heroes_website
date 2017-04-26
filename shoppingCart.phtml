@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="keywords" content="Shopping cart">
@@ -8,6 +7,9 @@
 	<title>Shopping Cart page</title>
 </head>
 <body>
+<?php
+if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
+{?>
 <h1>Shopping Cart</h1>
 <!-- Shopping Cart Form-->
 <form action="#" method="post">
@@ -73,7 +75,7 @@
 			<td><!--Price with Tax--></td>
 			<td colspan="3"></td>
 		</tr>
-		</tr>
+
 		<tr>
 			<td></td>
 			<td></td>
@@ -83,4 +85,11 @@
 	</table>
 </form>
 </body>
-</html>
+<?php }
+else{
+    array_push($_SESSION['messages'], "You must be logged-in to view 'ShoppingCart'");
+    $_SESSION['announcements'] = -1;
+    header('Location: index.php?page=login');
+    echo "</body>";
+}?>
+

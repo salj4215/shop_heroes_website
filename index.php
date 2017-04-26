@@ -7,8 +7,8 @@ session_start();
  * Time: 9:11 PM
  */
 //first time, set activeUser to 0;
-if(!(isset($_SESSION['activeUser'])))
-    $_SESSION['activeUser'] =0;
+if(!(isset($_SESSION['activeUserID'])))
+    $_SESSION['activeUserID'] =0;
 require_once("connect_db.php");
 //check if there are messages if, not declare
 if(!(isset($_SESSION['messages']))){
@@ -303,7 +303,25 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
         header('Location: index.php?page=updateUserInfo');
     }
 }
-
+//ADD TO CART, posted product id
+if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
+{   //copy productID
+    $pid = $_POST['pid'];
+    //if $cart doesnt exsit, create
+    if(!isset($cart)){ $cart = array('pid' => 0);}
+    //Search cart array for product id, if not there, than add new product, and quantiy
+    foreach ( $cart as $id => $quantity) {
+        if ($pid == $id) {
+            ($quantity + 1);
+        } else {
+            array_push($cart,$id,1);
+        }
+    }
+    $_SESSION['cart'] = $cart;
+    $json = json_encode($cart);
+    setcookie('cart',$json);
+//    echo "<br>Added $pid to cart" . "<br><br>pid = $pid <br><br> and the cookie is= " . var_dump($_COOKIE['cart']) . "<br><br>And Session= ". var_dump($_SESSION['cart']);
+}
 //HEADER OF PAGES
 require ('header.phtml');
 
