@@ -305,23 +305,45 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
 }
 //ADD TO CART, posted product id
 if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
-{   //copy productID
+{
     $pid = $_POST['pid'];
-    $productIDtoBEaddedTOcart = $_POST['cart'];
-    echo "<br><br><<br><br><br> . $productIDtoBEaddedTOcart" . "**************" . $pid;
-    //if $cart doesnt exsit, create
-    if(!isset($cart)){ $cart = array('pid' => 0);}
-    //Search cart array for product id, if not there, than add new product, and quantiy
-    foreach ( $cart as $id => $quantity) {
-        if ($pid == $id) {
-            ($quantity + 1);
-        } else {
-            array_push($cart,$id,1);
+//    $pid = $pid * 1;
+    //for first time check session
+    if(!(isset($_SESSION['cart'])))
+        $_SESSION['cart'] = array($pid => (1*1) );
+    else {   //if seesion[cart] exsists then check it
+
+        echo "<br><br>**************" . $pid . "<br>";
+        //if $cart doesnt exsit, create, and set marker to false. not found.
+        $existsInCart = false;
+        $cart = $_SESSION['cart'];  //then set the local vairrlbe to equal the old cart.
+        //Search cart array for product id, if not there, than add new product, and quantiy
+        foreach ($cart as $id => $quantity) {
+            $quantity = $quantity * 1;
+            echo "<br>[" . $id . "]=>" . $quantity;
+            echo "<br> pid=" . var_dump($pid);
+            echo "<br> id =" . var_dump($id);
+            echo "<br> quty= $quantity quanty=" . var_dump($quantity) . "   Why is quantity showing blank?<br>";
+            if ($pid == $id) {  //if the product ID matches the $id of array, incrment whats in cart.
+                $quantity = $quantity + 1;
+                $existsInCart = true;   //if found item, then dont add another, and break
+            }
+            //remove any from cart that are 0 qunatity from cart
+            if ($quantity == 0)
+                unset($cart[$id]);
         }
+        if ($existsInCart == false) {
+            echo "<br>Adding new product into array, and inserting quantity of 1";
+            // $data[$key] = $value;
+            $cart[$pid] = 1;
+            //array_push($cart,$id,1);
+            echo "<br>" . $pid . "=>1<br>";
+        }
+
+        $_SESSION['cart'] = $cart;
+        $json = json_encode($cart);
+        setcookie('cart', $json);
     }
-    $_SESSION['cart'] = $cart;
-    $json = json_encode($cart);
-    setcookie('cart',$json);
 //    echo "<br>Added $pid to cart" . "<br><br>pid = $pid <br><br> and the cookie is= " . var_dump($_COOKIE['cart']) . "<br><br>And Session= ". var_dump($_SESSION['cart']);
 }
 //HEADER OF PAGES
