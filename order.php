@@ -59,7 +59,7 @@ function AddToCart($pid)
 		<div class="dropdown">
 			<button class="productbtn">Stores &#9660</button>
 			<div class="dropdown-content">
-                <a href="index.php?page=order&store=All">All Stores</a>
+                <a href="index.php?page=order&store=AllStores">All Stores</a>
                 <a href="index.php?page=order&store=Kroger">Kroger</a>
 				<a href="index.php?page=order&store=Meijer">Meijer</a>
 			</div>
@@ -92,7 +92,7 @@ function AddToCart($pid)
 <br>
     <?php
     //to select store choice.
-    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'All')
+    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'AllStores')
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
     elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
         $storeWHERE=" WHERE STORES.StoreID = '1'";
