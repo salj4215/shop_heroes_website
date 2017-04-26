@@ -105,21 +105,7 @@ if(isset($_POST['search'])) {
 
     $orderBY = "ORDER BY `ProductName`";
 	$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE . $categoryWHERE . $searchWHERE . $orderBY;
-
-//	//display variable for output information
-//	echo "==============================================================================================";
-//    echo "</br>storeWHERE: == '" . $storeWHERE . "'";
-//	echo "</br>categoryWHERE: == '" . $categoryWHERE . "'";
-//    echo "</br>searchWHERE: == '" . $searchWHERE . "'";
-//    echo "</br>qry: == '" . $qry . "'";
-//    echo "</br>store: == '" . $_SESSION['store'] . "'";
-//    print "</br>category: == '" . $_SESSION['category'] . "'";
-//    print "</br>searchWord = '" . $searchWord . "'    and searchWHERE == ". "'" . $searchWHERE . "'<br>";
-//    print "</br></br>============================================================================================<br>";
 ////call quuery
-	echo "<br />";
-	echo "<br />";
-	echo "<br />";
 	$stmt = $pdo -> query( $qry );
 	echo "<table class='products'>";
 	$numProductDisplayed = 0;
