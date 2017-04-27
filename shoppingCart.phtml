@@ -8,9 +8,19 @@
 	<title>Shopping Cart page</title>
 </head>
 <body>
-<?php
+<?php       //test that user is logged in.
 if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
 {
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
+{
+    $newQty = $_POST['qty'];
+    echo "<br> $newQty";
+    echo "<br> . vardump($newQty) . <br>";
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
     if(isset($_COOKIE['cart'])) {
         $cookieCart = $_COOKIE['cart'];
         $cookieCart = stripslashes($cookieCart);
@@ -41,7 +51,8 @@ while($row = $stmt->fetch()) {   //if its in the cart
                 echo 'Meijer';
             };
             echo "</td>";
-            ?>
+            ?>\
+            echo "<form method='post' >";
             <td><input type="number" name="quantity" min="0" value="<?php echo $qty; ?>"></td>
             <?php
             //		echo "StoreID: " . $row['StoreID'] . "<br>";
@@ -52,94 +63,18 @@ while($row = $stmt->fetch()) {   //if its in the cart
             //		echo "Description: " . $row['Description'] . "<br>";
             //		echo "Quantity: " . $row['Quantity'] . "<br>";
             //		echo "</div></br>";
-            echo "<td><form method='post' >";
+            echo "<td>";
             echo"    <input type='hidden' name='qty' value=$qty>";
             echo"    <input type='hidden' name='action' value='cartQty' >";
             echo"    <button type='submit'>Update Quantity</button></td></form>";
             echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
+            echo "</form>";
         }
     }
 }
 echo "</table>";
-    ?>
-<h1>Shopping Cart</h1>
-<!-- Shopping Cart Form-->
-<form action="#" method="post">
-	<div class="items">
-	<table class="products">
-        <?php
+?>
 
-
-        ?>
-		<tr>
-			<td>product</td>
-			<td> </td>
-			<td width="12%"></td>
-			<td>Quantity:</td>
-			<td>Price:</td>
-			<td></td>
-		</tr>
-		<!-- Need to use loop to produce more of this row-->
-			<tr>
-                echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-                <td><!--Name of product-->Name of Product:</td>
-				<td></td>
-				<td><input type="number" name="#Name for php code" min="0"></td>
-				<td>Code to get price<!--Insert code to get item price--></td>
-				<td><img src='#' alt='Garbage can to remove item'></td>
-		
-			</tr>
-	</table>
-	</div>
-		<!-- -->
-	<table>
-		<tr>
-			<td></td>
-			<td>Summary:</td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>Total before tax:</td>
-			<td><!--Price --></td>
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>Shipping:</td>
-			<td><!--shipping & Handling cost--></td>
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>Tax:</td>
-			<td><!--Tax amount--></td>
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td>TOTAL:</td>
-			<td><!--Price with Tax--></td>
-			<td colspan="3"></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td colspan ="2"><input type="Submit" value="Checkout"></td>
-			<td><!--Price with Tax--></td>
-			<td colspan="3"></td>
-		</tr>
-
-		<tr>
-			<td></td>
-			<td></td>
-			<td><!--Price with Tax--></td>
-			<td colspan="3"></td>
-		</tr>
-	</table>
-</form>
 </body>
 <?php }
 else{
