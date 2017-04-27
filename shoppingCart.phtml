@@ -55,7 +55,7 @@ while($row = $stmt->fetch()) {   //if its in the cart
             echo "<td><form method='post' >";
             echo"    <input type='hidden' name='qty' value=$qty>";
             echo"    <input type='hidden' name='action' value='cartQty' >";
-            echo"    <button>Update Quantity</button></td></form>";
+            echo"    <button type='submit'>Update Quantity</button></td></form>";
             echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
         }
     }
