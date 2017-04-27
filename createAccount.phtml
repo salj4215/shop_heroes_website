@@ -28,11 +28,11 @@ $_SESSION['activeUserID'] =0;
                     </tr>
 
                     <tr>
-                        <td>Password</td><td>:</td><td><input name="mypassword" type="text" id="mypassword" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['mypassword'];}?>"></td>
+                        <td>Password</td><td>:</td><td><input name="mypassword" type="password" id="mypassword" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['mypassword'];}?>"></td>
                     </tr>
 
                     <tr>
-                        <td>Confirm Password</td><td>:</td><td><input name="checkpassword" type="text" id="checkpassword"></td>
+                        <td>Confirm Password</td><td>:</td><td><input name="checkpassword" type="password" id="checkpassword"></td>
                     </tr>
                     <tr>
                         <td>First Name</td><td>:</td><td><input name="firstname" type="text" id="firstname" value="<?php if(isset($_SESSION['lastPageData'])){echo $_SESSION['lastPageData']['firstname'];}?>"></td>

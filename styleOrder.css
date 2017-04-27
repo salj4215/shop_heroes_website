@@ -87,8 +87,9 @@ li#sub ul {
     display:none; 
     position: absolute; left: 100%; top:0; 
 } 
-li#sub:hover ul{ 
-    display: block; 
+li#sub:hover ul {
+    display: block;
+}
 /*#search
 {
 	position:			relative;
