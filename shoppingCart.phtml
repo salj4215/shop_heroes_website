@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="styleOrder.css">
 <!DOCTYPE html>
 <head>
 	<meta charset="UTF-8">
@@ -31,8 +32,8 @@ while($row = $stmt->fetch()) {   //if its in the cart
             //product pictures
             echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
             //product informations
-            echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-            echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= ";
+            echo "<td>ProductName: " . $row['ProductName'] .  "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
+            echo "<td>UnitPrice: $" . $row['UnitPrice'] .  "<br><br>Store= ";
             if ($row['StoreID'] == 1) {
                 echo "Kroger";
             };
@@ -40,6 +41,9 @@ while($row = $stmt->fetch()) {   //if its in the cart
                 echo 'Meijer';
             };
             echo "</td>";
+            ?>
+            <td><input type="number" name="quantity" min="0" value="<?php echo $qty; ?>"></td>
+            <?php
             //		echo "StoreID: " . $row['StoreID'] . "<br>";
             //		echo "ProductName: " . $row['ProductName'] . "<br>";
             //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
@@ -48,26 +52,11 @@ while($row = $stmt->fetch()) {   //if its in the cart
             //		echo "Description: " . $row['Description'] . "<br>";
             //		echo "Quantity: " . $row['Quantity'] . "<br>";
             //		echo "</div></br>";
-
-            echo "<tr>";
-            echo "<td>" . $row['ProductName'] . "</td>"; ?>
-            <td></td>
-            <td width="12%"></td><?php
-            echo "<td>Quantity: $qty</td>";
-            echo "<td>Price: " . $row['UnitPrice'] . " </td>";
-            echo "<td></td>"; ?>
-            </tr>
-            <!-- Need to use loop to produce more of this row-->
-            <tr><?php
-                echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-                echo "<td>" . $row['ProductUPC'] . "</td>"; ?>
-                <td></td>
-                <td><input type="number" name="quantity" min="0" value="<?php echo $qty; ?>"></td>
-                <td>Code to get price<!--Insert code to get item price--></td>
-                <td><img src='#' alt='Garbage can to remove item'></td>
-
-            </tr>
-            <?php
+            echo "<td><form method='post' >";
+            echo"    <input type='hidden' name='qty' value=$qty>";
+            echo"    <input type='hidden' name='action' value='cartQty' >";
+            echo"    <button>Update Quantity</button></td></form>";
+            echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
         }
     }
 }
