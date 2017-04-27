@@ -15,10 +15,17 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
 if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
 {
     $newQty = $_POST['quantity'];
-    echo "<br> $newQty";
-    echo "<br>" . var_export($newQty,true) . "<br>";
-}
+    $pID = $_POST['PIDwithQ'];
+    $cookieCart = $_COOKIE['cart'];
+    $cookieCart = stripslashes($cookieCart);
+    $cart = json_decode($cookieCart, true);
+    $cart[$pID] = $newQty;
+    if ($newQty == 0)
+        unset($cart[$pID]);
 
+    $json = json_encode($cart);
+    setcookie('cart', $json);
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
     if(isset($_COOKIE['cart'])) {
@@ -51,9 +58,9 @@ while($row = $stmt->fetch()) {   //if its in the cart
                 echo 'Meijer';
             };
             echo "</td>";
-            ?>\
-            echo "<form method='post' >";
-            <td><input type="number" name="quantity" min="0" value="<?php echo $qty; ?>"></td>
+            ?>
+            <form method='post' >
+            <td><input type="number" name="quantity" min="0" value="<?php if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' && $pID == $productID){ echo $newQty;} else{ echo $qty;} ?>"></td>
             <?php
             //		echo "StoreID: " . $row['StoreID'] . "<br>";
             //		echo "ProductName: " . $row['ProductName'] . "<br>";
@@ -64,8 +71,9 @@ while($row = $stmt->fetch()) {   //if its in the cart
             //		echo "Quantity: " . $row['Quantity'] . "<br>";
             //		echo "</div></br>";
             echo "<td>";
-            echo"    <input type='hidden' name='action' value='cartQty' >";
-            echo"    <button type='submit'>Update Quantity</button></td></form>";
+            echo"<input type='hidden' name='PIDwithQ' value=\"$productID\" >";
+            echo"<input type='hidden' name='action' value='cartQty' >";
+            echo"<button type='submit'>Update Quantity</button></td></form>";
             echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
             echo "</form>";
         }

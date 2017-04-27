@@ -20,7 +20,7 @@ table.products {
     font-size: 1em;
     overflow: auto;
     padding: 10px;
-
+    padding-bottom: 10;
 
 }
 
