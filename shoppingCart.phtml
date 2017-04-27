@@ -21,33 +21,55 @@ $qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.Stor
 $stmt = $pdo -> query( $qry );
 echo "<table class='products'>";
 $numProductDisplayed = 0;
-while($row = $stmt->fetch())
-{   //new table row per product
-    $numProductDisplayed++;
-//        var_dump($row['ProductID']);
-    echo "<tr style='outline: thin solid'>";
-    $productID = $row['ProductID'];
-    //product pictures
-    echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-    //product informations
-    echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-    echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
-//        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
-    //form for placing ADD TO CART
-    echo "<td><form method='post' >";
-    echo"    <input type='hidden' name='pid' value=$productID>";
-    echo"    <input type='hidden' name='action' value='addcart' >";
-    echo"    <button>Add to Cart</button>";
-    echo"</form></td></tr>";
+while($row = $stmt->fetch()) {   //if its in the cart
+    foreach ($cart as $pid => $qty) {
+        if ($row['ProductID'] == $pid) {
+            //new table row per product
+            //        var_dump($row['ProductID']);
+            echo "<tr style='outline: thin solid'>";
+            $productID = $row['ProductID'];
+            //product pictures
+            echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
+            //product informations
+            echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $row['ProductCategory'] . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
+            echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= ";
+            if ($row['StoreID'] == 1) {
+                echo "Kroger";
+            };
+            if ($row['StoreID'] == 2) {
+                echo 'Meijer';
+            };
+            echo "</td>";
+            //		echo "StoreID: " . $row['StoreID'] . "<br>";
+            //		echo "ProductName: " . $row['ProductName'] . "<br>";
+            //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
+            //		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
+            //		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
+            //		echo "Description: " . $row['Description'] . "<br>";
+            //		echo "Quantity: " . $row['Quantity'] . "<br>";
+            //		echo "</div></br>";
 
-//		echo "StoreID: " . $row['StoreID'] . "<br>";
-//		echo "ProductName: " . $row['ProductName'] . "<br>";
-//		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
-//		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
-//		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
-//		echo "Description: " . $row['Description'] . "<br>";
-//		echo "Quantity: " . $row['Quantity'] . "<br>";
-//		echo "</div></br>";
+            echo "<tr>";
+            echo "<td>" . $row['ProductName'] . "</td>"; ?>
+            <td></td>
+            <td width="12%"></td><?php
+            echo "<td>Quantity: $qty</td>";
+            echo "<td>Price: " . $row['UnitPrice'] . " </td>";
+            echo "<td></td>"; ?>
+            </tr>
+            <!-- Need to use loop to produce more of this row-->
+            <tr><?php
+                echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
+                echo "<td>" . $row['ProductUPC'] . "</td>"; ?>
+                <td></td>
+                <td><input type="number" name="quantity" min="0" value="<?php echo $qty; ?>"></td>
+                <td>Code to get price<!--Insert code to get item price--></td>
+                <td><img src='#' alt='Garbage can to remove item'></td>
+
+            </tr>
+            <?php
+        }
+    }
 }
 echo "</table>";
     ?>
@@ -57,7 +79,7 @@ echo "</table>";
 	<div class="items">
 	<table class="products">
         <?php
-        
+
 
         ?>
 		<tr>
@@ -70,8 +92,8 @@ echo "</table>";
 		</tr>
 		<!-- Need to use loop to produce more of this row-->
 			<tr>
-				<td><img src='#' alt='Picture of product'></td>
-				<td><!--Name of product-->Name of Product:</td>
+                echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
+                <td><!--Name of product-->Name of Product:</td>
 				<td></td>
 				<td><input type="number" name="#Name for php code" min="0"></td>
 				<td>Code to get price<!--Insert code to get item price--></td>

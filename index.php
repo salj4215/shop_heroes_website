@@ -308,12 +308,19 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
 {
     $pid = $_POST['pid'];   //save post
     $pid = $pid * 1;    //cast into a int
-    //for first time check session
-    if(!(isset($_SESSION['cart'])))
-        $_SESSION['cart'] = array($pid => 1 );
-    else {   //if seesion[cart] exsists then check it
+    //for first time check for old cart in cookie
+    if(isset($_COOKIE['cart'])) {   //strip data out of cookie into workable array
+        $CookieCart = $_COOKIE['cart'];
+        $CookieCart = stripslashes($CookieCart);
+        $cart = json_decode($CookieCart, true);
+    }
+    if(!isset($_COOKIE['cart'])) {  //if no cookie. then create cookie with an inventory of one
+        $cart = array($pid => 1);
+        $json = json_encode($cart);
+        setcookie('cart', $json);
+    }
+    else {   //if cookie[cart] exsists then check it
         $existsInCart = false;
-        $cart = $_SESSION['cart'];  //then set the local vairrlbe to equal the old cart.
         //Search cart array for product id, if not there, than add new product, and quantiy
         foreach ($cart as $id => $quantity) {
             if ($pid == $id) {  //if the product ID matches the $id of array, incrment whats in cart.
@@ -330,7 +337,7 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
         echo "<br><br>Displaying the array!!!!";
         foreach ($cart as $id => $quantity)
             echo "[" . $id . "]=>" . $quantity . "...";
-        $_SESSION['cart'] = $cart;
+        //convert cart into json, and create COOKIECART with that new data.
         $json = json_encode($cart);
         setcookie('cart', $json);
         echo "<br>COOKIE CART>>" . $_COOKIE["cart"];
