@@ -100,7 +100,7 @@ if(isset($_POST['search'])) {
         $searchWHERE = " AND PRODUCTS.ProductName LIKE '%$searchWord%'";
     }
     else
-        $serachWHERE = "";
+        $searchWHERE = "";
         //replace category string to hold the attribute WHERE search, or blank.
 
     $orderBY = "ORDER BY `ProductName`";
