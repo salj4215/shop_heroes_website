@@ -1,7 +1,13 @@
 ﻿<?php
-$user = $_POST['Username'];
-$pass = $_POST['Password'];
-
+if(isset($_POST['Username'])) {
+    $user = $_POST['Username'];
+}else{
+    exit;
+}if(isset($_POST['Password'])) {
+    $pass = $_POST['Password'];
+}else{
+    exit;
+}
 //Script to register a new User
 //It returns the new auto-generated UserID if successful
 
