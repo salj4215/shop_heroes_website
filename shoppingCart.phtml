@@ -14,9 +14,9 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
 {
-    $newQty = $_POST['qty'];
+    $newQty = $_POST['quantity'];
     echo "<br> $newQty";
-    echo "<br> . vardump($newQty) . <br>";
+    echo "<br>" . var_export($newQty,true) . "<br>";
 }
 
 
@@ -64,7 +64,6 @@ while($row = $stmt->fetch()) {   //if its in the cart
             //		echo "Quantity: " . $row['Quantity'] . "<br>";
             //		echo "</div></br>";
             echo "<td>";
-            echo"    <input type='hidden' name='qty' value=$qty>";
             echo"    <input type='hidden' name='action' value='cartQty' >";
             echo"    <button type='submit'>Update Quantity</button></td></form>";
             echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
