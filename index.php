@@ -67,7 +67,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
         $vaildationError = true;
     }
     if (empty($fname) || empty($lname) || empty($pass) || empty($cpass) || empty($userEmail) || empty($zip) || empty($city) || empty($phone)) {
-        echo "Please make sure no fields are left blank.";
+        array_push($_SESSION['messages'], "Confirm Password does not match password");
+        $vaildationError = true;
     }
     //if username is NOT vaild email
     if (!(filter_var($userEmail, FILTER_VALIDATE_EMAIL))) {
