@@ -13,7 +13,7 @@ table.products {
     position: relative;
     left: 150px;
     top: 100px;
-    right: 50px;
+    /*right: 50px;*/
     color: black;
     font-family: Bitter, "Times New Roman", Times, serif;
     font-weight: 200;
