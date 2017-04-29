@@ -55,7 +55,7 @@ if(isset($_POST['search'])) {
         </div>
         <!--Adding cart preview -->
         <div class="shoppingCart">
-            <button class="productbtn">Shopping Cart</button>
+            <button class="productbtn"><img src="images/shopping-cart-wheel_318-27957.png"style="width:42px;height:42px;">Shopping Cart</button>
             <div class="shoppingCart-content">
 
             </div>
