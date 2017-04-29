@@ -91,7 +91,14 @@ if(isset($_POST['search'])) {
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Dairy'";
     else
         $categoryWHERE="";
-
+    ?>
+</br></br></br>
+    <li class="login">
+    <ul class="login">
+    <a href="index.php?page=shoppingcart">Shopping Chart</a>
+    </ul>
+    </li>
+        <?php
     //serach bar where
     if(isset($_SESSION['search']))
     {
@@ -146,21 +153,6 @@ if(isset($_POST['search'])) {
         echo "<strong>Sorry no products were found matching the description '$searchWord'"; if($categoryWHERE != ""){ print " under " . $_SESSION['category'];} print " at " . $_SESSION['store'] . "</strong>";
     }
     $numProductDisplayed=0;
-//clear search
-//if(isset($_SESSION['search'])){
-//    $_SESSION['search'] = "";
-//    $searchWHERE = "";
-//    $searchWord = "";}
-//
-//echo "<br><br><br> this is the data of orderlineitems.";
-//
-//$qry ="Select * from `OrderLineItems`";
-//
-//$stmt = $pdo -> query( $qry );
-//while($row = $stmt->fetch())
-//{   //new table row per product
-//    var_dump($row);
-//    echo "<br>";
-//}
+
 //?>
 
