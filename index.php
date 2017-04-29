@@ -309,6 +309,9 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
 {
     $pid = $_POST['pid'];   //save post
     $pid = $pid * 1;    //cast into a int
+    $productName = $_POST['productName'];
+    $productCat = $_POST['productCat'];
+    array_push($_SESSION['messages'], "$productCat : <u>$productName</u> have been added to your Cart.");
     //for first time check for old cart in cookie
     if(isset($_COOKIE['cart'])) {   //strip data out of cookie into workable array
         $CookieCart = $_COOKIE['cart'];
@@ -334,14 +337,9 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
         }
         if ($existsInCart == false) //if it doesnt exists, its a new item, add it to 1 quantiy
             $cart[$pid] = 1;
-    //display array
-        echo "<br><br>Displaying the array!!!!";
-        foreach ($cart as $id => $quantity)
-            echo "[" . $id . "]=>" . $quantity . "...";
         //convert cart into json, and create COOKIECART with that new data.
         $json = json_encode($cart);
         setcookie('cart', $json);
-        echo "<br>COOKIE CART>>" . $_COOKIE["cart"];
     }
 }
 //HEADER OF PAGES
@@ -355,9 +353,11 @@ require ('header.phtml');
 //var_dump($_SESSION['messages']);
 //if statement1 global for all pages and all messages to be printed
 if( isset( $_SESSION['messages']) && (count($_SESSION['messages']) > 1 )) {
+    echo "<strong>";
     foreach ($_SESSION['messages'] as $message) {
         echo $message . "<br>";
     }
+    echo "</strong>";
 }
 
 if (isset($_GET['page']) && $_GET['page'] == 'aboutus')

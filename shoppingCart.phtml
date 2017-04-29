@@ -25,6 +25,8 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
 
     $json = json_encode($cart);
     setcookie('cart', $json);
+    //redirect to the page for cookies and orders
+    header("index.php?page=shoppingcart");
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
