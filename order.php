@@ -53,6 +53,13 @@ if(isset($_POST['search'])) {
             <a href="index.php?page=order&category=dairy">Dairy</a>
             </div>
         </div>
+        <!--Adding cart preview -->
+        <div class="shoppingCart">
+            <button class="productbtn">Shopping Cart</button>
+            <div class="shoppingCart-content">
+
+            </div>
+        </div>
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
         <td>
@@ -95,7 +102,7 @@ if(isset($_POST['search'])) {
 </br></br></br>
     <li class="login">
     <ul class="login">
-    <a href="index.php?page=shoppingcart">Shopping Chart</a>
+    <a href="index.php?page=shoppingcart">Shopping Cart</a>
     </ul>
     </li>
         <?php

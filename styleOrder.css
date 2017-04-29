@@ -51,6 +51,13 @@ table td{
     display:            inline-block;
 	top:				-30px;
 }
+.shoppingCart
+{
+    position:           relative;
+    display:            inline-block;
+    top:                -30px;
+    float:              right;
+}
 /*Dropdown content - hidden */
 .dropdown-content
 {
