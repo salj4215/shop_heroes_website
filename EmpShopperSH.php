@@ -137,17 +137,7 @@
 					</td>
 				</tr>
 		</table>
-				<table>
-		  <?php foreach ($orderlines as $oli) { ?>
-			<tr>
-			  <td><?php echo $oli['OrderID']; ?></td>
-			  <td><?php echo $oli['ProductID']; ?></td>
-			  <td><?php echo $oli['ProductQuantity']; ?></td>
-			  <td><?php echo $oli['StoreID']; ?></td>
-			  <td><?php echo $oli['StoreID']; ?></td>
-			</tr>
-		  <?php } ?>
-		</table>
+		
 		<span id="output"></span>
 		<span id="output"></span>
 		
@@ -192,12 +182,24 @@
 					for (i=1; i <= 5; i++)
 					{
 						//var table = document.getElementById("report");
-						var row = table.insertRow(i);
+						
+					}
+					
+					<?php foreach ($orderlines as $oli) { ?>
+					var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
-						cell1.innerHTML = i;
-						cell2.innerHTML = "th Row in Driver";
-					}
+						cell1.innerHTML = <?php echo $oli['OrderID']; ?>;
+						cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
+						//<tr>
+						  //<td><?php echo $oli['OrderID']; ?></td>
+						  //<td><?php echo $oli['ProductID']; ?></td>
+						  //<td><?php echo $oli['ProductQuantity']; ?></td>
+						  //<td><?php echo $oli['StoreID']; ?></td>
+						  //<td><?php echo $oli['StoreID']; ?></td>
+						//</tr>
+					<?php } ?>
+					
 				}
 				else if (selectValue=="Shopper")
 				{
