@@ -49,6 +49,7 @@ table td{
 {
     position:           absolute;
     display:            inline-block;
+	top:				-30px;
 }
 .shoppingCart
 {
