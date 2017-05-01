@@ -24,12 +24,12 @@ top: 10%;
 }
 ul.login li
 {
-position:absolute;
+position:fixed; /* was absolute */
 float: left;
 top: 10%; /* was 10px */
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
-	width: 60%; /* was 100px */
-	height: 60%; /* was 25% */
+	width: 100px; /* was 100px */
+	height: 20px; /* was 25% */
 		font-size:16px;
 	line-height: 25px;
 	text-align: center;
