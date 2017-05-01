@@ -9,11 +9,6 @@ div.img{
     box-sizing: border-box;
 }
 /* login and sign up buttons */
-.ContainerLogin
-{
-	float:right;
-	position:absolute;
-}
 
 ul.signup li
 {
@@ -46,6 +41,7 @@ table.search {
  left:400px;
  top:40px;
    color: black;
+   background-color:yellow;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
    font-size: 1em;
@@ -123,7 +119,7 @@ footer {
 
 /************************************** Below here is all responsive design and print screen stuff. *******************************/
 
-/* Smartphones (portrait and landscape) ----------- */
+/* Smartphones (portrait and landscape) ----------- 
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
@@ -145,8 +141,11 @@ and (max-device-width : 480px) {
 }
 
 }
+*/
+
+/*
 @media only screen and (max-width: 600px) {
-    /* For tablets: */
+
 		table.search {
 		left:auto;
 		right:0;
@@ -165,3 +164,4 @@ and (max-device-width : 480px) {
 		top:400px;
 }
 }
+*/

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +25,7 @@
         <table class="search">
             <tr>
                 <td>
-                    <input type="text" name="terms" size="25" maxlength="25" placeholder="What are you looking for?" class="Searchbar">
+                    <input type="text" name="terms" size="25" maxlength="25" placeholder="What are you looking for??" class="Searchbar">
                     <input type="submit" value="Search" class="centercell">
                 </td>
             </tr>
@@ -42,13 +43,13 @@
             <li><a href="index.php?page=contact">Contact us</a></li>
         </ul>
     </nav>
-    <nav >
-        <?php if(isset($_SESSION["activeUserID"]) && ($_SESSION["activeUserID"] == 0)) {
+    <nav class = "ContainerLogin" >
+        <?php if(!(isset($_SESSION["activeUser"]))) {
             print "<ul class='signup' >";
             print "<li ><a href = 'index.php?page=signup' > Sign Up </a ></li >";
         print "</ul >";
         }
-        if(isset($_SESSION["activeUserID"]) && ($_SESSION["activeUserID"] == 0)) {
+        if(!(isset($_SESSION["activeUser"]))) {
         print "<ul class='login'>";
             print "<li><a href='index.php?page=login'>Login</a></li>";
         print "</ul>";

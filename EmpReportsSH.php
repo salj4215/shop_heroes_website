@@ -13,30 +13,6 @@
 		<link rel="stylesheet" type="text/css" href="styleSH.css">
 		<link rel="icon" size="192x192" href="images/android.png">
 		<title>Shop Heroes Reports</title>
-		<?php
-			#This include file sets HOST, USER, PASS, and DB, which will connect you to the database:
-			#calls the hidden connect_db file.php that Defines HOST USER PASS DB they are basically variables
-			require_once('connect_db.php');
-
-			#makes a string $dsn and inserts the value of HOST for the first %s, and DB for the second %s.
-			#So, for example "mysql:host=localhost;dbname=shop_heroes_db_beta" or something like that.
-			$dsn = sprintf("mysql:host=%s;dbname=%s;charset=UTF8;", HOST, DB);
-			#This just sets up some nice driver options for PDO error reporting:
-			$driver_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
-			#defines a $pdo database object with $dsn (assembled above), USER, and PASS stuffed in as parameters:
-			$pdo = new PDO($dsn, USER, PASS, $driver_options);
-
-			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDERS";
-			#runs the quary
-			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-			#this should pull all the current data from the products table
-			#all the data will show up at the top of the site on top of the header below.
-			#this can be themed look better
-
-
-			#Created with the help of Micah W
-		?>
 	</head>
 	<body>
 		<header>
@@ -54,27 +30,21 @@
 					}
 					
 					table.reporttable{
-						background-color: white;
 						text-align: left;
-						margin-left: 2%;
-						margin-right: 2%;
+						margin-left: 1%;
+						margin-right: 1%;
+						margin-bottom: 1%;
 						font-size:1em;
-						height:500px;
-						width:96%;
+						height:400px;
+						width:98%;
 						border:1px solid black;
-					}
-					
-					p.reportdate{
-						margin-left: 2%;
-						margin-right: 2%;
-						font-size: 1em;
-						text-align: center;
 					}
 					
 					select.reportchoice{
 						font-size:1em;
-						margin-left: 2%;
-						margin-right: 2%;
+						margin-left: 1%;
+						margin-right: 1%;
+						margin-bottom: 1%;
 						height:40px;"
 					}
 					
@@ -92,36 +62,26 @@
 					<p><a href="orders.html">Orders</a></p>
 					<p><a href="giftCard.html">Gift Cards & more</a></p>
 					<p><a href="contact.html">Contact us</a></p>-->
-					<p>
-					|&emsp;&emsp;
-					<a href="EmpHomeSH.html">Home</a>
-					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpReportsSH.html">Reports</a>
-					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpDriversSH.html">Drivers</a>
-					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpShoppersSH.html">Shoppers</a>
-					&emsp;&emsp;|
-					</p>
+					<p>Home</p>
+					<p>Reports</p>
+					<p>Drivers</p>
+					<p>Shoppers</p>
 				</nav>
 			</head>
 		</header>
-		<br>
 		<select class="reportchoice" id="reporttype" onchange="changereporttype(this);">
-			<option>Driver</option>
+			
 			<option>Shopper</option>
+			<option>Driver</option>
 			<option>Accounts Payable to Store</option>
 			<option>Shopping List in Accounts Payable</option>
 			<option>Ticket</option>
 		</select>
-		<p class="reportdate">
-			Enter a Start Date
-			<input type="date" name="startdate">
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Enter an End Date
-			<input type="date" name="enddate">
-		<p>
 		<br>
+		Enter a Start Date
+		<input type="text" name="terms" size="25" maxlength="25" placeholder="What are you looking for?">
+		Enter an End Date
+		<input type="text" name="terms" size="25" maxlength="25" placeholder="What are you looking for?">
 		<table class="reporttable" id="report">
 				<tr>
 					<td colspan="2" width="20%">
@@ -137,19 +97,6 @@
 					</td>
 				</tr>
 		</table>
-
-		<table>
-		  <?php foreach ($orders as $order) { ?>
-			<tr>
-			  <td><?php echo $order['OrderID']; ?></td>
-			  <td><?php echo $order['DriverID']; ?></td>
-			  <td><?php echo $order['ShopperID']; ?></td>
-			  <td><?php echo $order['OrderTotal']; ?></td>
-			  <td><?php echo $order['BoxingItems']; ?></td>
-			</tr>
-		  <?php } ?>
-		</table>
-		
 		<span id="output"></span>
 		<span id="output"></span>
 		
@@ -231,27 +178,28 @@
 		</script>
 		
 	</body>
-	
 	<footer>
-			<br>
-			<nav class="sitenavigation">
-			|&emsp;
 			<a href="index.html">Home</a>
-			&emsp;|&emsp;
+			|
 			<a href="index2.html">New Products</a>
-			&emsp;|&emsp;
+			|
 			<a href="index2.html">Special Offers</a>
-			&emsp;|&emsp;
+			|
+			<a href="index2.html">My Account</a>
+			|
+			<a href="index2.html">Shopping Cart</a>
+			|
+			<a href="index2.html">Locations</a>
+			|
+			<a href="index2.html">FAQ</a>
+			|
 			<a href="contact.html">Contact Us</a>
-			&emsp;|&emsp;
+			|
 			<a href="index2.html" class="terms">Privacy Policy</a>
-			&emsp;|&emsp;
+			|
 			<a href="index2.html" class="terms">Terms of Use</a>
-			&emsp;|
-			</nav>
 			<p>
 				Copyright &copy; ShopHeroes 2017. All rights reserved.
 			</p>
-			
 	</footer>
 </html>
