@@ -140,6 +140,17 @@ and (max-device-width : 480px) {
 		top:400px;
 }
 
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 20px 10px;
+	font-size:1em;
+}
+
+
+
 }
 
 
