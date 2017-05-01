@@ -184,12 +184,11 @@
 						//var table = document.getElementById("report");
 						
 					}
-					
-					<?php foreach ($orderlines as $oli) { ?>
 					var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
 						var cell3 = row.insertCell(2);
+					<?php foreach ($orderlines as $oli) { ?>
 						cell1.innerHTML = "<?php echo $oli['OrderID']; ?>";
 						cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
 						cell3.innerHTML = "tester";
