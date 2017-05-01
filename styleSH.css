@@ -73,7 +73,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 16.65%; /*Was 210px */
+	width: 16.66666667%; /*Was 210px */
 	height: 30px;
 background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	margin: auto;
@@ -119,13 +119,13 @@ footer {
 
 /************************************** Below here is all responsive design and print screen stuff. *******************************/
 
-/* Smartphones (portrait and landscape) ----------- 
+ /*Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
 	table.search {
 		position: center;
-		top:300px;
+		/*top:300px;*/
 	}
 	ul.signup li
 {
@@ -141,15 +141,15 @@ and (max-device-width : 480px) {
 }
 
 }
-*/
 
-/*
+
+
 @media only screen and (max-width: 600px) {
 
 		table.search {
 		left:auto;
 		right:0;
-		top:300px;
+		/*top:300px;*/
 	}
 	ul.signup li
 {
@@ -164,4 +164,4 @@ and (max-device-width : 480px) {
 		top:400px;
 }
 }
-*/
+
