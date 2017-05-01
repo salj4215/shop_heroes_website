@@ -9,7 +9,6 @@ if(isset($_POST['UserID'])){
     exit;
 }
 
-
 require_once ('../connect_db.php');
 $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
 
@@ -23,7 +22,7 @@ if(isset($result)){
     exit;
 }
 
-$sql = "SELECT OrderID FROM ORDERS WHERE CustID='$cust_id' AND SignedFor !=1";
+$sql = "SELECT OrderID FROM ORDERS WHERE CustID='$cust_id' AND SignedFor !=1 AND StoreID !=0";
 
 
 
@@ -64,6 +63,5 @@ while ($row = mysqli_fetch_array($open_orders)) {
     );
     }
 }
-
 echo json_encode($order_arr);
 mysqli_close($con);
