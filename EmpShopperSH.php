@@ -189,8 +189,10 @@
 					var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
-						cell1.innerHTML = <?php echo $oli['OrderID']; ?>;
+						var cell3 = row.insertCell(2);
+						cell1.innerHTML = "<?php echo $oli['OrderID']; ?>";
 						cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
+						cell3.innerHTML = "tester";
 						//<tr>
 						  //<td><?php echo $oli['OrderID']; ?></td>
 						  //<td><?php echo $oli['ProductID']; ?></td>
