@@ -144,6 +144,7 @@
 			  <td><?php echo $oli['ProductID']; ?></td>
 			  <td><?php echo $oli['ProductQuantity']; ?></td>
 			  <td><?php echo $oli['StoreID']; ?></td>
+			  <td><?php echo $oli['StoreID']; ?></td>
 			</tr>
 		  <?php } ?>
 		</table>
