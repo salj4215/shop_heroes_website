@@ -10,81 +10,110 @@
 <body>
 <?php       //test that user is logged in.
 if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
-{
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
-{
-    $newQty = $_POST['quantity'];
-    $pID = $_POST['PIDwithQ'];
-    $cookieCart = $_COOKIE['cart'];
-    $cookieCart = stripslashes($cookieCart);
-    $cart = json_decode($cookieCart, true);
-    $cart[$pID] = $newQty;
-    if ($newQty == 0)
-        unset($cart[$pID]);
-
-    $json = json_encode($cart);
-    setcookie('cart', $json);
-    //redirect to the page for cookies and orders
-    header("index.php?page=shoppingcart");
+    {
+//if Get store  or if not set
+if(!isset($_SESSION['store']))
+    $_SESSION['store']= '';
+if(isset($_GET['store'])) {
+    $_SESSION['store'] = $_GET['store'];
+    $_SESSION['category']= '';
 }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-    if(isset($_COOKIE['cart'])) {
+//to select store choice.
+if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Membership')
+    $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
+elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
+    $storeWHERE=" WHERE STORES.StoreID = '1'";
+elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
+    $storeWHERE=" WHERE STORES.StoreID = '2'";
+else    //default to all
+    $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
+?>
+<!-- Products Navigation bar -->
+    <div id="prod_navigation">
+		<div class="dropdown">
+			<button class="productbtn">Stores &#9660</button>
+			<div class="dropdown-content">
+                <a href="index.php?page=shoppingcart&store=Membership">Membership</a>
+                <a href="index.php?page=shoppingcart&store=Kroger">Kroger</a>
+				<a href="index.php?page=shoppingcart&store=Meijer">Meijer</a>
+			</div>
+		</div>
+    </div>
+<?php
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
+    {
+        $newQty = $_POST['quantity'];
+        $pID = $_POST['PIDwithQ'];
         $cookieCart = $_COOKIE['cart'];
         $cookieCart = stripslashes($cookieCart);
         $cart = json_decode($cookieCart, true);
+        $cart[$pID] = $newQty;
+        if ($newQty == 0)
+            unset($cart[$pID]);
+
+        $json = json_encode($cart);
+        setcookie('cart', $json);
+        //redirect to the page for cookies and orders
+        header("index.php?page=shoppingcart");
     }
 
-$qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID';
-////call quuery
-$stmt = $pdo -> query( $qry );
-echo "<table class='products'>";
-$numProductDisplayed = 0;
-while($row = $stmt->fetch()) {   //if its in the cart
-    foreach ($cart as $pid => $qty) {
-        if ($row['ProductID'] == $pid) {
-            //new table row per product
-            //        var_dump($row['ProductID']);
-            echo "<tr style='outline: thin solid'>";
-            $productID = $row['ProductID'];
-            //product pictures
-            echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-            //product informations
-            echo "<td>ProductName: " . $row['ProductName'] .  "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-            echo "<td>UnitPrice: $" . $row['UnitPrice'] .  "<br><br>Store= ";
-            if ($row['StoreID'] == 1) {
-                echo "Kroger";
-            };
-            if ($row['StoreID'] == 2) {
-                echo 'Meijer';
-            };
-            echo "</td>";
-            ?>
-            <form method='post' >
-            <td><input type="number" name="quantity" min="0" value="<?php if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' && $pID == $productID){ echo $newQty;} else{ echo $qty;} ?>"></td>
-            <?php
-            //		echo "StoreID: " . $row['StoreID'] . "<br>";
-            //		echo "ProductName: " . $row['ProductName'] . "<br>";
-            //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
-            //		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
-            //		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
-            //		echo "Description: " . $row['Description'] . "<br>";
-            //		echo "Quantity: " . $row['Quantity'] . "<br>";
-            //		echo "</div></br>";
-            echo "<td>";
-            echo"<input type='hidden' name='PIDwithQ' value=\"$productID\" >";
-            echo"<input type='hidden' name='action' value='cartQty' >";
-            echo"<button type='submit'>Update Quantity</button></td></form>";
-            echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
-            echo "</form>";
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+        if(isset($_COOKIE['cart'])) {
+            $cookieCart = $_COOKIE['cart'];
+            $cookieCart = stripslashes($cookieCart);
+            $cart = json_decode($cookieCart, true);
+        }
+
+    $qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE;
+    ////call quuery
+    $stmt = $pdo -> query( $qry );
+    echo "<table class='products'>";
+    $numProductDisplayed = 0;
+    while($row = $stmt->fetch()) {   //if its in the cart
+        foreach ($cart as $pid => $qty) {
+            if ($row['ProductID'] == $pid) {
+                //new table row per product
+                //        var_dump($row['ProductID']);
+                echo "<tr style='outline: thin solid'>";
+                $productID = $row['ProductID'];
+                //product pictures
+                echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
+                //product informations
+                echo "<td>ProductName: " . $row['ProductName'] .  "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
+                echo "<td>UnitPrice: $" . $row['UnitPrice'] .  "<br><br>Store= ";
+                if ($row['StoreID'] == 1) {
+                    echo "Kroger";
+                };
+                if ($row['StoreID'] == 2) {
+                    echo 'Meijer';
+                };
+                echo "</td>";
+                ?>
+                <form method='post' >
+                <td><input type="number" name="quantity" min="0" value="<?php if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' && $pID == $productID){ echo $newQty;} else{ echo $qty;} ?>"></td>
+                <?php
+                //		echo "StoreID: " . $row['StoreID'] . "<br>";
+                //		echo "ProductName: " . $row['ProductName'] . "<br>";
+                //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
+                //		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
+                //		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
+                //		echo "Description: " . $row['Description'] . "<br>";
+                //		echo "Quantity: " . $row['Quantity'] . "<br>";
+                //		echo "</div></br>";
+                echo "<td>";
+                echo"<input type='hidden' name='PIDwithQ' value=\"$productID\" >";
+                echo"<input type='hidden' name='action' value='cartQty' >";
+                echo"<button type='submit'>Update Quantity</button></td></form>";
+                echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
+                echo "</form>";
+            }
         }
     }
-}
-echo "</table>";
-?>
+    echo "</table>";
+    ?>
 
-</body>
+    </body>
 <?php }
 else{
     array_push($_SESSION['messages'], "You must be logged-in to view 'ShoppingCart'");
