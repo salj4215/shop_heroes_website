@@ -9,6 +9,12 @@ div.img{
     box-sizing: border-box;
 }
 /* login and sign up buttons */
+.ContainerLogin
+{
+	float:right;
+	position:absolute;
+}
+
 ul.signup li
 {
 
