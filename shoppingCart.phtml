@@ -8,38 +8,39 @@
 	<title>Shopping Cart page</title>
 </head>
 <body>
+<p align="center"><Strong> Shopping Cart</Strong></p>
 <?php       //test that user is logged in.
 if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
     {
-//if Get store  or if not set
-if(!isset($_SESSION['store']))
-    $_SESSION['store']= '';
-if(isset($_GET['store'])) {
-    $_SESSION['store'] = $_GET['store'];
-    $_SESSION['category']= '';
-}
-//to select store choice.
-if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Membership')
-    $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
-elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
-    $storeWHERE=" WHERE STORES.StoreID = '1'";
-elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
-    $storeWHERE=" WHERE STORES.StoreID = '2'";
-else    //default to all
-    $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
-?>
-<!-- Products Navigation bar -->
-    <div id="prod_navigation">
-		<div class="dropdown">
-			<button class="productbtn">Stores &#9660</button>
-			<div class="dropdown-content">
-                <a href="index.php?page=shoppingcart&store=Membership">Membership</a>
-                <a href="index.php?page=shoppingcart&store=Kroger">Kroger</a>
-				<a href="index.php?page=shoppingcart&store=Meijer">Meijer</a>
-			</div>
-		</div>
-    </div>
-<?php
+    //if Get store  or if not set
+    if(!isset($_SESSION['store']))
+        $_SESSION['store']= '';
+    if(isset($_GET['store'])) {
+        $_SESSION['store'] = $_GET['store'];
+        $_SESSION['category']= '';
+    }
+    //to select store choice.
+    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Membership')
+        $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
+    elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger')
+        $storeWHERE=" WHERE STORES.StoreID = '1'";
+    elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer')
+        $storeWHERE=" WHERE STORES.StoreID = '2'";
+    else    //default to all
+        $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
+    ?>
+    <!-- Products Navigation bar -->
+        <div id="prod_navigation">
+            <div class="dropdown">
+                <button class="productbtn">Stores &#9660</button>
+                <div class="dropdown-content">
+                    <a href="index.php?page=shoppingcart&store=Membership">Membership</a>
+                    <a href="index.php?page=shoppingcart&store=Kroger">Kroger</a>
+                    <a href="index.php?page=shoppingcart&store=Meijer">Meijer</a>
+                </div>
+            </div>
+        </div>
+    <?php
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' )
     {

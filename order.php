@@ -55,9 +55,11 @@ if(isset($_POST['search'])) {
         </div>
         <!--Adding cart preview -->
         <div class="shoppingCart">
-            <button class="productbtn"><img src="images/shopping-cart-wheel_318-27957.png"style="width:20px;height:20px;">   Shopping Cart</button>
+            <form action="index.php" method="get">
+            <button name="cart" id="cart" type="submit" class="productbtn""><img src="images/shopping-cart-wheel_318-27957.png"style="width:20px;height:20px;">   Shopping Cart</button>
+                <input type='hidden' name='page' value='shoppingcart'>
+            </form>
             <div class="shoppingCart-content">
-
             </div>
         </div>
     </div>
@@ -100,11 +102,7 @@ if(isset($_POST['search'])) {
         $categoryWHERE="";
     ?>
 </br></br></br>
-    <li class="login">
-    <ul class="login">
-    <a href="index.php?page=shoppingcart">Shopping Cart</a>
-    </ul>
-    </li>
+
         <?php
     //serach bar where
     if(isset($_SESSION['search']))
