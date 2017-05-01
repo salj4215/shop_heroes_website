@@ -73,7 +73,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 16.6%; /*Was 210px */
+	width: 16.65%; /*Was 210px */
 	height: 30px;
 background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	margin: auto;
