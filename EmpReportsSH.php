@@ -142,10 +142,10 @@
 		  <?php foreach ($orders as $order) { ?>
 			<tr>
 			  <td><?php echo $order['OrderID']; ?></td>
-			  <td><?php echo $product['DriverID']; ?></td>
-			  <td><?php echo $product['ShopperID']; ?></td>
-			  <td><?php echo $product['OrderTotal']; ?></td>
-			  <td><?php echo $product['BoxingItems']; ?></td>
+			  <td><?php echo $order['DriverID']; ?></td>
+			  <td><?php echo $order['ShopperID']; ?></td>
+			  <td><?php echo $order['OrderTotal']; ?></td>
+			  <td><?php echo $order['BoxingItems']; ?></td>
 			</tr>
 		  <?php } ?>
 		</table>
