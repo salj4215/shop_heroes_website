@@ -13,7 +13,7 @@ ul.signup li
 {
 
 position:absolute;
-float: left;
+float: right;
 top: 10%;
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
@@ -25,7 +25,7 @@ top: 10%;
 ul.login li
 {
 position:fixed; /* was absolute */
-float: left;
+float: right;
 top: 10%; /* was 10px */
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px; /* was 100px */
