@@ -9,11 +9,6 @@ div.img{
     box-sizing: border-box;
 }
 /* login and sign up buttons */
-.ContainerLogin
-{
-	float:right;
-	position:absolute;
-}
 
 ul.signup li
 {
@@ -46,6 +41,7 @@ table.search {
  left:400px;
  top:40px;
    color: black;
+   background-color:yellow;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
    font-size: 1em;
