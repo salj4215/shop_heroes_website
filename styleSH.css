@@ -26,7 +26,7 @@ ul.login li
 {
 position:absolute;
 float: left;
-top: 10px;
+top: 10%; /* was 10px */
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	width: 100px;
 	height: 25px;
