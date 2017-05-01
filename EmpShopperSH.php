@@ -194,7 +194,7 @@
 						//cell1.innerHTML = "<?php echo $oli['OrderID']; ?>";
 						//cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
 						//cell3.innerHTML = "tester";
-						i = i + 1;
+						i = i + 1;<!---->
 						//<tr>
 						  //<td><?php echo $oli['OrderID']; ?></td>
 						  //<td><?php echo $oli['ProductID']; ?></td>
