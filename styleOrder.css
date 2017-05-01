@@ -47,7 +47,7 @@ table td{
 /*Container for dropdown */
 .dropdown
 {
-    position:           relative;
+    position:           absolute;
     display:            inline-block;
 	top:				-30px;
 }
