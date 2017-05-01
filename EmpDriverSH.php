@@ -13,6 +13,30 @@
 		<link rel="stylesheet" type="text/css" href="styleSH.css">
 		<link rel="icon" size="192x192" href="images/android.png">
 		<title>Shop Heroes Reports</title>
+		<?php
+			#This include file sets HOST, USER, PASS, and DB, which will connect you to the database:
+			#calls the hidden connect_db file.php that Defines HOST USER PASS DB they are basically variables
+			require_once('connect_db.php');
+
+			#makes a string $dsn and inserts the value of HOST for the first %s, and DB for the second %s.
+			#So, for example "mysql:host=localhost;dbname=shop_heroes_db_beta" or something like that.
+			$dsn = sprintf("mysql:host=%s;dbname=%s;charset=UTF8;", HOST, DB);
+			#This just sets up some nice driver options for PDO error reporting:
+			$driver_options[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
+			#defines a $pdo database object with $dsn (assembled above), USER, and PASS stuffed in as parameters:
+			$pdo = new PDO($dsn, USER, PASS, $driver_options);
+
+			#define the sql quary you want to run
+			$query = "SELECT * FROM ORDER_LINE_ITEMS";
+			#runs the quary
+			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			#this should pull all the current data from the products table
+			#all the data will show up at the top of the site on top of the header below.
+			#this can be themed look better
+
+
+			#Created with the help of Micah W
+		?>
 	</head>
 	<body>
 		<header>
