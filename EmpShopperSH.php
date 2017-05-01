@@ -27,7 +27,7 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM OrderLineItems";
+			$query = "SELECT * FROM ORDER_LINE_ITEMS";
 			#runs the quary
 			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
