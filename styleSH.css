@@ -28,8 +28,8 @@ position:absolute;
 float: left;
 top: 10%; /* was 10px */
 	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
-	width: 25%; /* was 100px */
-	height: 15%; /* was 25% */
+	width: 60%; /* was 100px */
+	height: 60%; /* was 25% */
 		font-size:16px;
 	line-height: 25px;
 	text-align: center;
