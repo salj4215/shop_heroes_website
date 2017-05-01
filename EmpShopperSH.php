@@ -27,7 +27,7 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDERLINEITEMS";
+			$query = "SELECT * FROM OrderLineItems";
 			#runs the quary
 			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
@@ -143,6 +143,7 @@
 			  <td><?php echo $oli['OrderID']; ?></td>
 			  <td><?php echo $oli['ProductID']; ?></td>
 			  <td><?php echo $oli['ProductQuantity']; ?></td>
+			  <td><?php echo $oli['StoreID']; ?></td>
 			  <td><?php echo $oli['StoreID']; ?></td>
 			</tr>
 		  <?php } ?>
