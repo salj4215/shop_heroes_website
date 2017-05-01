@@ -12,6 +12,7 @@
 		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 		<link rel="stylesheet" type="text/css" href="styleSH.css">
 		<link rel="icon" size="192x192" href="images/android.png">
+		<!-- -->
 		<title>Shop Heroes Reports</title>
 		<?php
 			#This include file sets HOST, USER, PASS, and DB, which will connect you to the database:
