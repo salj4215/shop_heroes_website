@@ -122,6 +122,7 @@
 			<input type="date" name="enddate">
 		<p>
 		<br>
+		<!---->
 		<table class="reporttable" id="report">
 				<tr>
 					<td colspan="2" width="20%">
