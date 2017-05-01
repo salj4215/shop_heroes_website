@@ -141,8 +141,10 @@ and (max-device-width : 480px) {
 }
 
 }
+
+/*
 @media only screen and (max-width: 600px) {
-    /* For tablets: */
+
 		table.search {
 		left:auto;
 		right:0;
@@ -161,3 +163,4 @@ and (max-device-width : 480px) {
 		top:400px;
 }
 }
+*/
