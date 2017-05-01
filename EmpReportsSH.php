@@ -138,7 +138,7 @@
 				</tr>
 		</table>
 
-		
+		<table>
 		  <?php foreach ($orders as $order) { ?>
 			<tr>
 			  <td><?php echo $order['OrderID']; ?></td>
@@ -148,7 +148,7 @@
 			  <td><?php echo $product['BoxingItems']; ?></td>
 			</tr>
 		  <?php } ?>
-		
+		</table>
 		
 		<span id="output"></span>
 		<span id="output"></span>
