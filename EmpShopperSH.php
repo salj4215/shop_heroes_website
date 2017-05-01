@@ -141,7 +141,7 @@
 		<span id="output"></span>
 		<span id="output"></span>
 		
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			function changereporttype(selectObj) {
 				//how to insert rows
 				//https://www.w3schools.com/jsref/met_table_insertrow.asp
@@ -184,14 +184,16 @@
 						//var table = document.getElementById("report");
 						
 					}
-					var row = table.insertRow(i);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						var cell3 = row.insertCell(2);
-					<?php foreach ($orderlines as $oli) { ?>
-						cell1.innerHTML = "<?php echo $oli['OrderID']; ?>";
-						cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
-						cell3.innerHTML = "tester";
+					
+					'?php foreach ($orderlines as $oli) { ?>
+						//var row = table.insertRow(i);
+						//var cell1 = row.insertCell(0);
+						//var cell2 = row.insertCell(1);
+						//var cell3 = row.insertCell(2);
+						//cell1.innerHTML = "<?php echo $oli['OrderID']; ?>";
+						//cell2.innerHTML = <?php echo $oli['ProductID']; ?>;
+						//cell3.innerHTML = "tester";
+						i = i + 1;
 						//<tr>
 						  //<td><?php echo $oli['OrderID']; ?></td>
 						  //<td><?php echo $oli['ProductID']; ?></td>
@@ -199,7 +201,7 @@
 						  //<td><?php echo $oli['StoreID']; ?></td>
 						  //<td><?php echo $oli['StoreID']; ?></td>
 						//</tr>
-					<?php } ?>
+					'<?php } ?>
 					
 				}
 				else if (selectValue=="Shopper")
@@ -229,7 +231,7 @@
 				
 				//output.innerHTML=selectValue;
 			}
-		</script>
+		</script>-->
 		
 	</body>
 	
