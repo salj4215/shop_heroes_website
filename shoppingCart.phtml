@@ -93,14 +93,7 @@ else    //default to all
                 <form method='post' >
                 <td><input type="number" name="quantity" min="0" value="<?php if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' && $pID == $productID){ echo $newQty;} else{ echo $qty;} ?>"></td>
                 <?php
-                //		echo "StoreID: " . $row['StoreID'] . "<br>";
-                //		echo "ProductName: " . $row['ProductName'] . "<br>";
-                //		echo "ProductUPC: " . $row['ProductUPC'] . "<br>";
-                //		echo "UnitPrice: $" . $row['UnitPrice'] . "<br>";
-                //		echo "ProductCategory: " . $row['ProductCategory'] . "<br>";
-                //		echo "Description: " . $row['Description'] . "<br>";
-                //		echo "Quantity: " . $row['Quantity'] . "<br>";
-                //		echo "</div></br>";
+
                 echo "<td>";
                 echo"<input type='hidden' name='PIDwithQ' value=\"$productID\" >";
                 echo"<input type='hidden' name='action' value='cartQty' >";
@@ -112,7 +105,10 @@ else    //default to all
     }
     echo "</table>";
     ?>
-
+                    <form action="index.php" method="get">
+                        <input type='hidden' name='page' value='checkout'>
+                        <button type="submit" >CheckOut</button>
+                    </form>
     </body>
 <?php }
 else{
