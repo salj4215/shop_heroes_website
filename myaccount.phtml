@@ -57,12 +57,12 @@ fieldset {
 				<h5> Phone Number: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustPhone;?></h5>
 		</td>
 	</table>
-    <form method="get" action="index.php?page=updateUserInfo">
-        <button type="submit">Update Account</button>
+
+    <form action="index.php" method="get">
+        <input type='hidden' name='page' value='updateUserInfo'>
+        <button type="submit" >Update Account</button>
     </form>
-	<form action="index.php?page=updateUserInfo'">
-		<input type="submit" value="Update Account">
-	</form>
+
     <?php
 echo "</section>";}
 else {
