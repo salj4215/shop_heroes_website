@@ -370,6 +370,8 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('HomeSH.html'); //home page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php'); //order page
+	elseif (isset($_GET['page']) && $_GET['page'] == 'termsprivacy')
+    require ('termsprivacy.html'); //terms of use
 elseif (isset($_GET['page']) && $_GET['page'] == 'signup')
     require ('createAccount.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'login')
