@@ -42,7 +42,7 @@
             <li><a href="index.php?page=contact">Contact us</a></li>
         </ul>
     </nav>
-    <nav >
+    <nav class = "ContainerLogin" >
         <?php if(!(isset($_SESSION["activeUser"]))) {
             print "<ul class='signup' >";
             print "<li ><a href = 'index.php?page=signup' > Sign Up </a ></li >";
