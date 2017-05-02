@@ -187,5 +187,11 @@ p.head{
 	padding: 20px 10px;
 	font-size:1em;
 }
+
+div.img{
+	size: 100%;
+	margin-left:auto;
+	margin-right:auto;
+}
 }
 
