@@ -137,7 +137,13 @@
 					</td>
 				</tr>
 		</table>
-		
+		<table>
+		<?php foreach ($orderlines as $olis) { ?>
+						<tr>
+							<td><?php echo $olis['OrderID']; ?></td>
+						</tr>
+					<?php } ?>
+		</table>
 		<span id="output"></span>
 		<span id="output"></span>
 		
@@ -179,30 +185,29 @@
 						table.deleteRow(i);
 					}
 					output.innerHTML=selectValue
-					for (i=1; i <= 5; i++)
-					{
+					//for (i=1; i <= 5; i++)
+					//{
 						//var table = document.getElementById("report");
+						//var row = table.insertRow(i);
+						//var cell1 = row.insertCell(0);
+						//var cell2 = row.insertCell(1);
+						//var cell3 = row.insertCell(2);
+						//cell1.innerHTML = "test1";
+						//cell2.innerHTML = "test2";
+						//cell3.innerHTML = "tester";
+					//}
+					
+					<?php foreach ($orderlines as $olis) { ?>
+						var table = document.getElementById("report");
 						var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
 						var cell3 = row.insertCell(2);
 						cell1.innerHTML = "test1";
 						cell2.innerHTML = "test2";
-						cell3.innerHTML = "tester";
-					}
-					
-					<?php
-						foreach ($orderlines as $olis) 
-						{ 
-					?>
-							<table>
-								<tr>
-									<td><?php echo $olis['OrderID']; ?></td>
-								</tr>
-							</table>
-					<?php
-						}
-					?>
+						cell3.innerHTML = <?php echo $olis['OrderID']; ?>
+						i = i + 1;
+					<?php } ?>
 					
 					
 				}
