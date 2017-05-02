@@ -212,7 +212,7 @@
 					//output.innerHTML=ReportID;
 					
 					//Fill with relevant order data
-					for (i=1; i <= 5; i++)
+					/*for (i=1; i <= 5; i++)
 					{
 						//var table = document.getElementById("report");
 						var row = table.insertRow(i-1);
@@ -222,7 +222,10 @@
 						cell1.innerHTML = i + ")";
 						cell2.innerHTML = "Example row for Driver";
 						cell3.innerHTML = "Another row for Order #" + orderid.innerHTML;
-					}
+					}*/
+				
+					
+					
 					
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;

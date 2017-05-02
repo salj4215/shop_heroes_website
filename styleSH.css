@@ -41,7 +41,6 @@ table.search {
  left:400px;
  top:40px;
    color: black;
-   background-color:yellow;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
    font-size: 1em;
@@ -73,7 +72,7 @@ ul li a{
 }
 ul li{
 	float: left;
-	width: 16.65%; /*Was 210px */
+	width: 16.66666667%; /*Was 210px */
 	height: 30px;
 background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	margin: auto;
@@ -119,13 +118,13 @@ footer {
 
 /************************************** Below here is all responsive design and print screen stuff. *******************************/
 
-/* Smartphones (portrait and landscape) ----------- 
+ /*Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-device-width : 320px)
 and (max-device-width : 480px) {
 	table.search {
 		position: center;
-		top:300px;
+		/*top:300px;*/
 	}
 	ul.signup li
 {
@@ -140,16 +139,32 @@ and (max-device-width : 480px) {
 		top:400px;
 }
 
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 20px 10px;
+	font-size:1em;
+	background-color: yellow;
 }
-*/
 
-/*
+
+
+}
+
+
+
 @media only screen and (max-width: 600px) {
 
 		table.search {
+		/*position: relative;*/
 		left:auto;
 		right:0;
-		top:300px;
+		/*top:300px;*/
+		margin-top: 20px;
+		margin-left:1px;
+		padding-left: 1px;
 	}
 	ul.signup li
 {
@@ -163,5 +178,33 @@ and (max-device-width : 480px) {
 		right:150px;
 		top:400px;
 }
+
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 20px 10px;
+	font-size:1em;
 }
-*/
+/*resize image to be in middle*/
+header img{
+	size: 100%;
+	margin-left:90px;
+}
+
+ul li{
+	float: left;
+	width: 16.66666667%; /*Was 210px */
+	height: 50px;
+background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	margin: auto;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+	opacity: .8;
+	border: 2px solid black;
+	
+}
+}
+
