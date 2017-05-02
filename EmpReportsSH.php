@@ -143,6 +143,14 @@
 							<td><?php echo $olis['OrderID']; ?></td>
 						</tr>
 					<?php } ?>
+			<tr height="90%">
+				<td width="20%">
+				</td>
+				<td width="30%">
+				</td>
+				<td width="90%">
+				</td>
+			</tr>
 		</table>
 		<span id="output"></span>
 		<span id="output"></span>
