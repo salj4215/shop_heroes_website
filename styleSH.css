@@ -190,8 +190,8 @@ p.head{
 
 header, img{
 	size: 100%;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left:20px;
+	margin-right:20px;
 	background-color:yellow;
 }
 }
