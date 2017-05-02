@@ -162,6 +162,7 @@ p.head{
 		left:auto;
 		right:0;
 		/*top:300px;*/
+		margin-top: 20px;
 	}
 	ul.signup li
 {
