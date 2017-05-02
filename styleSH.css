@@ -158,6 +158,7 @@ p.head{
 @media only screen and (max-width: 600px) {
 
 		table.search {
+		position: relative;
 		left:auto;
 		right:0;
 		/*top:300px;*/
