@@ -223,18 +223,7 @@
 						cell2.innerHTML = "Example row for Driver";
 						cell3.innerHTML = "Another row for Order #" + orderid.innerHTML;
 					}*/
-					
-					<?php foreach ($orderlines as $olis) { ?>
-					<table>
-						<tr>
-							<td><?php echo $olis['OrderID']; ?></td>
-							<td><?php echo $olis['ProductID']; ?></td>
-							<td><?php echo $olis['ProductQuantity']; ?></td>
-							<td><?php echo $olis['UnitPrice']; ?></td>
-						</tr>
-					</table>
-					<?php } ?>
-					}
+				
 					
 					
 					
