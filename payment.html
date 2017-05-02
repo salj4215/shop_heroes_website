@@ -16,18 +16,17 @@
 		padding-bottom: 100px;
 		padding-left: 0.75em;
 		padding-right: 0.75em;
-		border: 2px groove (internal value);
+		border: 2px groove;
 		height: 300px;
 		width: 300px;
 	}
 </style>
 
 <table align= "center">
-	<td>
-		<form name="confirmCheckout" action="index.php"  method="POST">
+	<form name="confirmCheckout" action="processOrder.php"  method="POST">
+		<td>
 			<fieldset><legend align="center"> Shipping Address :</legend>
 				<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
-
 					<tr>
 						<td width="78">First Name</td><td width="6">:</td>
 						<td width="294"><input name="firstName" type="text" id="firstName" value=""></td>
@@ -49,10 +48,9 @@
 					</tr>
 				</table>
 			</fieldset>
-		</form>
-	</td>
-	<td>
-		<fieldset><legend align="center"> Payment Information :</legend>
+		</td>
+		<td>
+			<fieldset><legend align="center"> Payment Information :</legend>
 			<table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 				<tr>
 					<td width="78">Credit Card Number</td><td width="6">:</td>
@@ -64,10 +62,17 @@
 				<tr>
 					<td>CVV code:</td><td>:</td><td><input name="cvv" type="text" id="cvv"></td>
 				</tr>
+				<tr><br><br></tr>
+				<td>
+				<td>
+					<input type="hidden" name="action" value="confirmCheckout">
+					<td><input type="submit" name="Submit" value="Confirm Payment"></td>
+				</td>
+				</tr>
 			</table>
-		</fieldset>
-	</td>
-
+			</fieldset>
+		</td>
+	</form>
 </table>
 
 </body>
