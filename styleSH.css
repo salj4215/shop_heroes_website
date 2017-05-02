@@ -163,6 +163,8 @@ p.head{
 		right:0;
 		/*top:300px;*/
 		margin-top: 20px;
+		margin-left:1px;
+		padding-left: 1px;
 	}
 	ul.signup li
 {
