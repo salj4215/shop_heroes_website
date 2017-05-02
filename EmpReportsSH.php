@@ -191,7 +191,19 @@
 						cell3.innerHTML = "tester";
 					}
 					
-						
+					<?php
+						foreach ($orderlines as $olis) 
+						{ 
+					?>
+							<table>
+								<tr>
+									<td><?php echo $olis['OrderID']; ?></td>
+								</tr>
+							</table>
+					<?php
+						}
+					?>
+					
 					
 				}
 				else if (selectValue=="Shopper")
