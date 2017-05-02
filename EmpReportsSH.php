@@ -121,7 +121,7 @@
 			Enter an End Date
 			<input type="date" name="enddate">
 		<p>
-		<br>
+		<br><!--->
 		<!--<table class="reporttable" id="report">
 				<tr>
 					<td colspan="2" width="20%">
