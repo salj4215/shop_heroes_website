@@ -28,10 +28,10 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDER_LINE_ITEMS";
-			#runs the quary
-			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-			#this should pull all the current data from the products table
+        $query = "SELECT * FROM ORDERS";
+        #runs the quary
+        $orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+        #this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
 
@@ -120,50 +120,65 @@
 		<!--<h2>Select Order ID</h2>
 		<span id="output"></span>-->
 		<h2><span id ="orderid">Select Order ID</span></h2>
-		<table class="reporttable" id="report">
-				<tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-				<tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
-				<tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-				<tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
-				<tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
-				<tr height="90%">
-					<td width="20%">
-					</td>
-					<td width="30%">
-					</td>
-					<td width="90%">
-					</td>
-				</tr>
-		</table>
-		<p align="center">
-		<input type="submit" onclick="ShopStepChange(this)" id="Button" value="Begin Shopping" style="margin: 0.4em 0.7em; height:50px; width:180px" align="center">
-		</p>
-	
-		<script type="text/javascript">
-			var orderid = document.getElementById("orderid");
-			function SelectOrderID(objButton)
-			{
-				var selectValue = objButton.value
-				//$selectedReport = objButton.text;
-				
-				//Set order ID = button value
-				orderid.innerHTML = objButton.value;
-				//orderid.innerHTML = "Order ID#: " + orderid.innerHTML; 
-			}
-			
-			function ShopStepChange(objButton)
-			{
-				//objButton.innerText="Changed";
-				//document.getElementById("Button").value= "Hide Filter";
-				//objButton.value = "Changed";
-				var btnval = objButton.value;
-					
-				//how to insert rows
-				//https://www.w3schools.com/jsref/met_table_insertrow.asp
-				//how to get the row count
-				//https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
-				
-				<!----------------------Var declarations---------------------->
+        <!--<table class="reporttable" id="report">
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
+                    <tr><td><input class="orders" type="sub mit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
+                    <tr height="90%">
+                        <td width="20%">
+                        </td>
+                        <td width="30%">
+                        </td>
+                        <td width="90%">
+                        </td>
+                    </tr>
+                     </table>-->
+        <table class="reporttable" id="report">
+            <?php foreach ($orders as $order) { ?>
+                <tr>
+                    <td><?php echo $order['OrderID']; ?></td>
+                </tr>
+            <?php } ?>
+            <tr height="90%">
+                <td width="20%">
+                </td>
+                <td width="30%">
+                </td>
+                <td width="90%">
+                </td>
+            </tr>
+        </table>
+            <p align="center">
+            <input type="submit" onclick="ShopStepChange(this)" id="Button" value="Begin Shopping" style="margin: 0.4em 0.7em; height:50px; width:180px" align="center">
+            </p>
+
+            <script type="text/javascript">
+                var orderid = document.getElementById("orderid");
+                function SelectOrderID(objButton)
+                {
+                    var selectValue = objButton.value
+                    //$selectedReport = objButton.text;
+
+                    //Set order ID = button value
+                    orderid.innerHTML = objButton.value;
+                    //orderid.innerHTML = "Order ID#: " + orderid.innerHTML;
+                }
+
+                function ShopStepChange(objButton)
+                {
+                    //objButton.innerText="Changed";
+                    //document.getElementById("Button").value= "Hide Filter";
+                    //objButton.value = "Changed";
+                    var btnval = objButton.value;
+
+                    //how to insert rows
+                    //https://www.w3schools.com/jsref/met_table_insertrow.asp
+                    //how to get the row count
+                    //https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
+
+                    <!----------------------Var declarations---------------------->
 				var i = 0;
 				var selectIndex=objButton.value;
 				var selectValue=objButton.value;
@@ -223,11 +238,20 @@
 						cell2.innerHTML = "Example row for Driver";
 						cell3.innerHTML = "Another row for Order #" + orderid.innerHTML;
 					}*/
-				
-					
-					
-					
-					//Doesn't even appear to be necessary
+                    <?php foreach ($orderlines as $olis) { ?>
+                <table>
+                <tr>
+                <td><?php echo $olis['OrderID']; ?></td>
+                <td><?php echo $olis['ProductID']; ?></td>
+                <td><?php echo $olis['ProductQuantity']; ?></td>
+                <td><?php echo $olis['UnitPrice']; ?></td>
+                </tr>
+                </table>
+                    <?php } ?>
+                }
+
+
+                    //Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
 				}
 				else if(objButton.value == "Begin Boxing Items")
