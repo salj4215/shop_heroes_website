@@ -38,6 +38,7 @@
 
 			#Created with the help of Micah W
 		?>
+		<!---->
 	</head>
 	<body>
 		<header>
@@ -138,7 +139,7 @@
 		<table class="reporttable" id="report">
 		<?php foreach ($orders as $order) { ?>
 						<tr>
-							<td><?php echo $order['OrderID']; ?></td>
+							<td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"></td>
 						</tr>
 					<?php } ?>
 			<tr height="90%">
@@ -238,18 +239,7 @@
 						cell2.innerHTML = "Example row for Driver";
 						cell3.innerHTML = "Another row for Order #" + orderid.innerHTML;
 					}*/
-					
-					<?php foreach ($orderlines as $olis) { ?>
-					<table>
-						<tr>
-							<td><?php echo $olis['OrderID']; ?></td>
-							<td><?php echo $olis['ProductID']; ?></td>
-							<td><?php echo $olis['ProductQuantity']; ?></td>
-							<td><?php echo $olis['UnitPrice']; ?></td>
-						</tr>
-					</table>
-					<?php } ?>
-					}
+				
 					
 					
 					
