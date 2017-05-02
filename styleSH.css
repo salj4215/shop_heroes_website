@@ -187,10 +187,24 @@ p.head{
 	padding: 20px 10px;
 	font-size:1em;
 }
-
+/*resize image to be in middle*/
 header img{
 	size: 100%;
 	margin-left:90px;
+}
+
+ul li{
+	float: left;
+	width: 16.66666667%; /*Was 210px */
+	height: 50px;
+background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	margin: auto;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+	opacity: .8;
+	border: 2px solid black;
+	
 }
 }
 
