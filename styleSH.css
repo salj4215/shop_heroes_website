@@ -188,11 +188,9 @@ p.head{
 	font-size:1em;
 }
 
-img{
+header img{
 	size: 100%;
-	margin-left:20px;
-	margin-right:20px;
-	background-color:yellow;
+	margin-left:60px;
 }
 }
 
