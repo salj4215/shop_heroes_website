@@ -122,7 +122,7 @@
 			<input type="date" name="enddate">
 		<p>
 		<br>
-		<table class="reporttable" id="report">
+		<!--<table class="reporttable" id="report">
 				<tr>
 					<td colspan="2" width="20%">
 						Your looking at the <span id="output">Driver</span>'s table
@@ -136,8 +136,8 @@
 					<td width="90%">
 					</td>
 				</tr>
-		</table>
-		<table>
+		</table>-->
+		<table class="reporttable" id="report">
 		<?php foreach ($orderlines as $olis) { ?>
 						<tr>
 							<td><?php echo $olis['OrderID']; ?></td>
