@@ -192,8 +192,7 @@ header, img{
 	size: 100%;
 	margin-left:auto;
 	margin-right:auto;
-	padding-left:auto;
-	padding-right:auto;
+	padding-left:20px;
 	background-color:yellow;
 }
 }
