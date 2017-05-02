@@ -163,6 +163,8 @@ p.head{
 		right:0;
 		/*top:300px;*/
 		margin-top: 20px;
+		margin-left:1px;
+		padding-left: 1px;
 	}
 	ul.signup li
 {
@@ -184,7 +186,6 @@ p.head{
 	margin: 0.4em 0.7em;
 	padding: 20px 10px;
 	font-size:1em;
-	background-color: yellow;
 }
 }
 
