@@ -137,7 +137,13 @@
 					</td>
 				</tr>
 		</table>
-		
+		<table>
+		<?php foreach ($orderlines as $olis) { ?>
+						<tr>
+							<td><?php echo $olis['OrderID']; ?></td>
+						</tr>
+					<?php } ?>
+		</table>
 		<span id="output"></span>
 		<span id="output"></span>
 		
