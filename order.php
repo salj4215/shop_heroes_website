@@ -54,7 +54,7 @@ if(isset($_POST['search'])) {
             </div>
         </div>
         <!--Adding cart preview -->
-        <div class="shoppingCart">
+        <div class="dropdown">
             <form action="index.php" method="get">
             <button name="cart" id="cart" type="submit" class="productbtn""><img src="images/shopping-cart-wheel_318-27957.png"style="width:20px;height:20px;"alt="Shopping Cart">   Shopping Cart</button>
                 <input type='hidden' name='page' value='shoppingcart'>
