@@ -22,7 +22,6 @@
     if($store_id == 2) {
         $store = "Meijer";
     }
-
     echo "<p> Your Order has been completed";
     echo "<br><br>Order Number: $order_id";
     echo "<br>Store: $store";

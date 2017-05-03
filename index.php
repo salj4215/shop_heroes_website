@@ -407,7 +407,7 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'checkout')
 elseif (isset($_GET['page']) && $_GET['page'] == 'shoppingcart')
     require ('shoppingCart.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'orderComplete')
-    require ('orderComplete.phtml');
+    require ('orderComplete.php');
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     session_unset();
     header('Location: index.php?page=home');
