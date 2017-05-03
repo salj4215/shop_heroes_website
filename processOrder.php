@@ -67,25 +67,40 @@ if(isset($_POST['shipZip'])){
 }
 // VALIDATE DATA
 //if cvv isnt 3
-if (strlen($cvv) != 3) {
-    array_push($_SESSION['messages'], "Your CVV number must be 3 digits located on the back of your credit card.");
-    $vaildationError = true;
-}
-if (strlen($card_exp) != 4) {
-    array_push($_SESSION['messages'], "Your Credit Card Expiration must be 4 digits.(monthYEAR) EX: '0218'  OR '1119' ");
-    $vaildationError = true;
-}
-if (strlen($order_zip) < 5) {
-    array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
-    $vaildationError = true;
-}
-if (strlen($card_num) > 16  || strlen($card_num) < 13 ) {
-    array_push($_SESSION['messages'], "Credit Card number must be between 13-16 digits.");
-    $vaildationError = true;
-}
 if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV'])) {
     array_push($_SESSION['messages'], "All form input lines must be filled in.");
     $vaildationError = true;
+}   //if all fields are not empty. then vaildate inputs
+else {
+    if (strlen($order_zip) < 5) {
+        array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
+        $vaildationError = true;
+    }
+    if (strlen($card_num) > 16 || strlen($card_num) < 13) {
+        array_push($_SESSION['messages'], "Credit Card number must be between 13-16 digits.");
+        $vaildationError = true;
+    }
+    if (strlen($card_exp) != 4) {
+        array_push($_SESSION['messages'], "Your Credit Card Expiration must be 4 digits.(monthYEAR) EX: '0218'  OR '1119' ");
+        $vaildationError = true;
+    }
+    $yearExp = substr($card_exp, -2);
+    $yearExp = (int)$yearExp;
+    $monthExp = substr($card_exp, 2);
+    $monthExp = (int)$monthExp;
+    echo "<br>$monthExp / $yearExp ";
+    if (($yearExp < 17) && ($monthExp < 6)) {
+        array_push($_SESSION['messages'], "Credit card is expired");
+        $vaildationError = true;
+    }
+    if ($yearExp > 12 || $yearExp < 1) {
+        array_push($_SESSION['messages'], "Credit card expiration FIRST TWO didgits must be a vaild month. EX: '1'->'12'");
+        $vaildationError = true;
+    }
+    if (strlen($cvv) != 3) {
+        array_push($_SESSION['messages'], "Your CVV number must be 3 digits located on the back of your credit card.");
+        $vaildationError = true;
+    }
 }
 //revert to old page if INPUT error.
 if ($vaildationError) {//there was an input error
