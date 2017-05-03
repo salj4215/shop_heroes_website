@@ -209,7 +209,6 @@ if(($authorization->response_code)==1) {
     $qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE;
 ////call quuery
     $stmt = $pdo->query($qry);
-    $numProductDisplayed = 0;
     while ($row = $stmt->fetch()) {   //if its in the cart
         foreach ($cart as $pid => $qty) {
             if ($row['ProductID'] == $pid) {    //if this is in the cart, and from the correct store.
@@ -221,7 +220,10 @@ if(($authorization->response_code)==1) {
                 $sql = "INSERT INTO ORDER_LINE_ITEMS SET OrderID='$order_id', StoreID='$store_id', ProductID='$product_id',ProductPrice = '$product_price', ProductQuantity='$product_quantity', LinePrice='$line_price'";
                 if (mysqli_query($con, $sql)) {
                     echo "Success";
-                } else {
+                    //then remove items from cart
+                    $cart[$product_id] = 0;
+                }
+                else {
                     echo "Fail<br>";
                     echo $sql;
                     echo "<br>";
