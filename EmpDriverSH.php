@@ -12,7 +12,6 @@
 		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 		<link rel="stylesheet" type="text/css" href="styleSH.css">
 		<link rel="icon" size="192x192" href="images/android.png">
-		<!-- -->
 		<title>Shop Heroes Reports</title>
 		<?php
 			#This include file sets HOST, USER, PASS, and DB, which will connect you to the database:
@@ -42,7 +41,6 @@
 	<body>
 		<header>
 			<head>
-				<!--PAGE STYLING-->
 				<style type="text/css">
 					p.logo
 					{
@@ -79,13 +77,13 @@
 						margin-right: 2%;
 						height:40px;"
 					}
-					input.orders{
+					<!--input.orders{
 						text-align:left;
 						width: 100%;
 						background: none;
 						padding: 0;
 						border: none;
-					}
+					}-->
 					
 				</style>
 				<p class="head">
@@ -123,7 +121,7 @@
         <table class="reporttable" id="report">
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
-                    <tr><td><input class="orders" type="sub mit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
                     <tr height="90%">
