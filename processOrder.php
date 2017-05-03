@@ -148,6 +148,7 @@ if(($authorization->response_code)==1) {
     $delivered = 0;
     $signed_for = 0;
     $paid = 0;
+    $order_total = $pay_amt;
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     echo "<br><br>FOUND CUST ID, NOW INSERT ORDER THAT HAS BEEN APPROVED TO RECIEVE ORDER ID<br><br>";
