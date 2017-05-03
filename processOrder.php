@@ -224,7 +224,7 @@ if(($authorization->response_code)==1) {
                 } else {
                     echo "Fail<br>";
                     echo $sql;
-                    echo "<br>;
+                    echo "<br>";
                 }
 //                mysqli_close($con);
 
