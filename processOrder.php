@@ -217,13 +217,14 @@ if(($authorization->response_code)==1) {
                 $product_price = $row['UnitPrice'];
                 $product_quantity = $qty;
                 $line_price = $product_price * $product_quantity;
-                $store_id = $storeWHERE;
                 //Now for inserting that item into the ORDERLINE
                 $sql = "INSERT INTO ORDER_LINE_ITEMS SET OrderID='$order_id', StoreID='$store_id', ProductID='$product_id',ProductPrice = '$product_price', ProductQuantity='$product_quantity', LinePrice='$line_price'";
                 if (mysqli_query($con, $sql)) {
                     echo "Success";
                 } else {
-                    echo "Fail";
+                    echo "Fail<br>";
+                    echo $sql;
+                    echo "<br>;
                 }
 //                mysqli_close($con);
 
