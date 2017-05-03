@@ -62,6 +62,7 @@ while($row = $stmt->fetch()) {   //if its in the cart
 $grandTotal = $subTotal + $shipping;
 
 ?>
+<div id="payment">
 
     <table align= "center">
         <form name="confirmCheckout" action="processOrder.php"  method="POST">
@@ -136,7 +137,7 @@ $grandTotal = $subTotal + $shipping;
                 </fieldset>
             </td>
     </table>
-
+</div>
 <?php
 echo '<br>Order Subtotal: $' . number_format($subTotal, 2, '.', ',');
 echo '<br>Order Shipping: $' . number_format($shipping, 2, '.', ',');
