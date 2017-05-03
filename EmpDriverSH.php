@@ -78,6 +78,15 @@
 						height:40px;"
 					}
 					
+					input.orders{
+						text-align: left;
+						width: 100%;
+						background: none;
+						padding: 0;
+						border: none;
+					}
+					
+					
 				</style>
 				<p class="head">
 					Welcome to Shop Heroes Reports!
