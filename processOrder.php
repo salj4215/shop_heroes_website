@@ -54,6 +54,7 @@ if(isset($_POST['CVV'])){
 else{
 //    exit;
 }
+echo " values => {" . print_r($amount) . print_r($first_name) . print_r($last_name) . print_r($card_num) . print_r($card_exp) ." }<br>";
 require_once(dirname(__FILE__) . '/ccauthapi/CCAuthApi.php');
 $values = [
     "transaction_type" => "sale",
@@ -73,6 +74,7 @@ else{
     echo "Fail";
 }
 ?>
+<pre><?php print_r($authorization); ?></pre>
 
 </body>
 <?php
