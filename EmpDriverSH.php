@@ -120,7 +120,7 @@
 		<!--<h2>Select Order ID</h2>
 		<span id="output"></span>-->
 		<h2><span id ="orderid">Select Order ID</span></h2>
-        <!--<table class="reporttable" id="report">
+        <table class="reporttable" id="report">
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
                     <tr><td><input class="orders" type="sub mit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
@@ -134,7 +134,7 @@
                         <td width="90%">
                         </td>
                     </tr>
-                     </table>-->
+                     </table>
         <table class="reporttable" id="report">
             <?php foreach ($orders as $order) { ?>
                 <tr>
@@ -142,7 +142,7 @@
 						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
 					<td>
-						<td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td>
+						<input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456">
 					</td>
 					<td>
 					</td>
