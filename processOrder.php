@@ -222,8 +222,7 @@ if(($authorization->response_code)==1) {
                     echo "Success";
                     //then remove items from cart
                     $cart[$product_id] = 0;
-                }
-                else {
+                } else {
                     echo "Fail<br>";
                     echo $sql;
                     echo "<br>";
@@ -234,7 +233,14 @@ if(($authorization->response_code)==1) {
         }
     }
     mysqli_close($con);
-
+    //now clean out products that have zero qty
+    foreach ($cart as $pid => $qty) {
+        if ($qty == 0)
+            unset($cart[$pid]);
+    }
+//now renew data in cookie cart.
+    $json = json_encode($cart);
+    setcookie('cart', $json);
 }
 ?>
 </body>
