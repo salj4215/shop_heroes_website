@@ -29,12 +29,13 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
     else    //default to all
         $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
     ?>
+<strong>SELECT A STORE TO VIEW YOUR CART</strong>
     <!-- Products Navigation bar -->
         <div id="prod_navigation">
             <div class="dropdown">
                 <button class="productbtn">Stores &#9660</button>
                 <div class="dropdown-content">
-                    <a href="index.php?page=shoppingcart&store=Membership">Membership</a>
+<!--                    <a href="index.php?page=shoppingcart&store=Membership">Membership</a>-->
                     <a href="index.php?page=shoppingcart&store=Kroger">Kroger</a>
                     <a href="index.php?page=shoppingcart&store=Meijer">Meijer</a>
                 </div>
@@ -55,8 +56,8 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
 
         $json = json_encode($cart);
         setcookie('cart', $json);
-        //redirect to the page for cookies and orders
-        header("index.php?page=shoppingcart");
+        //redirect to the page for with 3 second pause for cookies to update
+        header("Refresh: 1; index.php?page=shoppingcart");
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -66,6 +67,8 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
             $cart = json_decode($cookieCart, true);
         }
 
+    $subTotal=0.0;
+    $UnitsPrice=0.0;
     $qry = 'Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID' . $storeWHERE;
     ////call quuery
     $stmt = $pdo -> query( $qry );
@@ -75,9 +78,10 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
         foreach ($cart as $pid => $qty) {
             if ($row['ProductID'] == $pid) {
                 //new table row per product
-                //        var_dump($row['ProductID']);
+                $UnitsPrice=0.0;
                 echo "<tr style='outline: thin solid'>";
                 $productID = $row['ProductID'];
+                $price = $row['UnitPrice'];
                 //product pictures
                 echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
                 //product informations
@@ -94,21 +98,25 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
                 <form method='post' >
                 <td><input type="number" name="quantity" min="0" value="<?php if(( isset( $_POST['action'] )) && $_POST['action'] == 'cartQty' && $pID == $productID){ echo $newQty;} else{ echo $qty;} ?>"></td>
                 <?php
-
                 echo "<td>";
                 echo"<input type='hidden' name='PIDwithQ' value=\"$productID\" >";
                 echo"<input type='hidden' name='action' value='cartQty' >";
                 echo"<button type='submit'>Update Quantity</button></td></form>";
-                echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $row['UnitPrice']) . "</td>";
+                echo "<td>Total Price: </td><td>" . $UnitsPrice = ($qty * $price) . "</td>";
                 echo "</form>";
-            }
+                $subTotal = $subTotal + $UnitsPrice;
+            }   //displaying membership, dispite whats in cart
+
         }
+
     }
     echo "</table>";
+
+                echo '<br><strong>Order subtotal:  $' . number_format($subTotal, 2, '.', ',') . '</strong>';
     ?>
                     <form action="index.php" method="get">
                         <input type='hidden' name='page' value='checkout'>
-                        <button type="submit" >CheckOut</button>
+                        <button type="submit">CheckOut</button>
                     </form>
     </body>
 <?php }

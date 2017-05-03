@@ -47,6 +47,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
     $city = $_POST['mycity'];
     $zip = $_POST['myzip'];
     $phone = $_POST['phonenumber'];
+
     // VALIDATE DATA
     //if password less than 8
     if (strlen($pass) < 8) {
@@ -122,8 +123,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
             $pulledPass= $row['Password'];
             $pulledUserID = $row['UserID'];
             $pulledCustID = $row['CustID'];
-            $pulledCustFirstN = $row['CustFirstN'];
-            $pulledCustLastN = $row['CustLastN'];
+            $pulledCustZip = $row['CustZip'];
+            $pulledCustCity = $row['CustCity'];
+            $pulledCustAdd = $row['CustAddress'];
+            $pulledCustPhone = $row['CustPhone'];
         }
             //correct password in found username
             $_SESSION['activeUser'] = $pulledUser;
@@ -131,6 +134,11 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
             $_SESSION['activeCustID'] = $pulledCustID;
             $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
             $_SESSION['activeCustLastN'] = $pulledCustLastN;
+            $_SESSION['activeCustZip'] = $pulledCustZip;
+            $_SESSION['activeCustCity'] = $pulledCustCity;
+            $_SESSION['activeCustAdd'] = $pulledCustAdd;
+            $_SESSION['activeCustPhone'] = $pulledCustPhone;
+
             $CapsName = strtoupper($pulledCustFirstN);
             array_push($_SESSION['messages'], "Created new User.... $userEmail", "HELLO  $CapsName");
             //header('Location: index.php?page=home');
@@ -170,6 +178,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $pulledCustID = $row['CustID'];
         $pulledCustFirstN = $row['CustFirstN'];
         $pulledCustLastN = $row['CustLastN'];
+        $pulledCustZip = $row['CustZip'];
+        $pulledCustCity = $row['CustCity'];
+        $pulledCustAdd = $row['CustAddress'];
+        $pulledCustPhone = $row['CustPhone'];
     }
     if ($pass == $pulledPass && ($emailMatch)) {
        //correct password in found username
@@ -178,6 +190,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $_SESSION['activeCustID'] = $pulledCustID;
         $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
         $_SESSION['activeCustLastN'] = $pulledCustLastN;
+        $_SESSION['activeCustZip'] = $pulledCustZip;
+        $_SESSION['activeCustCity'] = $pulledCustCity;
+        $_SESSION['activeCustAdd'] = $pulledCustAdd;
+        $_SESSION['activeCustPhone'] = $pulledCustPhone;
         $CapsName = strtoupper($pulledCustFirstN);
         array_push($_SESSION['messages'], "<strong>Welcome  $CapsName!</strong>");
         $_SESSION["activeUser"] = $userEmail;
@@ -282,6 +298,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
             $pulledCustID = $row['CustID'];
             $pulledCustFirstN = $row['CustFirstN'];
             $pulledCustLastN = $row['CustLastN'];
+            $pulledCustZip = $row['CustZip'];
+            $pulledCustCity = $row['CustCity'];
+            $pulledCustAdd = $row['CustAddress'];
+            $pulledCustPhone = $row['CustPhone'];
         }
         //correct password in found username
         $_SESSION['activeUser'] = $pulledUser;
@@ -289,6 +309,10 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'updateUser') {
         $_SESSION['activeCustID'] = $pulledCustID;
         $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
         $_SESSION['activeCustLastN'] = $pulledCustLastN;
+        $_SESSION['activeCustZip'] = $pulledCustZip;
+        $_SESSION['activeCustCity'] = $pulledCustCity;
+        $_SESSION['activeCustAdd'] = $pulledCustAdd;
+        $_SESSION['activeCustPhone'] = $pulledCustPhone;
         $CapsName = strtoupper($pulledCustFirstN);
         array_push($_SESSION['messages'], "Updated User.... $pulledUserID", "<strong>Hello  $CapsName!</strong>");
         //header('Location: index.php?page=home');
@@ -379,7 +403,7 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'login')
 elseif (isset($_GET['page']) && $_GET['page'] == 'updateUserInfo')
     require ('updateUserInfo.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'checkout')
-    require ('payment.html');
+    require ('payment.php');
 elseif (isset($_GET['page']) && $_GET['page'] == 'shoppingcart')
     require ('shoppingCart.phtml');
 elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
