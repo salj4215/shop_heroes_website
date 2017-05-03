@@ -117,6 +117,7 @@
 		<br>
 		<!--<h2>Select Order ID</h2>
 		<span id="output"></span>-->
+		<a href="http://maps.google.com/?q=5101 Evergreen Rd, Dearborn, MI, 48124">Address</a>
 		<h2><span id ="orderid">Select Order ID</span></h2>
         <table class="reporttable" id="report">
                     <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
