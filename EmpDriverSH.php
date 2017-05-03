@@ -27,9 +27,9 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDER_LINE_ITEMS";
+			$query = "SELECT * FROM ORDERS";
 			#runs the quary
-			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
