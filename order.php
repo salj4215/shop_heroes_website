@@ -54,13 +54,11 @@ if(isset($_POST['search'])) {
             </div>
         </div>
         <!--Adding cart preview -->
-        <div class="dropdown">
+        <div class="shoppingcart">
             <form action="index.php" method="get">
             <button name="cart" id="cart" type="submit" class="productbtn"style="float right;"><img src="images/shopping-cart-wheel_318-27957.png"style="width:20px;height:20px;"alt="Shopping Cart">   Shopping Cart</button>
                 <input type='hidden' name='page' value='shoppingcart'>
             </form>
-            <div class="shoppingCart-content">
-            </div>
         </div>
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
