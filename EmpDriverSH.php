@@ -116,20 +116,7 @@
 			</head>
 		</header>
 		<br>
-		<select class="reportchoice" id="reporttype" onchange="changereporttype(this);">
-			<option>Driver</option>
-			<option>Shopper</option>
-			<option>Accounts Payable to Store</option>
-			<option>Shopping List in Accounts Payable</option>
-			<option>Ticket</option>
-		</select>
-		<p class="reportdate">
-			Enter a Start Date
-			<input type="date" name="startdate">
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Enter an End Date
-			<input type="date" name="enddate">
-		<p>
+
 		<br>
 		<!--<table class="reporttable" id="report">
 				<tr>
@@ -173,78 +160,16 @@
 		<span id="output"></span>
 		
 		<script type="text/javascript">
-			function changereporttype(selectObj) {
-				//how to insert rows
-				//https://www.w3schools.com/jsref/met_table_insertrow.asp
-				//how to get the row count
-				//https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
-				var i = 0;
-				var selectIndex=selectObj.selectedIndex;
-				var selectValue=selectObj.options[selectIndex].text;
-				var output=document.getElementById("output");
-				var totalRowCount = 0;
-				var rowCount = 0;
-				var table = document.getElementById("report");
-				var rows = table.getElementsByTagName("tr")
-				for (var i = 0; i < rows.length; i++) {
-					totalRowCount++;
-					if (rows[i].getElementsByTagName("td").length > 0) {
-						rowCount++;
-					}
-				}
-				var message = totalRowCount;
-				
-				
-				var table = document.getElementById("report");
-				var row = table.insertRow(message-1);
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
-				cell1.innerHTML = message;
-				cell2.innerHTML = "th Row";
-				
-				if(selectValue=="Driver")
-				{
-					for (i=message-2; i>=1; i--)
-					{
-						table.deleteRow(i);
-					}
-					output.innerHTML=selectValue
-					for (i=1; i <= 5; i++)
-					{
-						//var table = document.getElementById("report");
-						var row = table.insertRow(i);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						var cell3 = row.insertCell(2);
-						cell1.innerHTML = "test1";
-						cell2.innerHTML = "test2";
-						cell3.innerHTML = "tester";
-					}
-					
-						
-					
-				}
-				else if (selectValue=="Shopper")
-				{
-					for (i=message-2; i>=1; i--)
-					{
-						table.deleteRow(i);
-					}
-					output.innerHTML=selectValue
-					for (i=1; i <= 5; i++)
-					{
-						//var table = document.getElementById("report");
-						var row = table.insertRow(i);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						cell1.innerHTML = i;
-						cell2.innerHTML = "th Row in Shopper";
-					}
-				}
-				else
-				{
-					output.innerHTML="";
-				}
+			var orderid = document.getElementById("orderid"); 
+                function SelectOrderID(objButton) 
+                { 
+                    var selectValue = objButton.value 
+                    //$selectedReport = objButton.text; 
+ 
+                    //Set order ID = button value 
+                    orderid.innerHTML = objButton.value; 
+                    //orderid.innerHTML = "Order ID#: " + orderid.innerHTML; 
+                } 
 				
 				
 				
