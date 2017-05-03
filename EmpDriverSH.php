@@ -139,7 +139,7 @@
             <?php foreach ($orders as $order) { ?>
                 <tr>
 					<td>
-						<input class="orders" id="orderid" type="button" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
+						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
 					<td>
 					</td>
