@@ -27,10 +27,10 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-        $query = "SELECT * FROM ORDERS";
-        #runs the quary
-        $orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-        #this should pull all the current data from the products table
+			$query = "SELECT * FROM ORDER_LINE_ITEMS";
+			#runs the quary
+			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
 
@@ -77,13 +77,6 @@
 						margin-right: 2%;
 						height:40px;"
 					}
-					<!--input.orders{
-						text-align:left;
-						width: 100%;
-						background: none;
-						padding: 0;
-						border: none;
-					}-->
 					
 				</style>
 				<p class="head">
@@ -101,40 +94,50 @@
 					<p><a href="contact.html">Contact us</a></p>-->
 					<p>
 					|&emsp;&emsp;
-					<a href="index.html">Home</a>
+					<a href="EmpHomeSH.html">Home</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="index2.html">Reports</a>
+					<a href="EmpReportsSH.html">Reports</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="index2.html">Drivers</a>
+					<a href="EmpDriversSH.html">Drivers</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="index2.html">Shoppers</a>
+					<a href="EmpShoppersSH.html">Shoppers</a>
 					&emsp;&emsp;|
 					</p>
 				</nav>
 			</head>
 		</header>
 		<br>
+		<select class="reportchoice" id="reporttype" onchange="changereporttype(this);">
+			<option>Driver</option>
+			<option>Shopper</option>
+			<option>Accounts Payable to Store</option>
+			<option>Shopping List in Accounts Payable</option>
+			<option>Ticket</option>
+		</select>
+		<p class="reportdate">
+			Enter a Start Date
+			<input type="date" name="startdate">
+			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+			Enter an End Date
+			<input type="date" name="enddate">
+		<p>
 		<br>
-		<!--<h2>Select Order ID</h2>
-		<span id="output"></span>-->
-		<a href="http://maps.google.com/?q=5101 Evergreen Rd, Dearborn, MI, 48124">Address</a>
-		<h2><span id ="orderid">Select Order ID</span></h2>
-        <table class="reporttable" id="report">
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
-                    <tr height="90%">
-                        <td width="20%">
-                        </td>
-                        <td width="30%">
-                        </td>
-                        <td width="90%">
-                        </td>
-                    </tr>
-                     </table>
-        <table class="reporttable" id="report">
+		<!--<table class="reporttable" id="report">
+				<tr>
+					<td colspan="2" width="20%">
+						Your looking at the <span id="output">Driver</span>'s table
+					</td>
+				</tr>
+				<tr height="90%">
+					<td width="20%">
+					</td>
+					<td width="30%">
+					</td>
+					<td width="90%">
+					</td>
+				</tr>
+		</table>-->
+		<table class="reporttable" id="report">
             <?php foreach ($orders as $order) { ?>
                 <tr>
 					<td>
@@ -156,141 +159,91 @@
                 </td>
             </tr>
         </table>
-            <p align="center">
-            <input type="submit" onclick="ShopStepChange(this)" id="Button" value="Begin Shopping" style="margin: 0.4em 0.7em; height:50px; width:180px" align="center">
-            </p>
-
-            <script type="text/javascript">
-                var orderid = document.getElementById("orderid");
-                function SelectOrderID(objButton)
-                {
-                    var selectValue = objButton.value
-                    //$selectedReport = objButton.text;
-
-                    //Set order ID = button value
-                    orderid.innerHTML = objButton.value;
-                    //orderid.innerHTML = "Order ID#: " + orderid.innerHTML;
-                }
-
-                function ShopStepChange(objButton)
-                {
-                    //objButton.innerText="Changed";
-                    //document.getElementById("Button").value= "Hide Filter";
-                    //objButton.value = "Changed";
-                    var btnval = objButton.value;
-
-                    //how to insert rows
-                    //https://www.w3schools.com/jsref/met_table_insertrow.asp
-                    //how to get the row count
-                    //https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
-
-                    <!----------------------Var declarations---------------------->
+		
+		<span id="output"></span>
+		<span id="output"></span>
+		
+		<script type="text/javascript">
+			function changereporttype(selectObj) {
+				//how to insert rows
+				//https://www.w3schools.com/jsref/met_table_insertrow.asp
+				//how to get the row count
+				//https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
 				var i = 0;
-				var selectIndex=objButton.value;
-				var selectValue=objButton.value;
+				var selectIndex=selectObj.selectedIndex;
+				var selectValue=selectObj.options[selectIndex].text;
 				var output=document.getElementById("output");
 				var totalRowCount = 0;
 				var rowCount = 0;
 				var table = document.getElementById("report");
 				var rows = table.getElementsByTagName("tr")
-				<!----------------------End declarations---------------------->
-				
-				/*for (i=message-2; i>=1; i--)
-				{
-					table.deleteRow(i);
-				}*/
-				
-				for (var i = 0; i < rows.length; i++) 
-				{
+				for (var i = 0; i < rows.length; i++) {
 					totalRowCount++;
-					
-					if (rows[i].getElementsByTagName("td").length > 0) 
-					{
+					if (rows[i].getElementsByTagName("td").length > 0) {
 						rowCount++;
 					}
 				}
-				
 				var message = totalRowCount;
 				
 				
-				/*This if block is for the first page of the driver section.
-				After the button on the bottom of the page is clicked the following
-				blocks will take care of it.*/
-				if (objButton.value == "Begin Shopping")
+				var table = document.getElementById("report");
+				var row = table.insertRow(message-1);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				cell1.innerHTML = message;
+				cell2.innerHTML = "th Row";
+				
+				if(selectValue=="Driver")
 				{
-					//Change button text
-					objButton.value = "Begin Boxing Items";
-					//showorderid.innerHTML = "test";
-					//document.getElementById("Button").style.background='#b27a3a';
-					
-					//Delete everything in the table after the bottom button is clicked.
-					//Then fill the table with the relevant information about the order ID selected.
-					for (i=message-2; i>=0; i--)
+					for (i=message-2; i>=1; i--)
 					{
 						table.deleteRow(i);
 					}
-					
-					//output.innerHTML=ReportID;
-					
-					//Fill with relevant order data
-					/*for (i=1; i <= 5; i++)
+					output.innerHTML=selectValue
+					for (i=1; i <= 5; i++)
 					{
 						//var table = document.getElementById("report");
-						var row = table.insertRow(i-1);
+						var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
 						var cell3 = row.insertCell(2);
-						cell1.innerHTML = i + ")";
-						cell2.innerHTML = "Example row for Driver";
-						cell3.innerHTML = "Another row for Order #" + orderid.innerHTML;
-					}*/
-                }
-                    //Doesn't even appear to be necessary
-					//output.innerHTML = objButton.value;
-				}
-				else if(objButton.value == "Begin Boxing Items")
-				{
-					//Change bottom button text
-					objButton.value = "Items Shelved";
-					//output.innerHTML = objButton.value;
+						cell1.innerHTML = "test1";
+						cell2.innerHTML = "test2";
+						cell3.innerHTML = "tester";
+					}
 					
-					//Delete the table rows
-					for (i=message-2; i>=0; i--)
+						
+					
+				}
+				else if (selectValue=="Shopper")
+				{
+					for (i=message-2; i>=1; i--)
 					{
 						table.deleteRow(i);
 					}
-					
-					//Fill with relevant order data
-						var row = table.insertRow(0);
+					output.innerHTML=selectValue
+					for (i=1; i <= 5; i++)
+					{
+						//var table = document.getElementById("report");
+						var row = table.insertRow(i);
 						var cell1 = row.insertCell(0);
-						cell1.innerHTML = "Shelve items at the back of store.";
-					//output.innerHTML="End of loop";
-				}
-				else if (objButton.value == "Items Shelved")
-				{
-					//Change bottom button text
-					objButton.value = "Return To Order Selection";
-					//output.innerHTML = objButton.value;
-					
-					//Clear the table
-					for (i=message-2; i>=0; i--)
-					{
-						table.deleteRow(i);
+						var cell2 = row.insertCell(1);
+						cell1.innerHTML = i;
+						cell2.innerHTML = "th Row in Shopper";
 					}
-					
-					//Update status
-					var row = table.insertRow(0);
-					var cell1 = row.insertCell(0);
-					cell1.innerHTML = "The items are shelved and awaiting pickup.";
 				}
-				else if(objButton.value == "Return To Order Selection")
+				else
 				{
-					//Reload the table
-					window.location.reload(true); 
+					output.innerHTML="";
 				}
+				
+				
+				
+				
+				//output.innerHTML=selectValue;
 			}
 		</script>
-		<span id="output"></span>
+		
 	</body>
 	
 	<footer>
@@ -313,5 +266,6 @@
 			<p>
 				Copyright &copy; ShopHeroes 2017. All rights reserved.
 			</p>
+			
 	</footer>
 </html>
