@@ -207,7 +207,7 @@ background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
 	
 }
 }
-#payment
+table.payment
 {
 	margin:             0 auto;
     width:              100%;
