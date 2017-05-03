@@ -142,6 +142,7 @@
 						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
 					<td>
+						<td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td>
 					</td>
 					<td>
 					</td>
