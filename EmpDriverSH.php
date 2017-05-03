@@ -79,10 +79,10 @@
 					}
 					
 					input.orders{
-						text-align: left;
+						<!--text-align: left;-->
 						width: 100%;
 						background: none;
-						padding: 0%;
+						padding: 0;
 						border: none;
 					}
 					
