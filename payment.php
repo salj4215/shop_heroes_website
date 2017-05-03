@@ -59,6 +59,8 @@ while($row = $stmt->fetch()) {   //if its in the cart
         }
     }
     echo "</table>";
+$grandTotal = $subTotal + $shipping;
+
 ?>
 
     <table align= "center">
@@ -80,7 +82,7 @@ while($row = $stmt->fetch()) {   //if its in the cart
                             <td>Shipping City</td><td>:</td><td><input name="shipCity" type="text" id="shipCity" value="<?php echo $_SESSION['activeCustCity'] ?>"></td>
                         </tr>
                         <tr>
-                            <td>Shipping Zipcode</td><td>:</td><td><input name="shipZip" type="text" id="shipZip" value="<?php echo $_SESSION['activeCustZip']; ?>"></td>
+                            <td>Shipping Zipcode</td><td>:</td><td><input name="shipZip" type="number" id="shipZip" value="<?php echo $_SESSION['activeCustZip']; ?>"></td>
                         </tr>
                         <tr>
                             <td>Phone Number</td><td>:</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber" value="<?php echo $_SESSION['activeCustPhone']; ?>"></td>
@@ -97,29 +99,28 @@ while($row = $stmt->fetch()) {   //if its in the cart
                         </tr>
                         <tr>
                             <td width="78">Credit Card Number</td><td width="6">:</td>
-                            <td width="294"><input name="ccNum" type="text" id="ccNum" value=""></td>
+                            <td width="294"><input name="CardNum" type="text" id="CardNum" value=""></td>
                         </tr>
                         <tr>
-                            <td>Expiration</td><td>:</td><td><input name="expiration" type="text" id="expiration" value=""></td>
+                            <td>Expiration</td><td>:</td><td><input name="CardExp" type="text" id="CardExp" value=""></td>
                         </tr>
                         <tr>
-                            <td>CVV code:</td><td>:</td><td><input name="cvv" type="text" id="cvv"></td>
+                            <td>CVV code:</td><td>:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
                         <tr><br><br></tr>
                         <td>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
+                            <input type="hidden" name="Amount" value="<?php echo $grandTotal ?>"
                         <td><input type="submit" name="Submit" value="Confirm Payment"></td>
                         </td>
                         </tr>
                     </table>
                 </fieldset>
             </td>
-        </form>
     </table>
 
 <?php
-$grandTotal = $subTotal + $shipping;
 echo '<br>Order Subtotal: $' . number_format($subTotal, 2, '.', ',');
 echo '<br>Order Shipping: $' . number_format($shipping, 2, '.', ',');
 echo "<br>==================================";
@@ -127,4 +128,5 @@ echo '<br>Order Total: $' . number_format($grandTotal, 2, '.', ',');
 ?>
 </body>
 </html>
+
 </form>
