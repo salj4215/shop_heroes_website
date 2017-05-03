@@ -119,17 +119,18 @@ echo "<br><br>STARTING  TO RETREIVE USER INFORMATION AND CUSTOMR ID<br><br>";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //if it was approved
+echo $authorization->response_code;
 if(($authorization->response_code)==1) {
     $sql = "SELECT * FROM CUSTOMERS WHERE UserID = '$user_id'";
 
     require_once('connect_db.php');
-    $con = mysqli_connect(HOST,USER,PASS,DB) or die('Unable to Connect');
+    $con = mysqli_connect(HOST, USER, PASS, DB) or die('Unable to Connect');
     $pay_amt = $amount;
     $pay_confirm_code = $authorization->auth_code;
     $result = mysqli_fetch_array(mysqli_query($con, $sql));
-    if(isset($result)) {
+    if (isset($result)) {
         $cust_id = $result['CustID'];
-        $pmt_name = $result['CustFirstN'].' '. $result['CustLastN'];
+        $pmt_name = $result['CustFirstN'] . ' ' . $result['CustLastN'];
         $pmt_type = "Credit";
         $pmt_address = $result['CustAddress'];
         $pmt_date = date("Y-m-d H:i:s");
@@ -154,7 +155,7 @@ if(($authorization->response_code)==1) {
     echo "<br><br>FOUND CUST ID, NOW INSERT ORDER THAT HAS BEEN APPROVED TO RECIEVE ORDER ID<br><br>";
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    if(isset($cust_id)){//if we found a CustID from the UserID
+    if (isset($cust_id)) {//if we found a CustID from the UserID
 
         $sql = "INSERT INTO ORDERS(CustID, StoreID, ShipType, ShipAddress, OrderDate, OrderCity, OrderZip,
                                 OrderProcessed, ShoppingStarted, BoxingItems, WaitingForDelivery, InRoute, Delivered, SignedFor, Paid,
@@ -163,21 +164,22 @@ if(($authorization->response_code)==1) {
                                 '$order_processed', '$shopping_started', '$boxing_items', '$waiting_delivery', '$in_route', '$delivered', '$signed_for', '$paid',
                                 null, '$order_total', null)";
 
-        if(mysqli_query($con, $sql)){
+        if (mysqli_query($con, $sql)) {
             $sql = "SELECT OrderID FROM ORDERS WHERE CustID='$cust_id' AND OrderDate='$order_date'";
             $result = mysqli_fetch_array(mysqli_query($con, $sql));
-            if(isset($result)) {
+            if (isset($result)) {
                 echo $result[0];
                 $order_id = $result[0];
-            }else{
+            } else {
                 echo "Order creation failed";
             }
-        }else{
+        } else {
             echo "Order creation failed";
         }
-    }else{
+    } else {
         echo "Failed to find customer";
-    }mysqli_close($con);
+    }
+    mysqli_close($con);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     echo "<br><br>RETREIVED ODER ID, NOW INSERT INTO PAYMENTS<br><br>";
@@ -193,12 +195,12 @@ if(($authorization->response_code)==1) {
     } else {
         echo "Fail";
     }
-}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-echo "<br><br>NOW PUT ITEMS FROM CART ONTO ORDER LINE <br><br>";
+    echo "<br><br>NOW PUT ITEMS FROM CART ONTO ORDER LINE <br><br>";
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Then for orderlineItems
-try {
+
     if (isset($_COOKIE['cart'])) {
         $cookieCart = $_COOKIE['cart'];
         $cookieCart = stripslashes($cookieCart);
@@ -228,11 +230,6 @@ try {
             }   //displaying membership, dispite whats in cart
         }
     }
-}
-catch (Exception $e)
-{
-    echo"<br> Error, unable to orderline insert";
-    echo"<br> because of " . $e;
 }
 ?>
 </body>
