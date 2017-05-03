@@ -179,7 +179,7 @@ if(($authorization->response_code)==1) {
     } else {
         echo "Failed to find customer";
     }
-    mysqli_close($con);
+//    mysqli_close($con);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     echo "<br><br>RETREIVED ODER ID, NOW INSERT INTO PAYMENTS<br><br>";
@@ -225,11 +225,13 @@ if(($authorization->response_code)==1) {
                 } else {
                     echo "Fail";
                 }
-                mysqli_close($con);
+//                mysqli_close($con);
 
             }   //displaying membership, dispite whats in cart
         }
     }
+    mysqli_close($con);
+
 }
 ?>
 </body>
