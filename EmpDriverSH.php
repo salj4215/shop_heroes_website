@@ -79,8 +79,8 @@
 					}
 					
 					input.orders{
-						<!--text-align: left;-->
-						width: 100%;
+						<!--text-align: left;
+						width: 100%;-->
 						background: none;
 						padding: 0;
 						border: none;
