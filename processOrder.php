@@ -7,12 +7,22 @@
     <title>ProcessOrder</title>
 </head>
 <?php
+session_start();
+if(!(isset($_SESSION['messages']))){
+    $_SESSION['messages'] = array('');
+    $_SESSION['announcements'] = 0;
+}
+else if((isset($_SESSION['messages'])) && (count($_SESSION['messages']) > 1 )){
+    $_SESSION['announcements'] += 1;
+//count amount of times messages were declared
+    if ($_SESSION['announcements'] >= 1) {
+        $_SESSION['messages'] = array('');
+        $_SESSION['announcements'] = 0;
+    }
+}
 //HEADER OF PAGES
 require ('header.phtml');
-//I have to make sure the payment will go through before
-//I insert the order, so I just get the auth_code back to insert
-//into Payments after the order is created.
-session_start();
+
 require_once("connect_db.php");
 $charset = 'utf8';
 $dsn = "mysql:host=".HOST.";dbname=".DB.";charset=$charset";
@@ -86,14 +96,14 @@ else {
     }
     $yearExp = substr($card_exp, -2);
     $yearExp = (int)$yearExp;
-    $monthExp = substr($card_exp, 2);
+    $monthExp = mb_substr($card_exp, 0, 2);
     $monthExp = (int)$monthExp;
     echo "<br>$monthExp / $yearExp ";
     if (($yearExp < 17) && ($monthExp < 6)) {
         array_push($_SESSION['messages'], "Credit card is expired");
         $vaildationError = true;
     }
-    if ($yearExp > 12 || $yearExp < 1) {
+    if ($monthExp > 12 || $monthExp < 1) {
         array_push($_SESSION['messages'], "Credit card expiration FIRST TWO didgits must be a vaild month. EX: '1'->'12'");
         $vaildationError = true;
     }
@@ -280,8 +290,8 @@ if(($authorization->response_code)==1) {
     $json = json_encode($cart);
     setcookie('cart', $json);
 }
-if(($authorization->response_code) !=1) {
-    array_push($_SESSION['messages'], "Credit Card was declined, please try again.");
+if(($authorization->response_code) != 1) {
+    array_push($_SESSION['messages'], "Credit Card was declined, please try again. ERROR: #" . ($authorization->response_code));
     $_SESSION['announcements'] = -1;
     header('Location: index.php?page=checkout');
 }
