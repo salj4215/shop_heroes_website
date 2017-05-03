@@ -79,10 +79,10 @@
 					}
 					
 					input.orders{
-						text-align: left;
-						width: 100%;
-						<!--background: none;
-						border: none;-->
+						<!--text-align: left;
+						width: 100%;-->
+						background: none;
+						border: none;
 					}
 					
 				</style>
