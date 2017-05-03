@@ -291,10 +291,20 @@ if(($authorization->response_code)==1) {
     $json = json_encode($cart);
     setcookie('cart', $json);
 }
+//if not approved, send back with messeage
 if(($authorization->response_code) != 1) {
     array_push($_SESSION['messages'], "Credit Card was declined, please try again. ERROR: #" . ($authorization->response_code));
     $_SESSION['announcements'] = -1;
     header('Location: index.php?page=checkout');
+}
+//if Approved then contiune to display results.
+if(($authorization->response_code) == 1) {
+    array_push($_SESSION['messages'], "Order Completed");
+    $_SESSION['announcements'] = -1;
+    $_SESSION['orderNum'] = $order_id;
+    $_SESSION['orderStore'] = $store_id;
+    $_SESSION['shippingType'] = $ship_type;
+    header('Location: index.php?page=orderComplete');
 }
 ?>
 </body>
