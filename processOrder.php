@@ -75,9 +75,10 @@ if(isset($_POST['shipCity'])){
 if(isset($_POST['shipZip'])){
     $order_zip = $_POST['shipZip'];
 }
+
 // VALIDATE DATA
 //if cvv isnt 3
-if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV'])) {
+if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV']) || empty($_POST['billingAddress']) || empty($_POST['billingCity']) || empty($_POST['billingZip']) ) {
     array_push($_SESSION['messages'], "All form input lines must be filled in.");
     $vaildationError = true;
 }   //if all fields are not empty. then vaildate inputs

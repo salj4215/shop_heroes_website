@@ -69,46 +69,63 @@ $grandTotal = $subTotal + $shipping;
                 <fieldset><legend align="center"> Shipping Address :</legend>
                     <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
                         <tr>
-                            <td width="78">First Name</td><td width="6">:</td>
+                            <td width="78">First Name</td>
                             <td width="294"><input name="firstName" type="text" id="firstName" value="<?php echo $_SESSION['activeCustFirstN']; ?>"></td>
                         </tr>
                         <tr>
-                            <td>Last Name</td><td>:</td><td><input name="lastName" type="text" id="lastName" value="<?php echo $_SESSION['activeCustLastN']; ?>"></td>
+                            <td>Last Name</td><td><input name="lastName" type="text" id="lastName" value="<?php echo $_SESSION['activeCustLastN']; ?>"></td>
                         </tr>
                         <tr>
-                            <td>Shipping Address</td><td>:</td><td><input name="shipAddress" type="text" id="shipAddress" value="<?php echo $_SESSION['activeCustAdd']; ?>"></td>
+                            <td>Shipping Address</td><td><input name="shipAddress" type="text" id="shipAddress" value="<?php echo $_SESSION['activeCustAdd']; ?>"></td>
                         </tr>
                         <tr>
-                            <td>Shipping City</td><td>:</td><td><input name="shipCity" type="text" id="shipCity" value="<?php echo $_SESSION['activeCustCity'] ?>"></td>
+                            <td>Shipping City</td><td><input name="shipCity" type="text" id="shipCity" value="<?php echo $_SESSION['activeCustCity'] ?>"></td>
                         </tr>
                         <tr>
-                            <td>Shipping Zipcode</td><td>:</td><td><input name="shipZip" type="number" id="shipZip" value="<?php echo $_SESSION['activeCustZip']; ?>"></td>
+                            <td>Shipping Zipcode</td><td><input name="shipZip" type="text" id="shipZip" value="<?php echo $_SESSION['activeCustZip']; ?>"></td>
                         </tr>
                         <tr>
-                            <td>Phone Number</td><td>:</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber" value="<?php echo $_SESSION['activeCustPhone']; ?>"></td>
+                            <td>Phone Number</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber" value="<?php echo $_SESSION['activeCustPhone']; ?>"></td>
                         </tr>
                     </table>
                 </fieldset>
             </td>
             <td>
-                <fieldset><legend align="center"> Payment Information :</legend>
+                <fieldset><legend align="center"> Payment Information</legend>
                     <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
                         <tr>
-                            <td width="78">Billing Name</td><td width="6">:</td>
+                            <td width="78">Billing Name</td>
                             <td width="294"><input name="billingName" type="text" id="billingName" value=""></td>
                         </tr>
                         <tr>
-                            <td width="78">Credit Card Number</td><td width="6">:</td>
+                            <td>Billing Address</td><td><input name="billingAddress" type="text" id="billingAddress" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>Billing City</td><td><input name="billingCity" type="text" id="billingCity" value=""></td>
+                        </tr>
+                        <tr>
+                            <td>Billing Zipcode</td><td><input name="billingZip" type="text" id="billingZip" value=""></td>
+                        </tr>
+                        <tr><br><br></tr>
+
+                        </tr>
+                    </table>
+                </fieldset>
+            </td>
+            <td>
+                <fieldset><legend align="center"> Credit Card</legend>
+                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                        <tr>
+                            <td width="78">Credit Card Number</td>
                             <td width="294"><input name="CardNum" type="text" id="CardNum" value=""></td>
                         </tr>
                         <tr>
-                            <td>Expiration</td><td>:</td><td><input name="CardExp" type="text" id="CardExp" value=""></td>
+                            <td>Expiration</td><td><input name="CardExp" type="text" id="CardExp" value=""></td>
                         </tr>
                         <tr>
-                            <td>CVV code:</td><td>:</td><td><input name="CVV" type="text" id="CVV"></td>
+                            <td>CVV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
-                        <tr><br><br></tr>
-                        <td>
+                        <tr>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
                             <input type="hidden" name="Amount" value="<?php echo $grandTotal ?>"
