@@ -28,28 +28,24 @@ $pdo = new PDO($dsn, USER, PASS, $opt); //create pdo object
 <!--This is where you proccess the order, take the card information. put it into an array, and then hand it too CCathu-->
 <!--That will return an array to be feed back response.-->
 <?php
+$vaildationError = false;
 $user_id = $_SESSION['activeUserID'];
 
 if(isset($_POST['Amount'])){
     $amount = $_POST['Amount'];
 }
-
 if(isset($_POST['firstName'])){
     $first_name = $_POST['firstName'];
 }
-
 if(isset($_POST['lastName'])){
     $last_name = $_POST['lastName'];
 }
-
 if(isset($_POST['CardNum'])){
     $card_num = $_POST['CardNum'];
 }
-
 if(isset($_POST['CardExp'])){
     $card_exp = $_POST['CardExp'];
 }
-
 if(isset($_POST['CVV'])){
     $cvv = $_POST['CVV'];
 }
@@ -68,6 +64,33 @@ if(isset($_POST['shipCity'])){
 }
 if(isset($_POST['shipZip'])){
     $order_zip = $_POST['shipZip'];
+}
+// VALIDATE DATA
+//if cvv isnt 3
+if (strlen($cvv) != 3) {
+    array_push($_SESSION['messages'], "Your CVV number must be 3 digits located on the back of your credit card.");
+    $vaildationError = true;
+}
+if (strlen($card_exp) != 4) {
+    array_push($_SESSION['messages'], "Your Credit Card Expiration must be 4 digits.(monthYEAR) EX: '0218'  OR '1119' ");
+    $vaildationError = true;
+}
+if (strlen($order_zip) < 5) {
+    array_push($_SESSION['messages'], "Please type in your full 5 digit zip code.");
+    $vaildationError = true;
+}
+if (strlen($card_num) > 16  || strlen($card_num) < 13 ) {
+    array_push($_SESSION['messages'], "Credit Card number must be between 13-16 digits.");
+    $vaildationError = true;
+}
+if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV'])) {
+    array_push($_SESSION['messages'], "All form input lines must be filled in.");
+    $vaildationError = true;
+}
+//revert to old page if INPUT error.
+if ($vaildationError) {//there was an input error
+    $_SESSION['announcements'] = -1;
+    header('Location: index.php?page=checkout');
 }
 echo " values => {" . print_r($amount) . print_r($first_name) . print_r($last_name) . print_r($card_num) . print_r($card_exp) ." }<br>";
 require_once(dirname(__FILE__) . '/ccauthapi/CCAuthApi.php');
@@ -241,6 +264,11 @@ if(($authorization->response_code)==1) {
 //now renew data in cookie cart.
     $json = json_encode($cart);
     setcookie('cart', $json);
+}
+if(($authorization->response_code) !=1) {
+    array_push($_SESSION['messages'], "Credit Card was declined, please try again.");
+    $_SESSION['announcements'] = -1;
+    header('Location: index.php?page=checkout');
 }
 ?>
 </body>
