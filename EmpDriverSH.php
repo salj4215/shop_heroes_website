@@ -138,9 +138,13 @@
         <table class="reporttable" id="report">
             <?php foreach ($orders as $order) { ?>
                 <tr>
-					<td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"></td> 
-					<td></td>
-					<td></td>
+					<td>
+						<input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value=<?php echo $order['OrderID']; ?>/>
+					</td> 
+					<td>
+					</td>
+					<td>
+					</td>
 				</tr>
             <?php } ?>
             <tr height="90%">
