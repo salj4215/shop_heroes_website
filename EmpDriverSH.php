@@ -80,8 +80,8 @@
 					
 					input.orders{
 						<!--text-align: left;
-						width: 100%;-->
-						background: none;
+						width: 100%;
+						background: none;-->
 						padding: 0;
 						border: none;
 					}
