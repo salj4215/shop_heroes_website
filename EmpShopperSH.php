@@ -122,7 +122,7 @@
 			<input type="date" name="enddate">
 		<p>
 		<br>
-		<table class="reporttable" id="report">
+		<!--<table class="reporttable" id="report">
 				<tr>
 					<td colspan="2" width="20%">
 						Your looking at the <span id="output">Driver</span>'s table
@@ -136,8 +136,22 @@
 					<td width="90%">
 					</td>
 				</tr>
-		</table>
-		
+		</table>-->
+		<table class="reporttable" id="report">
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
+                    <tr><td><input class="orders" type="sub mit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
+                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
+                    <tr height="90%">
+                        <td width="20%">
+                        </td>
+                        <td width="30%">
+                        </td>
+                        <td width="90%">
+                        </td>
+                    </tr>
+                     </table>
 		<span id="output"></span>
 		<span id="output"></span>
 		
