@@ -240,8 +240,6 @@
 						table.deleteRow(i);
 					}
 					
-					<?php foreach ($orders as $order) { ?>
-					
 					<?php
 						if ($buttonValue == "Begin Boxing Items")
 						{
