@@ -1,4 +1,5 @@
 <link rel="stylesheet" type="text/css" href="styleOrder.css">
+<div id="shopPage">
 <?php
 //stopping varrible crashing on start up
 if(!isset($searchWord) || (!isset($searchWHERE))){
@@ -85,6 +86,20 @@ if(isset($_POST['search'])) {
     else    //default to all
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
+    //Show header for types of items shown based on user selection
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce' )
+        echo "<h1>Produce</h1>";
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks' )
+        echo "<h1>Snacks</h1>";
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'cereal' )
+        echo "<h1>Cereal</h1>";
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'chips' )
+        echo "<h1>Chips</h1>";
+    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'dairy' )
+        echo "<h1>Dairy</h1>";
+    else
+        echo "<h1>All Groceries</h1>";
+
     //to redirect the qry with category seelction
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Produce'";
@@ -158,4 +173,4 @@ if(isset($_POST['search'])) {
     $numProductDisplayed=0;
 
 //?>
-
+</div>
