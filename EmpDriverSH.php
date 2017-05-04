@@ -247,7 +247,7 @@
 						{
 							foreach ($orders as $order)
 							{
-								<?php echo $buttonValue; ?>;
+								echo $buttonValue;
 							}
 						}
 					?>
