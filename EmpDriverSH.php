@@ -136,12 +136,24 @@
 				{ ?>
 				<tr>
 					<td>
-						<p>test</p>
 					</td> 
 					<td>
 					</td>
 					<td>
 					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					<td>
+					</td>
+					
 				</tr>
 			<?php } ?>
 			
