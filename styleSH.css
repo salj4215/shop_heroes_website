@@ -38,8 +38,8 @@ top: 10%; /* was 10px */
 /* search bar */
 table.search {
 	position:absolute;
- left:4000px;
- top:4000px;
+ left:400px;
+ top:40px;
    color: black;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
