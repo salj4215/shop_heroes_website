@@ -136,7 +136,7 @@
 				{ ?>
 				<tr>
 					<td>
-						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['ShipAddress']; ?>"/>					
+						<p>test</p>
 					</td> 
 					<td>
 					</td>
