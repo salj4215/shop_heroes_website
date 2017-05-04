@@ -147,7 +147,7 @@ if(isset($_POST['search'])) {
         echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
         //product information
 		echo "<td>Product: " . $row['ProductName'] . "<br><br>Category: " . $productCat . "</td>";
-        echo "<td>Price: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
+        echo "<td>Price: $" . $row['UnitPrice'] . "<br><br>Stock: " . $row['Quantity'] . "<br><br>Seller: "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
 //        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
         //form for placing ADD TO CART
         echo "<td><form method='post' >";

@@ -19,7 +19,7 @@ table.products {
     top: 100px;
     /*right: 50px;*/
     color: black;
-    font-family: Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
+    font-family: Palatino Linotype(Regular), Bitter, SansSerif, Times, serif;
     font-weight: 200;
     font-size: 1em;
     overflow: auto;
