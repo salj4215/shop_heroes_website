@@ -118,20 +118,6 @@
 			</head>
 		</header>
 		<br>
-		<select class="reportchoice" id="reporttype" onchange="changereporttype(this);">
-			<option>Driver</option>
-			<option>Shopper</option>
-			<option>Accounts Payable to Store</option>
-			<option>Shopping List in Accounts Payable</option>
-			<option>Ticket</option>
-		</select>
-		<p class="reportdate">
-			Enter a Start Date
-			<input type="date" name="startdate">
-			&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-			Enter an End Date
-			<input type="date" name="enddate">
-		<p>
 		<br>
 		<!--<table class="reporttable" id="report">
 				<tr>
