@@ -161,21 +161,36 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
 if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $userEmail = $_POST['myusername'];
     $pass = $_POST['mypassword'];
-
-//encrpt
-    $pass = hash("SHA512", $pass, false);
-
+    $employeeLogin = false;
     $emailMatch = false;
     $pulledUser = "false99999999999999";    //set default for error of fetching
     $pulledPass = "false99999999999999";
     $pulledUserID = "false9999999999999";
+
+    //CHECK IF EMPLOYEE FIRST
+    $qry = "SELECT * FROM USERS JOIN EMPLOYEES ON USERS.UserID = EMPLOYEES.UserID WHERE Username='$userEmail'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {
+        $employeeLogin = true;
+        $emailMatch = true;
+        $pulledUser= $row['Username'];
+        $pulledPass= $row['Password'];
+        $pulledUserID = $row['UserID'];
+        $pulledEmpID = $row['EmployeeID'];
+        echo "$row";
+
+    }
+//encrpt
+    $pass = hash("SHA512", $pass, false);
+    //if not an employee, then check for an customer
+if(!$employeeLogin) {
 //    $qry = "SELECT * FROM USERS WHERE Username='$userEmail'";
     $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE Username='$userEmail'";
     $stmt = $pdo->query($qry);
     while ($row = $stmt->fetch()) {
         $emailMatch = true;
-        $pulledUser= $row['Username'];
-        $pulledPass= $row['Password'];
+        $pulledUser = $row['Username'];
+        $pulledPass = $row['Password'];
         $pulledUserID = $row['UserID'];
         $pulledCustID = $row['CustID'];
         $pulledCustFirstN = $row['CustFirstN'];
@@ -185,6 +200,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $pulledCustAdd = $row['CustAddress'];
         $pulledCustPhone = $row['CustPhone'];
     }
+}
     if ($pass == $pulledPass && ($emailMatch)) {
        //correct password in found username
         $_SESSION['activeUser'] = $pulledUser;
