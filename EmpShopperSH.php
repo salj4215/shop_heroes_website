@@ -107,9 +107,9 @@
 					|&emsp;&emsp;
 					<a href="EmpHomePage.html">Home</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpDriversSH.php">Drivers</a>
+					<a href="EmpDriverSH.php">Drivers</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpShoppersSH.php">Shoppers</a>
+					<a href="EmpShopperSH.php">Shoppers</a>
 					&emsp;&emsp;|
 					</p>
 				</nav>
@@ -251,18 +251,6 @@
 					objButton.value = "<?php echo $buttonValue; ?>";
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
-					
-					
-					<?php
-						$javaScriptCode = '
-						var row = table.insertRow(i-1);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						//var cell3 = row.insertCell(2);
-						cell1.innerHTML = "Test";
-						cell2.innerHTML = "Example row for Shopper";
-						';
-					?>
 					
 					
 					//Delete everything in the table after the bottom button is clicked.
