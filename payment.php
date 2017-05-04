@@ -9,16 +9,19 @@
 <body>
 <style media="screen" type="text/css">
     fieldset {
-        display: block;
+
         margin-left: 0px;
         margin-right: 0px;
-        padding-top: 0.35em;
+        padding-top: 5px;
         padding-bottom: 120px;
         padding-left: 0.75em;
         padding-right: 0.75em;
         border: 2px groove;
         height: 325px;
-        width: 300px;
+        width: 350px;
+        display: table-cell;
+        white-space:nowrap;
+
     }
 </style>
 <?php
