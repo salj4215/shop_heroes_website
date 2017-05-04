@@ -86,7 +86,7 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
                 echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
                 //product informations
                 echo "<td>ProductName: " . $row['ProductName'] .  "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-                echo "<td>UnitPrice: $" . $row['UnitPrice'] .  "<br><br>Store= ";
+                echo "<td>UnitPrice: $" . $row['UnitPrice'] .  "<br><br>Store: ";
                 if ($row['StoreID'] == 1) {
                     echo "Kroger";
                 };
