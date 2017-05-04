@@ -105,11 +105,9 @@
 					|&emsp;&emsp;
 					<a href="EmpHomeSH.html">Home</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpReportsSH.html">Reports</a>
+					<a href="EmpDriverSH.html">Drivers</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpDriversSH.html">Drivers</a>
-					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpShoppersSH.html">Shoppers</a>
+					<a href="EmpShopperSH.html">Shoppers</a>
 					&emsp;&emsp;|
 					</p>
 				</nav>
