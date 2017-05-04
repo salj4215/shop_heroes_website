@@ -127,6 +127,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'signup') {
             $pulledCustCity = $row['CustCity'];
             $pulledCustAdd = $row['CustAddress'];
             $pulledCustPhone = $row['CustPhone'];
+            $pulledCustFirstN = $row['CustFirstN'];
+            $pulledCustLastN = $row['CustLastN'];
         }
             //correct password in found username
             $_SESSION['activeUser'] = $pulledUser;
