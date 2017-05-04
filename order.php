@@ -89,6 +89,15 @@ if(isset($_POST['search'])) {
     //Show header for types of items shown based on user selection
     echo "<br>";
     echo "<br>";
+    if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger' )
+        echo "<h1>Kroger</h1>";
+    elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer' )
+        echo "<h1>Meijer</h1>";
+    else
+        echo "<h1>All Stores</h1>";
+    echo "<br>";
+    echo "<br>";
+
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce' )
         echo "<h1>Produce</h1>";
     elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks' )
