@@ -130,6 +130,21 @@
 					</td>
 				</tr>
             <?php } ?>
+			
+			<?php 
+				if ($buttonValue == "Begin Boxing Items")
+				{ ?>
+				<tr>
+					<td>
+						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['ShipAddress']; ?>"/>					
+					</td> 
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+			<?php } ?>
+			
             <tr height="90%">
                 <td width="20%">
                 </td>
@@ -217,6 +232,8 @@
 					objButton.value = "<?php echo $buttonValue; ?>";
 					
 					//<?php echo $order['ShipAddress']; ?>
+					
+					
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
