@@ -230,7 +230,8 @@
 				if (objButton.value == "Begin Shopping")
 				{
 					//Change button text
-					objButton.value = "Begin Boxing Items";
+					<?php $buttonValue= "Hassan"; ?>
+					objButton.value = "<?php echo $buttonValue; ?>";
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
