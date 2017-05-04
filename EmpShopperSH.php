@@ -32,8 +32,8 @@
 			$query2 = "SELECT EmployeeID FROM EMPLOYEES";
 			#runs the quary
 			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-			$shopitems = $pdo->query($shopitemsquery)->fetchAll(PDO::FETCH_ASSOC);
-			$employees = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
+			$shopitems = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			$employees = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
