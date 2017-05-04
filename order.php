@@ -87,6 +87,8 @@ if(isset($_POST['search'])) {
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
     //Show header for types of items shown based on user selection
+    echo "<br>";
+    echo "<br>";
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce' )
         echo "<h1>Produce</h1>";
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks' )
@@ -100,7 +102,7 @@ if(isset($_POST['search'])) {
     else
         echo "<h1>All Groceries</h1>";
 
-    //to redirect the qry with category seelction
+    //to redirect the qry with category selection
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
         $categoryWHERE=" AND PRODUCTS.ProductCategory = 'Produce'";
     elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks')
@@ -143,9 +145,9 @@ if(isset($_POST['search'])) {
 	    $productCat = $row['ProductCategory'];
         //product pictures
         echo "<td><img src='images/products/128/_" . $row['ProductUPC'] . ".png' style='width:128px;height:128px;'></td>";
-        //product informations
-		echo "<td>ProductName: " . $row['ProductName'] . "<br><br>ProductCategory: " . $productCat . "<br><br>ProductUPC: " . $row['ProductUPC'] . "</td>";
-        echo "<td>UnitPrice: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
+        //product information
+		echo "<td>Product: " . $row['ProductName'] . "<br><br>Category: " . $productCat . "</td>";
+        echo "<td>Price: $" . $row['UnitPrice'] . "<br><br>Quantity: " . $row['Quantity'] . "<br><br>Store= "; if($row['StoreID'] == 1){echo "Kroger";}; if($row['StoreID'] == 2){echo 'Meijer';}; echo "</td>";
 //        echo "<td><a href='index.php?page=order&pid=$productID'>ADD TO CART</a></td></tr>";
         //form for placing ADD TO CART
         echo "<td><form method='post' >";
