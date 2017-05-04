@@ -35,6 +35,15 @@ table td{
     padding-left: 20px;
 
 }
+tr:nth-child(even)
+{
+    background-color:   #0168B3;
+}
+
+tr:nth-child(odd)
+{
+    background-color:   #FF0D01;
+}
 
 /*Dropdown button */
 .productbtn
