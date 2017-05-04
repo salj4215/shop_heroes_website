@@ -230,7 +230,7 @@
 				if (objButton.value == "Begin Shopping")
 				{
 					//Change button text
-					<?php $buttonValue= "Hassan"; ?>
+					<?php $buttonValue= "Begin Boxing Items"; ?>
 					objButton.value = "<?php echo $buttonValue; ?>";
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
@@ -257,11 +257,14 @@
 				
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
+					
+					
 				}
 				else if(objButton.value == "Begin Boxing Items")
 				{
 					//Change bottom button text
-					objButton.value = "Items Shelved";
+					<?php $buttonValue= "Items Shelved"; ?>
+					objButton.value = "<?php echo $buttonValue; ?>";
 					//output.innerHTML = objButton.value;
 					
 					//Delete the table rows
@@ -279,7 +282,8 @@
 				else if (objButton.value == "Items Shelved")
 				{
 					//Change bottom button text
-					objButton.value = "Return To Order Selection";
+					<?php $buttonValue= "Return to Order Selection"; ?>
+					objButton.value = "<?php echo $buttonValue; ?>";
 					//output.innerHTML = objButton.value;
 					
 					//Clear the table
