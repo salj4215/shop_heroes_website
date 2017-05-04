@@ -128,8 +128,8 @@ $grandTotal = $subTotal + $shipping;
                         </tr>
 						<tr>
 						<td>
-							<input type="radio" name="shippingTime" value="1hour">1 Hour</td>
-						<td>	<input type="radio" name="shippingTime" value="2hour">2 Hour<td>
+							<input type="radio" name="shippingTime" value="1hour" checked="checked">1 Hour ($7.99)</td>
+						<td><input type="radio" name="shippingTime" value="2hour">2 Hour ($5.99)<td>
 							
 						</tr>
                         <tr>
