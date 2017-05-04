@@ -27,13 +27,13 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT OrderID AS T1 FROM ORDERS WHERE ShopperID = 1 AND WaitingForDelivery = 0";
-			#$query = "SELECT OrderID AS T1, ORDER_LINE_ITEMS.ProductID AS T2, Quantity AS T3, ProductName AS T4, ProductCategory AS T5 FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
-			$query2 = "SELECT EmployeeID FROM EMPLOYEES";
+			$orderquery = "SELECT OrderID FROM ORDERS WHERE ShopperID = 1 AND WaitingForDelivery = 0";
+			$shopitemsquery = "SELECT OrderID, ORDER_LINE_ITEMS.ProductID, Quantity, ProductName, ProductCategory FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
+			$employeequery = "SELECT EmployeeID FROM EMPLOYEES";
 			#runs the quary
-			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-			$shopitems = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-			$employees = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			$orders = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
+			$shopitems = $pdo->query($shopitemsquery)->fetchAll(PDO::FETCH_ASSOC);
+			$employees = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
@@ -146,12 +146,17 @@
 					Quantity:
 				</td>
 			</tr>
-            <?php foreach ($orders as $order) { ?>
+            <?php foreach ($shopitems as $item) { ?>
                 <tr>
 					<td>
-						<?php echo $order['T1']; ?>
+						<?php echo $item['ProductID']; ?>
 					</td>
-
+					<td>
+						<?php echo $item['ProductName']; ?>
+					</td>
+					<td>
+						<?php echo $item['Quantity']; ?>
+					</td>
 				</tr>
             <?php } ?>
             <tr height="90%">
@@ -163,6 +168,15 @@
                 </td>
             </tr>
         </table>
+		<table>
+			<?php foreach ($employees as $employee) { ?>
+                <tr>
+					<td>
+						<?php echo $employee['EmployeeID']; ?>
+					</td>
+				</tr>
+            <?php } ?>
+		</table>
 		<span id="output"></span>
 		<span id="output"></span>
 		<!--Bottom button-->
@@ -234,10 +248,6 @@
 				blocks will take care of it.*/
 				if (objButton.value == "Begin Shopping")
 				{
-					<?php
-					$query = "SELECT OrderID AS T1, ORDER_LINE_ITEMS.ProductID AS T2, Quantity AS T3, ProductName AS T4, ProductCategory AS T5 FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
-					$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
-					?>
 					//Change button text
 					<?php $buttonValue= "Begin Boxing Items"; ?>
 					objButton.value = "<?php echo $buttonValue; ?>";
@@ -246,14 +256,14 @@
 					
 					//Delete everything in the table after the bottom button is clicked.
 					//Then fill the table with the relevant information about the order ID selected.
-					//for (i=message-2; i>=0; i--)
-					//{
-						//table.deleteRow(i);
-					//}
+					for (i=message-2; i>=0; i--)
+					{
+						table.deleteRow(i);
+					}
 					
 					
 					//Fill with relevant order data
-					/*<?php foreach ($shopitems as $item) { ?>
+					<?php foreach ($shopitems as $item) { ?>
 						
 						var row = table.insertRow(i-1);
 						var cell1 = row.insertCell(0);
@@ -262,7 +272,7 @@
 						cell1.innerHTML = "<?php echo $item['ProductID']; ?>";
 						cell2.innerHTML = "Example row for Shopper";
 						//cell3.innerHTML = "Another row for Order #" + ;
-					<?php } ?>*/
+					<?php } ?>
 				
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
