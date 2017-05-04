@@ -27,9 +27,13 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDERS";
+			$orderquery = "SELECT OrderID FROM ORDERS WHERE ShopperID = 1 AND WaitingForDelivery = 0";
+			$shopitemsquery = "SELECT OrderID, ORDER_LINE_ITEMS.ProductID, Quantity, ProductName, ProductCategory FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
+			
 			#runs the quary
-			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			$orders = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
+			$shopitems = $pdo->query($shopitemsquery)->fetchAll(PDO::FETCH_ASSOC);
+			
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
@@ -145,11 +149,12 @@
 				</tr>
 		</table>-->
 		<table class="reporttable" id="report">
-            <?php foreach ($orders as $order) { ?>
+            <?php foreach ($shopitems as $item) { ?>
                 <tr>
 					<td>
-						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
-					</td> 
+						<?php echo $item['ProductID']; ?>
+					</td>
+						<?php echo $item['ProductName']; ?>
 					<td>
 					</td>
 					<td>
