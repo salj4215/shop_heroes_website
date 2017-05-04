@@ -91,13 +91,13 @@ if(isset($_POST['search'])) {
     echo "<br>";
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce' )
         echo "<h1>Produce</h1>";
-    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks' )
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'snacks' )
         echo "<h1>Snacks</h1>";
-    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'cereal' )
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'cereal' )
         echo "<h1>Cereal</h1>";
-    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'chips' )
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'chips' )
         echo "<h1>Chips</h1>";
-    if(isset($_SESSION["category"]) && $_SESSION["category"] == 'dairy' )
+    elseif(isset($_SESSION["category"]) && $_SESSION["category"] == 'dairy' )
         echo "<h1>Dairy</h1>";
     else
         echo "<h1>All Groceries</h1>";
