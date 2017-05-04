@@ -127,8 +127,10 @@ $grandTotal = $subTotal + $shipping;
                             <td>CVV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
 						<tr>
+						<td>
 							<input type="radio" name="shippingTime" value="1hour">1 Hour<br>
 							<input type="radio" name="shippingTime" value="2hour">2 Hour<br>
+						</td>	
 						</tr>
                         <tr>
                         <td>
