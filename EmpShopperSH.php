@@ -254,16 +254,16 @@
 					
 					
 					//Fill with relevant order data
-					/*for (i=1; i <= 5; i++)
-					{
+					<?php foreach ($shopitems as $item) { ?>
+						
 						var row = table.insertRow(i-1);
 						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						var cell3 = row.insertCell(2);
-						cell1.innerHTML = i + ")";
-						cell2.innerHTML = "Example row for Driver";
-						cell3.innerHTML = "Another row for Order #" + ;
-					}*/
+						//var cell2 = row.insertCell(1);
+						//var cell3 = row.insertCell(2);
+						cell1.innerHTML = "<?php echo $item['ProductID']; ?>";
+						//cell2.innerHTML = "Example row for Driver";
+						//cell3.innerHTML = "Another row for Order #" + ;
+					<?php } ?>
 				
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
