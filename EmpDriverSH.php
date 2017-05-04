@@ -34,7 +34,8 @@
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
 
-
+			$buttonValue = "Begin Shopping";
+			
 			#Created with the help of Micah W
 		?>
 	</head>
@@ -132,6 +133,9 @@
 				</tr>
 		</table>-->
 		<table class="reporttable" id="report">
+		
+		
+		
             <?php foreach ($orders as $order) { ?>
                 <tr>
 					<td>
@@ -153,93 +157,20 @@
             </tr>
         </table>
 		
+		
+		
 		<!--Bottom button-->
 		<p align="center">
-		<input type="submit" onclick="ShopStepChange(this)" id="Button" value="Begin Shopping" style="margin: 0.4em 0.7em; height:50px; width:180px" align="center">
+		<input type="submit" onclick="ShopStepChange(this)" id="Button" value="<?php echo $buttonValue; ?>" style="margin: 0.4em 0.7em; height:50px; width:180px" align="center">
 		</p>
 		<span id="output"></span>
 		<span id="output"></span>
 		
 		<script type="text/javascript">
-			/*function changereporttype(selectObj) {
-				//how to insert rows
-				//https://www.w3schools.com/jsref/met_table_insertrow.asp
-				//how to get the row count
-				//https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
-				var i = 0;
-				var selectIndex=selectObj.selectedIndex;
-				var selectValue=selectObj.options[selectIndex].text;
-				var output=document.getElementById("output");
-				var totalRowCount = 0;
-				var rowCount = 0;
-				var table = document.getElementById("report");
-				var rows = table.getElementsByTagName("tr")
-				for (var i = 0; i < rows.length; i++) {
-					totalRowCount++;
-					if (rows[i].getElementsByTagName("td").length > 0) {
-						rowCount++;
-					}
-				}
-				var message = totalRowCount;
-				
-				
-				
-				var table = document.getElementById("report");
-				var row = table.insertRow(message-1);
-				var cell1 = row.insertCell(0);
-				var cell2 = row.insertCell(1);
-				cell1.innerHTML = message;
-				cell2.innerHTML = "th Row";
-				
-				if(selectValue=="Driver")
-				{
-					for (i=message-2; i>=1; i--)
-					{
-						table.deleteRow(i);
-					}
-					output.innerHTML=selectValue
-					for (i=1; i <= 5; i++)
-					{
-						//var table = document.getElementById("report");
-						var row = table.insertRow(i);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						var cell3 = row.insertCell(2);
-						cell1.innerHTML = "test1";
-						cell2.innerHTML = "test2";
-						cell3.innerHTML = "tester";
-					}
-					
-						
-					
-				}
-				else if (selectValue=="Shopper")
-				{
-					for (i=message-2; i>=1; i--)
-					{
-						table.deleteRow(i);
-					}
-					output.innerHTML=selectValue
-					for (i=1; i <= 5; i++)
-					{
-						//var table = document.getElementById("report");
-						var row = table.insertRow(i);
-						var cell1 = row.insertCell(0);
-						var cell2 = row.insertCell(1);
-						cell1.innerHTML = i;
-						cell2.innerHTML = "th Row in Shopper";
-					}
-				}
-				else
-				{
-					output.innerHTML="";
-				}
-				
-				
-				
-				
-				//output.innerHTML=selectValue;
-			}*/
+			//how to insert rows
+			//https://www.w3schools.com/jsref/met_table_insertrow.asp
+			//how to get the row count
+			//https://www.aspsnippets.com/Articles/Get-Count-Number-of-Rows-in-HTML-Table-using-JavaScript-and-jQuery.aspx
 			
 			var orderid = document.getElementById("orderid");
 			function SelectOrderID(objButton)
@@ -310,24 +241,19 @@
 						table.deleteRow(i);
 					}
 					
-					//output.innerHTML=ReportID;
 					
 					//Fill with relevant order data
-					for (i=1; i <= 5; i++)
+					/*for (i=1; i <= 5; i++)
 					{
-						//var table = document.getElementById("report");
 						var row = table.insertRow(i-1);
 						var cell1 = row.insertCell(0);
 						var cell2 = row.insertCell(1);
 						var cell3 = row.insertCell(2);
 						cell1.innerHTML = i + ")";
 						cell2.innerHTML = "Example row for Driver";
-						cell3.innerHTML = "Another row for Order #" + orderID;
-					}
+						cell3.innerHTML = "Another row for Order #" + ;
+					}*/
 				
-					
-					
-					
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
 				}
