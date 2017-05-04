@@ -216,7 +216,7 @@
 					<?php $buttonValue= "Begin Boxing Items"; ?>
 					objButton.value = "<?php echo $buttonValue; ?>";
 					
-					<?php echo $order['ShipAddress']; ?>
+					//<?php echo $order['ShipAddress']; ?>
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
