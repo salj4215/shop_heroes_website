@@ -247,9 +247,7 @@
 						{
 							foreach ($orders as $order)
 							{
-								var row = table.insertRow(2);
-								var cell1 = row.insertCell(0);
-								cell1.innerHTML = <?php echo $buttonValue; ?>;
+								<?php echo $buttonValue; ?>;
 							}
 						}
 					?>
