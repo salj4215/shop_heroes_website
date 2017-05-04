@@ -128,14 +128,14 @@ $grandTotal = $subTotal + $shipping;
                         </tr>
 						<tr>
 						<td>
-							<input type="radio" name="shippingTime" value="1hour">1 Hour<br>
-							<input type="radio" name="shippingTime" value="2hour">2 Hour<br>
-						</td>	
+							<input type="radio" name="shippingTime" value="1hour">1 Hour</td>
+						<td>	<input type="radio" name="shippingTime" value="2hour">2 Hour<td>
+							
 						</tr>
                         <tr>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
-                            <input type="hidden" name="Amount" value="<?php echo $grandTotal ?>"
+                            <input type="hidden" name="Amount" value="<?php echo $grandTotal?>">
                         <td><input type="submit" name="Submit" value="Confirm Payment"></td>
                         </td>
                         </tr>
