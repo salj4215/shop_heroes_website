@@ -306,6 +306,7 @@ else {
         $_SESSION['orderNum'] = $order_id;
         $_SESSION['orderStore'] = $store_id;
         $_SESSION['shippingType'] = $ship_type;
+        $_SESSION['orderCost'] = $amount;
         header('Location: index.php?page=orderComplete');
     }
 }
