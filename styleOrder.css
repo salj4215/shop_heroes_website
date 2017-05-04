@@ -46,7 +46,7 @@ table td{
     border:             none;
     cursor:             pointer;
     font-family:		Palatino Linotype(Regular), Bitter, "Times New Roman", Times, serif;
-    position:           absolute;
+    position:           relative;
 }
 /*Container for dropdown */
 .dropdown
