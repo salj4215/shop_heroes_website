@@ -1,3 +1,7 @@
 *.bak
 *.old
 *.patch
+connect_db.php
+ccauthapi/config.php
+
+*.xml

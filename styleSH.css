@@ -1,0 +1,219 @@
+html {
+   font-size:16px;
+}
+/*  resizes nav bar and all borders */
+div.img{
+	size: 100%;
+}
+* {
+    box-sizing: border-box;
+}
+/* login and sign up buttons */
+
+ul.signup li
+{
+
+position:absolute;
+float: right;
+top: 10%;
+	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	width: 100px;
+	height: 25px;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+}
+ul.login li
+{
+position:fixed; /* was absolute */
+float: right;
+top: 10%; /* was 10px */
+	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	width: 100px; /* was 100px */
+	height: 20px; /* was 25% */
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+}
+/* search bar */
+table.search {
+	position:absolute;
+ left:400px;
+ top:40px;
+   color: black;
+   font-family: Bitter, "Times New Roman", Times, serif;
+   font-weight: 700;
+   font-size: 1em;
+   overflow:auto;
+
+}
+/* Header */
+header{
+	background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+}
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 2px 50px;
+	font-size:1em;
+}
+/* Nav Bar */
+ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+ul li a{
+	text-decoration: none;
+	color: white;
+	display: block;
+}
+ul li{
+	float: left;
+	width: 16.66666667%; /*Was 210px */
+	height: 30px;
+background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	margin: auto;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+	opacity: .8;
+	border: 2px solid black;
+	
+}
+ul li a:hover{
+	background-color: #4078a5;
+	color: ivory;
+}
+
+ul li ul li {
+	display: none;
+}
+ 
+ul li:hover ul li{
+	
+
+	display:block;
+	
+}
+
+/* Body footer and article stuff goes below here */
+body,h1,h2,h3,p {
+   
+   font-family: Bitter, "Times New Roman", Times, serif;
+}
+/* footer section */
+footer {
+   padding: 0.6em;
+   background: linear-gradient(rgb(42,157,142), rgb(38,70,83));   color: ivory;
+   text-align: center;
+}
+.accent {
+   font-weight: bold;
+}
+
+/* Ending of file goes below here with the other stuffs Define how you want the page to look below */
+
+/************************************** Below here is all responsive design and print screen stuff. *******************************/
+
+ /*Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+	table.search {
+		position: center;
+		/*top:300px;*/
+	}
+	ul.signup li
+{
+			left:45px;
+		right:1px;
+		top:400px;
+}
+		ul.login li
+{
+			left:0;
+		right:150px;
+		top:400px;
+}
+
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 20px 10px;
+	font-size:1em;
+	background-color: yellow;
+}
+
+
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+		table.search {
+		/*position: relative;*/
+		left:auto;
+		right:0;
+		/*top:300px;*/
+		margin-top: 20px;
+		margin-left:1px;
+		padding-left: 1px;
+	}
+	ul.signup li
+{
+		left:45px;
+		right:1px;
+		top:400px;
+}
+		ul.login li
+{
+		left:0;
+		right:150px;
+		top:400px;
+}
+
+p.head{
+	
+	color:white;
+	text-align: center;
+	margin: 0.4em 0.7em;
+	padding: 20px 10px;
+	font-size:1em;
+}
+/*resize image to be in middle*/
+header img{
+	size: 100%;
+	margin-left:90px;
+}
+
+ul li{
+	float: left;
+	width: 16.66666667%; /*Was 210px */
+	height: 50px;
+background: linear-gradient(rgb(42,157,142), rgb(38,70,83));
+	margin: auto;
+		font-size:16px;
+	line-height: 25px;
+	text-align: center;
+	opacity: .8;
+	border: 2px solid black;
+	
+}
+}
+table.payment
+{
+	margin:             0 auto;
+    width:              100%;
+}
+
+table.no-spacing {
+  border-spacing:0; /* Removes the cell spacing via CSS */
+  border-collapse: collapse;  /* Optional - if you don't want to have double border where cells touch */
+}

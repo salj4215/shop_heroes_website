@@ -1,0 +1,74 @@
+<section>
+ 
+ <style media="screen" type="text/css">
+<?php
+if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
+{?>
+fieldset { 
+    display: block;
+    margin-left: 200px;
+    margin-right: 10px;
+    padding-top: 0.35em;
+    padding-bottom: 50px;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value);
+	height: 275px;
+	width: 300px;
+}
+ <?php
+    $pulledUserID =$_SESSION['activeUserID'];
+    $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE USERS.UserID ='$pulledUserID'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {
+        $emailMatch = true;
+        $pulledUser= $row['Username'];
+        $pulledPass= $row['Password'];
+        $pulledUserID = $row['UserID'];
+        $pulledCustID = $row['CustID'];
+        $pulledCustFirstN = $row['CustFirstN'];
+        $pulledCustLastN = $row['CustLastN'];
+        $pulledCustAddress = $row['CustAddress'];
+        $pulledCustCity = $row['CustCity'];
+        $pulledCustZip = $row['CustZip'];
+        $pulledCustPhone = $row['CustPhone'];
+    }
+ ?>
+</style>
+	
+	<table>
+		<td>
+	
+			<fieldset><legend align="center"> Account Summary :</legend>
+				<h5> Email Address:&nbsp &nbsp &nbsp &nbsp<?php print $pulledUser;?></h5>
+				<h5> Current Password: &nbsp &nbsp &nbsp &nbsp<?php print "";?></h5>
+			</fieldset>
+	
+		</td>
+ 
+		<td>
+			<fieldset><legend align="center">Contact Information and Address : </legend>
+			
+				<h5> First Name: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustFirstN;?></h5>
+				<h5> Last Name: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustLastN;?></h5>
+				<h5> Street Address: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustAddress;?></h5>
+				<h5> City: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustCity;?></h5>
+				<h5> Zip Code: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustZip;?></h5>
+				<h5> Phone Number: &nbsp &nbsp &nbsp &nbsp <?php print $pulledCustPhone;?></h5>
+		</td>
+	</table>
+
+    <form action="index.php" method="get">
+        <input type='hidden' name='page' value='updateUserInfo'>
+        <button type="submit" >Update Account</button>
+    </form>
+
+    <?php
+echo "</section>";}
+else {
+    array_push($_SESSION['messages'], "You must be logged-in to view 'MyAccount'");
+    $_SESSION['announcements'] = -1;
+    header('Location: index.php?page=login');
+
+echo "</section>";
+}?>

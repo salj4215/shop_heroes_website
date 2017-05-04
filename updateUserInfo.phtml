@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Sign up Form">
+    <meta name="description" content="Sign up Form">
+    <title>Update Account</title>
+    <?php
+    $pulledUserID =$_SESSION['activeUserID'];
+    $qry = "SELECT * FROM USERS JOIN CUSTOMERS ON USERS.UserID = CUSTOMERS.UserID WHERE USERS.UserID ='$pulledUserID'";
+    $stmt = $pdo->query($qry);
+    while ($row = $stmt->fetch()) {
+        $emailMatch = true;
+        $pulledUser= $row['Username'];
+        $pulledPass= $row['Password'];
+        $pulledUserID = $row['UserID'];
+        $pulledCustID = $row['CustID'];
+        $pulledCustFirstN = $row['CustFirstN'];
+        $pulledCustLastN = $row['CustLastN'];
+        $pulledCustAddress = $row['CustAddress'];
+        $pulledCustCity = $row['CustCity'];
+        $pulledCustZip = $row['CustZip'];
+        $pulledCustPhone = $row['CustPhone'];
+    }
+    ?>
+
+</head>
+
+<body>
+<table width="400" border="3" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+    <tr>
+        <form name="updateUser" action="index.php"  method="POST">
+            <td>
+
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <td colspan="3"><strong>Update Account Information</strong> </td>
+                    </tr>
+
+                    <tr>
+                        <td width="78">Username Email</td><td width="6">:</td>
+                        <td width="294"><input name="userEmail" type="text" id="userEmail" value=<?php print $pulledUser; ?>></td>
+                    </tr>
+
+                    <tr>
+                        <td>Password</td><td>:</td><td><input name="mypassword" type="password" id="mypassword" ></td>
+                    </tr>
+
+                    <tr>
+                        <td>Confirm Password</td><td>:</td><td><input name="checkpassword" type="password" id="checkpassword"></td>
+                    </tr>
+                    <tr>
+                        <td>First Name</td><td>:</td><td><input name="firstname" type="text" id="firstname" value=<?php print $pulledCustFirstN; ?>></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td><td>:</td><td><input name="lastname" type="text" id="lastname" value=<?php print $pulledCustLastN;?>></td>
+                    </tr>
+                    <tr>
+                        <td>Street Address</td><td>:</td><td><input name="myaddress" type="text" id="myaddress" value=<?php print $pulledCustAddress;?>></td>
+                    </tr>
+                    <tr>
+                        <td>City</td><td>:</td><td><input name="mycity" type="text" id="mycity" value=<?php print $pulledCustCity;?>></td>
+                    </tr>
+                    <tr>
+                        <td>Zip Code</td><td>:</td><td><input name="myzip" maxlength = "5" type="text" id="myzip" value=<?php print $pulledCustZip;?>></td>
+                    </tr>
+                    <tr>
+                        <td>Phone Number</td><td>:</td><td><input name="phonenumber" maxlength="10" type="text" id="phonenumber" value=<?php print $pulledCustPhone;?>></td>
+                    </tr>
+                </table>
+                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <tr>
+                        <input type="hidden" name="action" value="updateUser">
+                        <td><input type="submit" name="Submit" value="updateUser"></td>
+                    </tr>
+                </table>
+            </td>
+        </form>
+    </tr>
+</table>
+
+</body>
+
+</html>
