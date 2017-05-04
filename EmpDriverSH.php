@@ -141,19 +141,6 @@
 					</td>
 					<td>
 					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					<td>
-					</td>
-					
 				</tr>
 			<?php } ?>
 			
@@ -243,9 +230,6 @@
 					<?php $buttonValue= "Begin Boxing Items"; ?>
 					objButton.value = "<?php echo $buttonValue; ?>";
 					
-					//<?php echo $order['ShipAddress']; ?>
-					
-					
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
@@ -256,7 +240,19 @@
 						table.deleteRow(i);
 					}
 					
+					<?php foreach ($orders as $order) { ?>
 					
+					<?php
+						if ($buttonValue == "Begin Boxing Items")
+						{
+							foreach ($orders as $order)
+							{
+								var row = table.insertRow(2);
+								var cell1 = row.insertCell(0);
+								cell1.innerHTML = <?php echo $buttonValue; ?>;
+							}
+						}
+					?>
 					//Fill with relevant order data
 					/*for (i=1; i <= 5; i++)
 					{
