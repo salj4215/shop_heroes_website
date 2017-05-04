@@ -30,6 +30,7 @@
 			$query = "SELECT * FROM ORDERS";
 			#runs the quary
 			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
@@ -117,21 +118,6 @@
 		<br>
 
 		<br>
-		<!--<table class="reporttable" id="report">
-				<tr>
-					<td colspan="2" width="20%">
-						Your looking at the <span id="output">Driver</span>'s table
-					</td>
-				</tr>
-				<tr height="90%">
-					<td width="20%">
-					</td>
-					<td width="30%">
-					</td>
-					<td width="90%">
-					</td>
-				</tr>
-		</table>-->
 		<table class="reporttable" id="report">
 		
 		
@@ -141,7 +127,7 @@
 					<td>
 						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
-					<td>
+					<td> <p>example</p>
 					</td>
 					<td>
 					</td>
@@ -254,9 +240,13 @@
 						cell2.innerHTML = "Example row for Driver";
 						cell3.innerHTML = "Another row for Order #" + ;
 					}*/
-				
+					
+					
+					
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
+					
+					
 					
 					
 				}
