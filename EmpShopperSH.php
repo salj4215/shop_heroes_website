@@ -149,6 +149,17 @@
 				</tr>
 		</table>-->
 		<table class="reporttable" id="report">
+			<tr>
+				<td>
+					Product ID:
+				</td>
+				<td>
+					Name:
+				</td>
+				<td>
+					Quantity:
+				</td>
+			</tr>
             <?php foreach ($shopitems as $item) { ?>
                 <tr>
 					<td>
@@ -158,6 +169,7 @@
 						<?php echo $item['ProductName']; ?>
 					</td>
 					<td>
+						<?php echo $item['Quantity']; ?>
 					</td>
 				</tr>
             <?php } ?>
