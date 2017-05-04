@@ -105,13 +105,11 @@
 					<p><a href="contact.html">Contact us</a></p>-->
 					<p>
 					|&emsp;&emsp;
-					<a href="EmpHomeSH.html">Home</a>
+					<a href="EmpHomePage.html">Home</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpReportsSH.html">Reports</a>
+					<a href="EmpDriversSH.php">Drivers</a>
 					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpDriversSH.html">Drivers</a>
-					&emsp;&emsp;|&emsp;&emsp;
-					<a href="EmpShoppersSH.html">Shoppers</a>
+					<a href="EmpShoppersSH.php">Shoppers</a>
 					&emsp;&emsp;|
 					</p>
 				</nav>
@@ -254,6 +252,19 @@
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
+					
+					<?php
+						$javaScriptCode = '
+						var row = table.insertRow(i-1);
+						var cell1 = row.insertCell(0);
+						var cell2 = row.insertCell(1);
+						//var cell3 = row.insertCell(2);
+						cell1.innerHTML = "Test";
+						cell2.innerHTML = "Example row for Shopper";
+						';
+					?>
+					
+					
 					//Delete everything in the table after the bottom button is clicked.
 					//Then fill the table with the relevant information about the order ID selected.
 					for (i=message-2; i>=0; i--)
@@ -263,7 +274,7 @@
 					
 					
 					//Fill with relevant order data
-					<?php foreach ($shopitems as $item) { ?>
+					/*<?php foreach ($shopitems as $item) { ?>
 						
 						var row = table.insertRow(i-1);
 						var cell1 = row.insertCell(0);
@@ -272,7 +283,7 @@
 						cell1.innerHTML = "<?php echo $item['ProductID']; ?>";
 						cell2.innerHTML = "Example row for Shopper";
 						//cell3.innerHTML = "Another row for Order #" + ;
-					<?php } ?>
+					<?php } ?>*/
 				
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
