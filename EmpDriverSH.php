@@ -245,10 +245,11 @@
 					<?php
 						if ($buttonValue == "Begin Boxing Items")
 						{
-							foreach ($orders as $order)
+							echo "Hi";
+							/*foreach ($orders as $order)
 							{
 								echo $buttonValue;
-							}
+							}*/
 						}
 					?>
 					//Fill with relevant order data
