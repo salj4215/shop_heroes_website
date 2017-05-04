@@ -154,8 +154,8 @@
 					<td>
 						<?php echo $item['ProductID']; ?>
 					</td>
-						<?php echo $item['ProductName']; ?>
 					<td>
+						<?php echo $item['ProductName']; ?>
 					</td>
 					<td>
 					</td>
