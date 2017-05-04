@@ -81,7 +81,7 @@
 					input.orders{
 						text-align: left;
 						width: 100%;
-						<!--background0-color: white;-->
+						background-color: white;
 						border: none;
 					}
 					
