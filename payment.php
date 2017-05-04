@@ -64,7 +64,7 @@ $grandTotal = $subTotal + $shipping;
 ?>
 <div id="payment">
 
-    <table class="no-spacing" cellspacing="0">
+    <table class="no-spacing" cellspacing="0" align="center">
         <form name="confirmCheckout" action="processOrder.php"  method="POST">
             <td>
                 <fieldset><legend align="center"> Shipping Address :</legend>
@@ -126,6 +126,10 @@ $grandTotal = $subTotal + $shipping;
                         <tr>
                             <td>CVV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
+						<tr>
+							<input type="radio" name="shippingTime" value="1hour">1 Hour<br>
+							<input type="radio" name="shippingTime" value="2hour">2 Hour<br>
+						</tr>
                         <tr>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
