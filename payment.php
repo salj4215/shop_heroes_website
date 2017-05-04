@@ -57,8 +57,8 @@ while($row = $stmt->fetch()) {   //if its in the cart
             }
         }
     }
+$shipping = 5.99;
 $grandTotal = $subTotal + $shipping;
-
 ?>
 <div id="payment">
 
@@ -127,12 +127,11 @@ $grandTotal = $subTotal + $shipping;
 						<tr>
 						<td width="100"><input type="radio" name="shippingTime" value="1-hour">1 Hour ($7.99)</td>
 						<td><input type="radio" name="shippingTime" value="2-hour" checked="checked">2 Hour ($5.99)<td>
-							
 						</tr>
                         <tr>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
-                            <input type="hidden" name="Amount" value="<?php echo $grandTotal?>">
+                            <input type="hidden" name="Amount" value="<?php echo $subTotal?>">
                         <td><input type="submit" name="Submit" value="Confirm Payment"></td>
                         </td>
                         </tr>

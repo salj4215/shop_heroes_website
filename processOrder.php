@@ -62,9 +62,18 @@ if(isset($_POST['CVV'])){
 //what is ship type.... ? 1-hour /2-hour?
 if(isset($_POST['shippingTime'])){
     $ship_type=$_POST['shippingTime'];
+if($ship_type == "1-hour") {
+    $shipping = 7.99;
+    $amount = $amount + $shipping;
+}
+if($ship_type == "2-hour") {
+    $shipping = 5.99;
+    $amount = $amount + $shipping;
 }
 else {
-    $ship_type = "1-hour";
+    $ship_type = "2-hour";
+    $shipping = 5.99;
+    $amount = $amount + $shipping;
 }
 if(isset($_POST['shipAddress'])) {
     $ship_address = $_POST['shipAddress'];
