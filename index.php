@@ -177,7 +177,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $pulledPass= $row['Password'];
         $pulledUserID = $row['UserID'];
         $pulledEmpID = $row['EmployeeID'];
-        echo "$row";
+        header('Location: index.php?page=empHome');
 
     }
 //encrpt
@@ -410,6 +410,8 @@ else if(isset($_GET['page']) && $_GET['page'] == 'myaccount')
     require ('myaccount.phtml'); //my account page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
     require ('Home.html'); //home page
+elseif (isset($_GET['page']) && $_GET['page'] == 'empHome')
+    require ('EmpHomePage.html'); //home page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php'); //order page
 	elseif (isset($_GET['page']) && $_GET['page'] == 'termsprivacy')
