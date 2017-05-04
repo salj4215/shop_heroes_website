@@ -258,10 +258,10 @@
 						
 						var row = table.insertRow(i-1);
 						var cell1 = row.insertCell(0);
-						//var cell2 = row.insertCell(1);
+						var cell2 = row.insertCell(1);
 						//var cell3 = row.insertCell(2);
 						cell1.innerHTML = "<?php echo $item['ProductID']; ?>";
-						//cell2.innerHTML = "Example row for Driver";
+						cell2.innerHTML = "Example row for Shopper";
 						//cell3.innerHTML = "Another row for Order #" + ;
 					<?php } ?>
 				
