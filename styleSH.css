@@ -37,9 +37,9 @@ top: 10%; /* was 10px */
 }
 /* search bar */
 table.search {
-	position:absolute;
- left:400px;
- top:40px;
+	position: relative;
+ left:300x;
+ top:120px;
    color: black;
    font-family: Bitter, "Times New Roman", Times, serif;
    font-weight: 700;
