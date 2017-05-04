@@ -64,7 +64,7 @@ $grandTotal = $subTotal + $shipping;
 ?>
 <div id="payment">
 
-    <table class="payment" align = "center" cellpadding="0" cellspacing="0">
+    <table class="no-spacing" cellspacing="0">
         <form name="confirmCheckout" action="processOrder.php"  method="POST">
             <td>
                 <fieldset><legend align="center"> Shipping Address :</legend>
