@@ -122,10 +122,9 @@
             <?php foreach ($orders as $order) { ?>
                 <tr>
 					<td>
-						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
+						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>					
 					</td> 
 					<td>
-						<input class="orders" id="orderDest" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['ShipAddress']; ?>"/>
 					</td>
 					<td>
 					</td>
@@ -216,6 +215,8 @@
 					//Change button text
 					<?php $buttonValue= "Begin Boxing Items"; ?>
 					objButton.value = "<?php echo $buttonValue; ?>";
+					
+					<?php echo $order['ShipAddress']; ?>
 					//showorderid.innerHTML = "test";
 					//document.getElementById("Button").style.background='#b27a3a';
 					
