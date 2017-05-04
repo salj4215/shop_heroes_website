@@ -10,8 +10,8 @@
 <style media="screen" type="text/css">
     fieldset {
         display: block;
-        margin-left: 200px;
-        margin-right: 10px;
+        margin-left: 0px;
+        margin-right: 0px;
         padding-top: 0.35em;
         padding-bottom: 120px;
         padding-left: 0.75em;
@@ -68,7 +68,7 @@ $grandTotal = $subTotal + $shipping;
         <form name="confirmCheckout" action="processOrder.php"  method="POST">
             <td>
                 <fieldset><legend align="center"> Shipping Address :</legend>
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
                         <tr>
                             <td width="78">First Name</td>
                             <td width="294"><input name="firstName" type="text" id="firstName" value="<?php echo $_SESSION['activeCustFirstN']; ?>"></td>
