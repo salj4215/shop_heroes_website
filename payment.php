@@ -124,10 +124,10 @@ $grandTotal = $subTotal + $shipping;
                             <td>Expiration</td><td><input name="CardExp" type="text" id="CardExp" value=""></td>
                         </tr>
                         <tr>
-                            <td>CVV code:</td><td><input name="CVV" type="text" id="CVV"></td>
+                            <td>CCV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
 						<tr>
-						<td>
+						<td></td><td>
 							<input type="radio" name="shippingTime" value="1hour" checked="checked">1 Hour ($7.99)</td>
 						<td><input type="radio" name="shippingTime" value="2hour">2 Hour ($5.99)<td>
 							
