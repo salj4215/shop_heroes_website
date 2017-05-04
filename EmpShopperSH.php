@@ -29,11 +29,11 @@
 			#define the sql quary you want to run
 			$orderquery = "SELECT OrderID FROM ORDERS WHERE ShopperID = 1 AND WaitingForDelivery = 0";
 			$shopitemsquery = "SELECT OrderID, ORDER_LINE_ITEMS.ProductID, Quantity, ProductName, ProductCategory FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
-			
+			$employeequery = "SELECT EmployeeID FROM EMPLOYEES";
 			#runs the quary
 			$orders = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
 			$shopitems = $pdo->query($shopitemsquery)->fetchAll(PDO::FETCH_ASSOC);
-			
+			$employees = $pdo->query($orderquery)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
@@ -168,6 +168,15 @@
                 </td>
             </tr>
         </table>
+		<table>
+			<?php foreach ($employees as $employee) { ?>
+                <tr>
+					<td>
+						<?php echo $employee['EmployeeID']; ?>
+					</td>
+				</tr>
+            <?php } ?>
+		</table>
 		<span id="output"></span>
 		<span id="output"></span>
 		<!--Bottom button-->
