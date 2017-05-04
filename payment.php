@@ -45,7 +45,6 @@ $grandTotal=0.0;
 $qry = "Select * from `PRODUCTS` JOIN `STORES` ON PRODUCTS.StoreID = STORES.StoreID" . $storeWHERE;
 ////call quuery
 $stmt = $pdo -> query( $qry );
-echo "<table class='products'>";
 $numProductDisplayed = 0;
 while($row = $stmt->fetch()) {   //if its in the cart
     foreach ($cart as $pid => $qty) {
@@ -58,7 +57,6 @@ while($row = $stmt->fetch()) {   //if its in the cart
             }
         }
     }
-    echo "</table>";
 $grandTotal = $subTotal + $shipping;
 
 ?>
@@ -127,9 +125,8 @@ $grandTotal = $subTotal + $shipping;
                             <td>CCV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
 						<tr>
-						<td></td><td>
-							<input type="radio" name="shippingTime" value="1hour" checked="checked">1 Hour ($7.99)</td>
-						<td><input type="radio" name="shippingTime" value="2hour">2 Hour ($5.99)<td>
+						<td width="100"><input type="radio" name="shippingTime" value="1-hour">1 Hour ($7.99)</td>
+						<td><input type="radio" name="shippingTime" value="2-hour" checked="checked">2 Hour ($5.99)<td>
 							
 						</tr>
                         <tr>
@@ -145,6 +142,8 @@ $grandTotal = $subTotal + $shipping;
     </table>
 </div>
 <?php
+$shipping = 5.99;
+$grandTotal = $subTotal + $shipping;
 echo '<br>Order Subtotal: $' . number_format($subTotal, 2, '.', ',');
 echo '<br>Order Shipping: $' . number_format($shipping, 2, '.', ',');
 echo "<br>==================================";

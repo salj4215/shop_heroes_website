@@ -59,9 +59,9 @@ if(isset($_POST['CardExp'])){
 if(isset($_POST['CVV'])){
     $cvv = $_POST['CVV'];
 }
-//what is ship type.... ? 1 hour /2 hour?
-if(isset($_POST['ShipType'])){
-    $ship_type=$_POST['ShipType'];
+//what is ship type.... ? 1-hour /2-hour?
+if(isset($_POST['shippingTime'])){
+    $ship_type=$_POST['shippingTime'];
 }
 else {
     $ship_type = "1-hour";
@@ -78,7 +78,7 @@ if(isset($_POST['shipZip'])){
 
 // VALIDATE DATA
 //if cvv isnt 3
-if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV']) || empty($_POST['billingAddress']) || empty($_POST['billingCity']) || empty($_POST['billingZip'] || !isset($_POST['shippingTime'])) ) {
+if (empty($_POST['firstName']) || empty($_POST['lastName']) || empty($_POST['CardNum']) || empty($_POST['CardExp']) || empty($_POST['CVV']) || empty($_POST['billingAddress']) || empty($_POST['billingCity']) || empty($_POST['billingZip'] ) || !isset($_POST['shippingTime']) ) {
     array_push($_SESSION['messages'], "All form input lines must be filled in.");
     $vaildationError = true;
 }   //if all fields are not empty. then vaildate inputs
