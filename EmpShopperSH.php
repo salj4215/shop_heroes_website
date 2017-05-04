@@ -27,9 +27,9 @@
 			$pdo = new PDO($dsn, USER, PASS, $driver_options);
 
 			#define the sql quary you want to run
-			$query = "SELECT * FROM ORDER_LINE_ITEMS";
+			$query = "SELECT * FROM ORDERS";
 			#runs the quary
-			$orderlines = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
+			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
@@ -76,6 +76,13 @@
 						margin-left: 2%;
 						margin-right: 2%;
 						height:40px;"
+					}
+					
+					input.orders{
+						text-align: left;
+						width: 100%;
+						<!--background0-color: white;-->
+						border: none;
 					}
 					
 				</style>
@@ -138,20 +145,26 @@
 				</tr>
 		</table>-->
 		<table class="reporttable" id="report">
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="65147891"></td></td>
-                    <tr><td><input class="orders" type="sub mit" id="orderid" type="button" onclick="SelectOrderID(this)" value="345783"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="3234234"></td></tr>
-                    <tr><td><input class="orders" type="submit" id="orderid" type="button" onclick="SelectOrderID(this)" value="45456"></td></tr>
-                    <tr height="90%">
-                        <td width="20%">
-                        </td>
-                        <td width="30%">
-                        </td>
-                        <td width="90%">
-                        </td>
-                    </tr>
-                     </table>
+            <?php foreach ($orders as $order) { ?>
+                <tr>
+					<td>
+						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
+					</td> 
+					<td>
+					</td>
+					<td>
+					</td>
+				</tr>
+            <?php } ?>
+            <tr height="90%">
+                <td width="20%">
+                </td>
+                <td width="30%">
+                </td>
+                <td width="90%">
+                </td>
+            </tr>
+        </table>
 		<span id="output"></span>
 		<span id="output"></span>
 		
