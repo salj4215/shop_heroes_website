@@ -12,19 +12,21 @@
 
         margin-left: 0px;
         margin-right: 0px;
-        padding-top: 5px;
+        padding-top: 15px;
         padding-bottom: 120px;
         padding-left: 0.75em;
         padding-right: 0.75em;
         border: 2px groove;
-        height: 325px;
+        height: 300px;
         width: 350px;
         display: table-cell;
         white-space:nowrap;
 
     }
 </style>
+
 <?php
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Membership')
     $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
@@ -69,7 +71,7 @@ $grandTotal = $subTotal + $shipping;
         <form name="confirmCheckout" action="processOrder.php"  method="POST">
             <td>
                 <fieldset><legend align="center"> Shipping Address :</legend>
-                    <table width="100%" border="0" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                    <table width="100%" border="0" cellpadding="6" cellspacing="2" bgcolor="#FFFFFF">
                         <tr>
                             <td width="78">First Name</td>
                             <td width="294"><input name="firstName" type="text" id="firstName" value="<?php echo $_SESSION['activeCustFirstN']; ?>"></td>
@@ -94,7 +96,7 @@ $grandTotal = $subTotal + $shipping;
             </td>
             <td>
                 <fieldset><legend align="center"> Payment Information</legend>
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <table width="100%" border="0" cellpadding="6" cellspacing="2" bgcolor="#FFFFFF">
                         <tr>
                             <td width="78">Billing Name</td>
                             <td width="294"><input name="billingName" type="text" id="billingName" value=""></td>
@@ -116,7 +118,7 @@ $grandTotal = $subTotal + $shipping;
             </td>
             <td>
                 <fieldset><legend align="center"> Credit Card</legend>
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
+                    <table width="100%" border="0" cellpadding="7" cellspacing="3" bgcolor="#FFFFFF">
                         <tr>
                             <td width="78">Credit Card Number</td>
                             <td width="294"><input name="CardNum" type="text" id="CardNum" value=""></td>
@@ -128,14 +130,14 @@ $grandTotal = $subTotal + $shipping;
                             <td>CCV code:</td><td><input name="CVV" type="text" id="CVV"></td>
                         </tr>
 						<tr>
-						<td width="100"><input type="radio" name="shippingTime" value="1-hour">1 Hour ($7.99)</td>
-						<td><input type="radio" name="shippingTime" value="2-hour" checked="checked">2 Hour ($5.99)<td>
+						<td width="100"><input type="radio" name="shippingTime" value="1-hour" >1 Hour ($7.99)</td>
+						<td><input  onclick="" type="radio" name="shippingTime" value="2-hour" checked="checked">2 Hour ($5.99)<td>
 						</tr>
                         <tr>
                         <td>
                             <input type="hidden" name="action" value="confirmCheckout">
                             <input type="hidden" name="Amount" value="<?php echo $subTotal?>">
-                        <td><input type="submit" name="Submit" value="Confirm Payment"></td>
+                        <td ><input type="submit" name="Submit" value="Confirm Payment"></td>
                         </td>
                         </tr>
                     </table>
@@ -146,10 +148,9 @@ $grandTotal = $subTotal + $shipping;
 <?php
 $shipping = 5.99;
 $grandTotal = $subTotal + $shipping;
-echo '<br>Order Subtotal: $' . number_format($subTotal, 2, '.', ',');
-echo '<br>Order Shipping: $' . number_format($shipping, 2, '.', ',');
-echo "<br>==================================";
-echo '<br>Order Total: $' . number_format($grandTotal, 2, '.', ',');
+echo '<strong><br>Order Subtotal: $' . number_format($subTotal, 2, '.', ',') . "</strong>";
+echo "<br>==================";
+
 ?>
 </body>
 </html>
