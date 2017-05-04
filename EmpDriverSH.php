@@ -119,16 +119,13 @@
 
 		<br>
 		<table class="reporttable" id="report">
-		
-		
-		
             <?php foreach ($orders as $order) { ?>
                 <tr>
 					<td>
 						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
-						<input class="orders" id="orderDest" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderDate']; ?>"/>
 					<td>
+						<input class="orders" id="orderDest" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['ShipAddress']; ?>"/>
 					</td>
 					<td>
 					</td>
