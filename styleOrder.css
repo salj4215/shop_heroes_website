@@ -37,12 +37,12 @@ table td{
 }
 tr:nth-child(even)
 {
-    background-color:   #0168B3;
+    background-color:   #D9E0FA;
 }
 
 tr:nth-child(odd)
 {
-    background-color:   #FF0D01;
+    background-color:   #ffffff;
 }
 
 /*Dropdown button */
