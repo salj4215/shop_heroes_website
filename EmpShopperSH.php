@@ -37,7 +37,7 @@
 			#this should pull all the current data from the products table
 			#all the data will show up at the top of the site on top of the header below.
 			#this can be themed look better
-
+			$buttonValue = "Begin Shopping";
 
 			#Created with the help of Micah W
 		?>
