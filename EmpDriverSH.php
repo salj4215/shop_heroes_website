@@ -127,7 +127,8 @@
 					<td>
 						<input class="orders" id="orderid" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderID']; ?>"/>
 					</td> 
-					<td> <p>example</p>
+						<input class="orders" id="orderDest" type="submit" onclick="SelectOrderID(this)" value="<?php echo $order['OrderDate']; ?>"/>
+					<td>
 					</td>
 					<td>
 					</td>
@@ -241,14 +242,11 @@
 						cell3.innerHTML = "Another row for Order #" + ;
 					}*/
 					
-					
+
+
 					
 					//Doesn't even appear to be necessary
 					//output.innerHTML = objButton.value;
-					
-					
-					
-					
 				}
 				else if(objButton.value == "Begin Boxing Items")
 				{
