@@ -310,7 +310,7 @@
 				else if(objButton.value == "Return To Order Selection")
 				{
 					//Reload the table
-					window.open('http://beta.cis220.hfcc.edu/EmpShoppersSH.php', '_blank');
+					location.href = "beta.cis220.hfcc.edu/EmpShoppersSH.php";
 				}
 			}
 		</script>
