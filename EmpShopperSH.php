@@ -28,7 +28,7 @@
 
 			#define the sql quary you want to run
 			$query = "SELECT OrderID AS T1 FROM ORDERS WHERE ShopperID = 1 AND WaitingForDelivery = 0";
-			$query = "SELECT OrderID AS T1, ORDER_LINE_ITEMS.ProductID AS T2, Quantity AS T3, ProductName AS T4, ProductCategory AS T5 FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
+			#$query = "SELECT OrderID AS T1, ORDER_LINE_ITEMS.ProductID AS T2, Quantity AS T3, ProductName AS T4, ProductCategory AS T5 FROM ORDER_LINE_ITEMS LEFT JOIN PRODUCTS ON ORDER_LINE_ITEMS.ProductID = PRODUCTS.ProductID WHERE OrderID = 1";
 			$query2 = "SELECT EmployeeID FROM EMPLOYEES";
 			#runs the quary
 			$orders = $pdo->query($query)->fetchAll(PDO::FETCH_ASSOC);
