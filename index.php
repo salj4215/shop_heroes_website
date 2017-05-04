@@ -393,7 +393,7 @@ else if(isset($_GET['page']) && $_GET['page'] == 'contact')
 else if(isset($_GET['page']) && $_GET['page'] == 'myaccount')
     require ('myaccount.phtml'); //my account page
 elseif (isset($_GET['page']) && $_GET['page'] == 'home')
-    require ('HomeSH.html'); //home page
+    require ('Home.html'); //home page
 elseif (isset($_GET['page']) && $_GET['page'] == 'order')
     require ('order.php'); //order page
 	elseif (isset($_GET['page']) && $_GET['page'] == 'termsprivacy')
@@ -415,6 +415,6 @@ elseif (isset($_GET['page']) && $_GET['page'] == 'logout') {
     header('Location: index.php?page=home');
 }   //logout link
 else
-    require ('HomeSH.html');
+    require ('Home.html');
 
 require ('footer.html');
