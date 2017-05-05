@@ -1,6 +1,6 @@
 <?php
 include('index.php');
-$qry = "SELECT * FROM USERS JOIN EMPLOYEES ON USERS.UserID = EMPLOYEES.UserID WHERE `Username` = ";
+$qry = "SELECT * FROM USERS JOIN EMPLOYEES ON USERS.UserID = EMPLOYEES.UserID WHERE Username='$userEmail'";
 $stmt = $pdo->query($qry);
 while ($row = $stmt->fetch()) {
 ?>
