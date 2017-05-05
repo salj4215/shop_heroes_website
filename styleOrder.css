@@ -1,6 +1,7 @@
 #shopPage h1
 {
     text-align: center;
+    font-family: "Segoe UI", SansSerif, serif;
 }
 
 #prod_navigation
@@ -112,7 +113,13 @@ li#sub ul {
 li#sub:hover ul {
     display: block;
 }
-/*#search
-{
-	position:			relative;
-}*/
+.input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+}
