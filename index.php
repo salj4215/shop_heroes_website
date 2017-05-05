@@ -168,7 +168,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $pulledPass = "false99999999999999";
     $pulledUserID = "false9999999999999";
 //encrpt
-//    $pass = hash("SHA512", $pass, false);
+    $pass = hash("SHA512", $pass, false);
 
     //CHECK IF EMPLOYEE FIRST
     $qry = "SELECT * FROM USERS JOIN EMPLOYEES ON USERS.UserID = EMPLOYEES.UserID WHERE Username='$userEmail'";
