@@ -138,3 +138,7 @@ li#sub:hover ul {
     font-family: "Segoe UI", SansSerif, serif;
     top:        30px;
 }
+
+#searchItems {
+    position:   relative;
+}
