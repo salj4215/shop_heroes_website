@@ -156,7 +156,7 @@ if(isset($_POST['search'])) {
         echo"    <input type='hidden' name='productCat' value='$productCat'>";
         echo"    <input type='hidden' name='pid' value='$productID'>";
         echo"    <input type='hidden' name='action' value='addcart' >";
-        echo"    <button>Add to Cart</button>";
+        echo"    <button onclick='addCart()'>Add to Cart</button>";
         echo"</form></td></tr>";
 
 //		echo "StoreID: " . $row['StoreID'] . "<br>";
@@ -177,3 +177,9 @@ if(isset($_POST['search'])) {
 
 //?>
 </div>
+
+    <script>
+        function addCart() {
+            alert("<?php $productName."was added to your cart"?>");
+        }
+    </script>
