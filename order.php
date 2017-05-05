@@ -63,8 +63,7 @@ if(isset($_POST['search'])) {
         </div>
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
-        <p>Search for an Item</p>
-        <input name="search" type="text" id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
+        <input type="text" name="search" placeholder="Search.." id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
         <input type="hidden" name="action" value="search">
         <input type="submit" name="Submit" value="Search">
     </form>
@@ -81,16 +80,12 @@ if(isset($_POST['search'])) {
         $storeWHERE=" WHERE STORES.StoreID LIKE '%'";
 
     //Show header for types of items shown based on user selection
-    echo "<br>";
-    echo "<br>";
     if(isset($_SESSION["store"]) && $_SESSION["store"] == 'Kroger' )
         echo "<h1>Kroger</h1>";
     elseif(isset($_SESSION["store"]) && $_SESSION["store"] == 'Meijer' )
         echo "<h1>Meijer</h1>";
     else
         echo "<h1>All Stores</h1>";
-    echo "<br>";
-    echo "<br>";
 
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce' )
         echo "<h1>Produce</h1>";
@@ -119,8 +114,6 @@ if(isset($_POST['search'])) {
     else
         $categoryWHERE="";
     ?>
-</br></br></br>
-
         <?php
     //serach bar where
     if(isset($_SESSION['search']))
