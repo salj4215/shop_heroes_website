@@ -141,4 +141,5 @@ li#sub:hover ul {
 
 #searchItems {
     position:   relative;
+    top:        -13px;
 }
