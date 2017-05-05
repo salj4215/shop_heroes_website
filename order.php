@@ -63,16 +63,10 @@ if(isset($_POST['search'])) {
         </div>
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
-        <td>
-    <table width="50%" border="1" cellpadding="0" cellspacing="1" bgcolor="#FFFFFF">
-    <tr>
-        <td colspan="10">Search for an Item</td>
-        <td width="250"><input name="search" type="text" id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>"></td>
+        <p>Search for an Item</p>
+        <input name="search" type="text" id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
         <input type="hidden" name="action" value="search">
-        <td><input type="submit" name="Submit" value="Search"></td>
-    </tr>
-    </table>
-    </td>
+        <input type="submit" name="Submit" value="Search">
     </form>
 <br>
     <?php
