@@ -167,6 +167,8 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $pulledUser = "false99999999999999";    //set default for error of fetching
     $pulledPass = "false99999999999999";
     $pulledUserID = "false9999999999999";
+//encrpt
+//    $pass = hash("SHA512", $pass, false);
 
     //CHECK IF EMPLOYEE FIRST
     $qry = "SELECT * FROM USERS JOIN EMPLOYEES ON USERS.UserID = EMPLOYEES.UserID WHERE Username='$userEmail'";
@@ -187,8 +189,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $pulledAddress = $row['EmpAddress'];
         $pulledCity = $row['EmpCity'];
     }
-//encrpt
-    $pass = hash("SHA512", $pass, false);
+
     //if not an employee, then check for an customer
 if(!$employeeLogin) {
 //    $qry = "SELECT * FROM USERS WHERE Username='$userEmail'";
