@@ -1,7 +1,6 @@
-#shopPage h1
+#shopPage
 {
-    text-align: center;
-    font-family: "Segoe UI", SansSerif, serif;
+
 }
 
 #prod_navigation
@@ -130,4 +129,11 @@ li#sub:hover ul {
 
 #search :focus {
     width: 30%;
+}
+
+#shopHeaders
+{
+    position:   relative;
+    text-align: center;
+    font-family: "Segoe UI", SansSerif, serif;
 }

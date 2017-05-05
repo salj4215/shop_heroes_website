@@ -68,6 +68,7 @@ if(isset($_POST['search'])) {
         <input type="submit" name="Submit" value="Search">
     </form>
 <br>
+    <div id="shopHeaders">
     <?php
     //to select store choice.
     if(isset($_SESSION["store"]) && $_SESSION["store"] == 'AllStores')
@@ -99,6 +100,7 @@ if(isset($_POST['search'])) {
         echo "<h1>Dairy</h1>";
     else
         echo "<h1>All Groceries</h1>";
+    echo "</div>";
 
     //to redirect the qry with category selection
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')
