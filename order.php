@@ -62,12 +62,15 @@ if(isset($_POST['search'])) {
             </form>
         </div>
     </div>
+    <div id="searchItems">
     <form name="signUp" action="index.php?page=order"  method="POST">
         <input type="text" name="search" placeholder="Search.." id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
         <input type="hidden" name="action" value="search">
         <input type="submit" name="Submit" value="Search">
     </form>
+    </div>
 <br>
+    <div id="shopHeaders">
     <?php
     //to select store choice.
     if(isset($_SESSION["store"]) && $_SESSION["store"] == 'AllStores')
@@ -99,6 +102,7 @@ if(isset($_POST['search'])) {
         echo "<h1>Dairy</h1>";
     else
         echo "<h1>All Groceries</h1>";
+    echo "</div>";
 
     //to redirect the qry with category selection
     if(isset($_SESSION["category"]) && $_SESSION["category"] == 'produce')

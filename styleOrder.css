@@ -1,7 +1,6 @@
-#shopPage h1
+#shopPage
 {
-    text-align: center;
-    font-family: "Segoe UI", SansSerif, serif;
+
 }
 
 #prod_navigation
@@ -122,12 +121,25 @@ li#sub:hover ul {
     background-color:               white;
     background-position:            10px 10px;
     background-repeat:              no-repeat;
-    padding:                        12px 20px 12px 40px;
+    /*padding:                        12px 20px 12px 40px;*/
     -webkit-transition:             width 0.4s ease-in-out;
     transition:                     width 0.4s ease-in-out;
-    float:                          right;
 }
 
 #search :focus {
     width: 30%;
+}
+
+#shopHeaders
+{
+    position:   relative;
+    text-align: center;
+    font-family: "Segoe UI", SansSerif, serif;
+    top:        35px;
+}
+
+#searchItems {
+    position:   relative;
+    top:        -15px;
+    float:      right;
 }
