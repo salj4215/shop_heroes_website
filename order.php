@@ -63,7 +63,6 @@ if(isset($_POST['search'])) {
         </div>
     </div>
     <form name="signUp" action="index.php?page=order"  method="POST">
-        <p>Search for an Item</p>
         <input type="text" name="search" placeholder="Search.." id="search" value="<?php if(isset($_SESSION['search'])){echo $_SESSION['search'];}?>">
         <input type="hidden" name="action" value="search">
         <input type="submit" name="Submit" value="Search">
