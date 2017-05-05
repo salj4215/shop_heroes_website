@@ -179,8 +179,7 @@ if(isset($_POST['search'])) {
 </div>
 
     <script>
-        function addCart() {
-            var prod = arguments[0];
-            alert(prod + 'was added to your cart');
+        function addCart(p) {
+            alert(p + 'was added to your cart');
         }
     </script>
