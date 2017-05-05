@@ -124,6 +124,7 @@ if(isset($_POST['search'])) {
     {
         $searchWord = $_SESSION['search'];
         $searchWHERE = " AND PRODUCTS.ProductName LIKE '%$searchWord%'";
+        unset($_SESSION['search']);
     }
     else
         $searchWHERE = "";
