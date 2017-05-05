@@ -180,6 +180,6 @@ if(isset($_POST['search'])) {
 
     <script>
         function addCart() {
-            alert("<?php echo "<strong>".$productName."</strong> was added to your cart"?>");
+            alert("<?php echo $productName." was added to your cart"?>");
         }
     </script>
