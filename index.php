@@ -162,6 +162,7 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
     $userEmail = $_POST['myusername'];
     $pass = $_POST['mypassword'];
     $employeeLogin = false;
+    $customerLogin = false;
     $emailMatch = false;
     $pulledUser = "false99999999999999";    //set default for error of fetching
     $pulledPass = "false99999999999999";
@@ -176,9 +177,15 @@ if( isset( $_POST['action'] ) && $_POST['action'] == 'login') {
         $pulledUser= $row['Username'];
         $pulledPass= $row['Password'];
         $pulledUserID = $row['UserID'];
-        $pulledEmpID = $row['EmployeeID'];
-        header('Location: index.php?page=empHome');
-
+        $pulledEmpID = $row['EmpID'];
+        $pulledPhone = $row['EmpPhone'];
+        $pulledFirstN = $row['EmpFirstN'];
+        $pulledLastN = $row['EmpLastN'];
+        $pulledZip = $row['EmpZip'];
+        $pulledEmpJob = $row['EmpJobTitle'];
+        $pulledState = $row['EmpState'];
+        $pulledAddress = $row['EmpAddress'];
+        $pulledCity = $row['EmpCity'];
     }
 //encrpt
     $pass = hash("SHA512", $pass, false);
@@ -189,32 +196,42 @@ if(!$employeeLogin) {
     $stmt = $pdo->query($qry);
     while ($row = $stmt->fetch()) {
         $emailMatch = true;
+        $customerLogin = true;
         $pulledUser = $row['Username'];
         $pulledPass = $row['Password'];
         $pulledUserID = $row['UserID'];
         $pulledCustID = $row['CustID'];
-        $pulledCustFirstN = $row['CustFirstN'];
-        $pulledCustLastN = $row['CustLastN'];
-        $pulledCustZip = $row['CustZip'];
-        $pulledCustCity = $row['CustCity'];
-        $pulledCustAdd = $row['CustAddress'];
-        $pulledCustPhone = $row['CustPhone'];
+        $pulledFirstN = $row['CustFirstN'];
+        $pulledLastN = $row['CustLastN'];
+        $pulledZip = $row['CustZip'];
+        $pulledCity = $row['CustCity'];
+        $pulledAddress = $row['CustAddress'];
+        $pulledPhone = $row['CustPhone'];
     }
 }
     if ($pass == $pulledPass && ($emailMatch)) {
        //correct password in found username
         $_SESSION['activeUser'] = $pulledUser;
         $_SESSION['activeUserID'] = $pulledUserID;
-        $_SESSION['activeCustID'] = $pulledCustID;
-        $_SESSION['activeCustFirstN'] = $pulledCustFirstN;
-        $_SESSION['activeCustLastN'] = $pulledCustLastN;
-        $_SESSION['activeCustZip'] = $pulledCustZip;
-        $_SESSION['activeCustCity'] = $pulledCustCity;
-        $_SESSION['activeCustAdd'] = $pulledCustAdd;
-        $_SESSION['activeCustPhone'] = $pulledCustPhone;
-        $CapsName = strtoupper($pulledCustFirstN);
+        $_SESSION['activeCustFirstN'] = $pulledFirstN;
+        $_SESSION['activeCustLastN'] = $pulledLastN;
+        $_SESSION['activeCustZip'] = $pulledZip;
+        $_SESSION['activeCustCity'] = $pulledCity;
+        $_SESSION['activeCustAdd'] = $pulledAddress;
+        $_SESSION['activeCustPhone'] = $pulledPhone;
+        $CapsName = strtoupper($pulledFirstN);
         array_push($_SESSION['messages'], "<strong>Welcome  $CapsName!</strong>");
         $_SESSION["activeUser"] = $userEmail;
+     //if a customoer
+        if($customerLogin)
+            $_SESSION['activeCustID'] = $pulledCustID;
+
+    //if its an employee
+        if($employeeLogin) {
+            $_SESSION['activeEmpID'] = $pulledEmpID;
+            $_SESSION['$pulledEmpJob'] = $pulledEmpJob;
+            header('Location: index.php?page=empHome');
+        }
     }
     if( $pass != $pulledPass && ($emailMatch))
     {
