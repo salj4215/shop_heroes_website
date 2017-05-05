@@ -113,7 +113,7 @@ li#sub ul {
 li#sub:hover ul {
     display: block;
 }
-input[type=text] {
+#search {
     width: 130px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -127,6 +127,6 @@ input[type=text] {
     transition: width 0.4s ease-in-out;
 }
 
-input[type=text]:focus {
-    width: 100%;
+#search :focus {
+    width: 30%;
 }
