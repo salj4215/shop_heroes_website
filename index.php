@@ -371,7 +371,7 @@ if(( isset( $_POST['action'] )) && $_POST['action'] == 'addcart' )
     $pid = $pid * 1;    //cast into a int
     $productName = $_POST['productName'];
     $productCat = $_POST['productCat'];
-    array_push($_SESSION['messages'], "$productCat : <u>$productName</u> have been added to your Cart.");
+    //array_push($_SESSION['messages'], "$productCat : <u>$productName</u> have been added to your Cart.");
     //for first time check for old cart in cookie
     if(isset($_COOKIE['cart'])) {   //strip data out of cookie into workable array
         $CookieCart = $_COOKIE['cart'];
