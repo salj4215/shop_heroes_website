@@ -29,7 +29,9 @@ if((isset($_SESSION['activeUserID'])) && ($_SESSION['activeUserID'] != 0 ))
     else    //default to all
         $storeWHERE=" WHERE STORES.StoreID LIKE '0'";
     ?>
-<strong>SELECT A STORE TO VIEW YOUR CART</strong>
+<div id="shoppingCartTitle">
+    <h1>SELECT A STORE TO VIEW YOUR CART</h1>
+</div>
     <!-- Products Navigation bar -->
         <div id="prod_navigation">
             <div class="dropdown">
